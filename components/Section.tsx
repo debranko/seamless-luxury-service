@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-interface SectionProps {
+interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   id?: string;
   children: React.ReactNode;
   className?: string;
   background?: 'dark' | 'darker' | 'charcoal';
 }
 
-export default function Section({
+const Section = forwardRef<HTMLElement, SectionProps>(({
   id,
   children,
   className = '',
-  background = 'dark'
-}: SectionProps) {
+  background = 'dark',
+  ...props
+}, ref) => {
   const backgrounds = {
     dark: 'bg-luxury-charcoal-light',
     darker: 'bg-luxury-black',
@@ -21,12 +22,18 @@ export default function Section({
 
   return (
     <section
+      ref={ref}
       id={id}
       className={`section-spacing ${backgrounds[background]} ${className}`}
+      {...props}
     >
       <div className="container-luxury">
         {children}
       </div>
     </section>
   );
-}
+});
+
+Section.displayName = 'Section';
+
+export default Section;

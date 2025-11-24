@@ -10,10 +10,7 @@ export default function HeroNew() {
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-luxury-charcoal via-luxury-black to-luxury-black overflow-hidden">
       {/* Minimal grid pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.15) 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }}></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgb(255_255_255_/_0.15)_1px,transparent_0)] bg-[length:40px_40px]"></div>
       </div>
 
       <div className="container-luxury relative z-10 py-20">

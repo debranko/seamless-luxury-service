@@ -1,43 +1,47 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Section from '../Section';
 import { motion } from 'framer-motion';
 
+const PROBLEMS = [
+  {
+    title: 'No voice. No context.',
+    description: 'Service arrives, doesn\'t know what the guest wants.',
+  },
+  {
+    title: 'No multi-language support.',
+    description: 'Guest speaks English, French, or Chinese – crew guesses.',
+  },
+  {
+    title: 'No real workflow.',
+    description: 'System isn\'t built for yachts. No duty management, task reassignment, or guest preferences.',
+  },
+];
+
+const SOLUTIONS = [
+  {
+    title: 'Voice to Text',
+    subtitle: 'Offline',
+    icon: '🎤',
+    image: '/images/button-leather-top.png',
+  },
+  {
+    title: 'Instant Translation',
+    subtitle: '30+ languages',
+    icon: '🌍',
+    image: '/images/watch-round.png',
+  },
+  {
+    title: 'Crew Management',
+    subtitle: 'Duty system',
+    icon: '👥',
+    image: '/images/watch-square.png',
+  },
+];
+
 export default function ProblemSolution() {
-  const problems = [
-    {
-      title: 'No voice. No context.',
-      description: 'Service arrives, doesn\'t know what the guest wants.',
-    },
-    {
-      title: 'No multi-language support.',
-      description: 'Guest speaks English, French, or Chinese – crew guesses.',
-    },
-    {
-      title: 'No real workflow.',
-      description: 'System isn\'t built for yachts. No duty management, task reassignment, or guest preferences.',
-    },
-  ];
-
-  const solutions = [
-    {
-      title: 'Voice to Text',
-      subtitle: 'Offline',
-      icon: '🎤',
-    },
-    {
-      title: 'Instant Translation',
-      subtitle: '30+ languages',
-      icon: '🌍',
-    },
-    {
-      title: 'Crew Management',
-      subtitle: 'Duty system',
-      icon: '👥',
-    },
-  ];
-
   return (
     <Section background="charcoal">
       <div className="max-w-6xl mx-auto">
@@ -54,7 +58,7 @@ export default function ProblemSolution() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {problems.map((problem, index) => (
+            {PROBLEMS.map((problem, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -94,22 +98,35 @@ export default function ProblemSolution() {
           viewport={{ once: true }}
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {solutions.map((solution, index) => (
+            {SOLUTIONS.map((solution, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 viewport={{ once: true }}
-                className="relative p-10 bg-gradient-to-br from-luxury-charcoal-light to-luxury-black rounded-lg border border-luxury-bronze/20 hover:border-luxury-bronze/40 transition-all duration-300 group"
+                className="relative p-10 bg-gradient-to-br from-luxury-charcoal-light to-luxury-black rounded-lg border border-luxury-bronze/20 hover:border-luxury-bronze/40 transition-all duration-300 group overflow-hidden"
               >
-                <div className="text-5xl mb-6">{solution.icon}</div>
-                <h3 className="text-3xl font-serif text-luxury-white mb-3 group-hover:text-luxury-bronze transition-colors">
-                  {solution.title}
-                </h3>
-                <p className="text-luxury-bronze text-xs uppercase tracking-[0.2em]">
-                  {solution.subtitle}
-                </p>
+                {/* Background Image with Overlay */}
+                <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                  <Image
+                    src={solution.image}
+                    alt={solution.title}
+                    fill
+                    className="object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/80 to-transparent" />
+                </div>
+
+                <div className="relative z-10">
+                  <div className="text-5xl mb-6">{solution.icon}</div>
+                  <h3 className="text-3xl font-serif text-luxury-white mb-3 group-hover:text-luxury-bronze transition-colors">
+                    {solution.title}
+                  </h3>
+                  <p className="text-luxury-bronze text-xs uppercase tracking-[0.2em]">
+                    {solution.subtitle}
+                  </p>
+                </div>
 
                 {/* Subtle glow on hover */}
                 <div className="absolute inset-0 bg-luxury-bronze/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>

@@ -5,6 +5,30 @@ import Image from 'next/image';
 import Section from '../Section';
 import { motion } from 'framer-motion';
 
+const GUEST_BUTTON_FEATURES = [
+  'Capacitive main button with two-stage tactile click',
+  'Shake-to-call via LIS3DH',
+  'Offline voice capture with physical microphone switch',
+  'No cloud dependency',
+  '9 months battery life',
+];
+
+const CREW_WATCH_FEATURES = [
+  'Real-time alerts',
+  'Voice message playback',
+  'Instant translation',
+  'Duty switch on wrist',
+  '7-day battery with firmware optimization',
+];
+
+const SERVER_FEATURES = [
+  'Local server',
+  'Full privacy',
+  'End-to-end encrypted RF',
+  'Zero dependency on internet',
+  'All AI processing on-premises',
+];
+
 export default function ObedioExperience() {
   return (
     <Section background="darker" className="bg-luxury-black">
@@ -53,13 +77,7 @@ export default function ObedioExperience() {
               </p>
 
               <ul className="space-y-4">
-                {[
-                  'Capacitive main button with two-stage tactile click',
-                  'Shake-to-call via LIS3DH',
-                  'Offline voice capture with physical microphone switch',
-                  'No cloud dependency',
-                  '9 months battery life',
-                ].map((feature, index) => (
+                {GUEST_BUTTON_FEATURES.map((feature, index) => (
                   <motion.li
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
@@ -96,13 +114,7 @@ export default function ObedioExperience() {
               </p>
 
               <ul className="space-y-4">
-                {[
-                  'Real-time alerts',
-                  'Voice message playback',
-                  'Instant translation',
-                  'Duty switch on wrist',
-                  '7-day battery with firmware optimization',
-                ].map((feature, index) => (
+                {CREW_WATCH_FEATURES.map((feature, index) => (
                   <motion.li
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
@@ -162,13 +174,7 @@ export default function ObedioExperience() {
               </p>
 
               <ul className="space-y-4">
-                {[
-                  'Local server',
-                  'Full privacy',
-                  'End-to-end encrypted RF',
-                  'Zero dependency on internet',
-                  'All AI processing on-premises',
-                ].map((feature, index) => (
+                {SERVER_FEATURES.map((feature, index) => (
                   <motion.li
                     key={index}
                     initial={{ opacity: 0, x: -20 }}

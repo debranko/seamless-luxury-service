@@ -8,10 +8,7 @@ export default function SignatureAnimation() {
     <section className="relative w-full bg-luxury-black py-20 md:py-32 overflow-hidden">
       {/* Subtle grid background */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.15) 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }}></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgb(255_255_255_/_0.15)_1px,transparent_0)] bg-[length:40px_40px]"></div>
       </div>
 
       <div className="container-luxury relative z-10">
