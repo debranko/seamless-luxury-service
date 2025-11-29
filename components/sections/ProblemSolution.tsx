@@ -8,10 +8,18 @@ const PAIRS = [
     problem: {
       title: 'No voice. No context.',
       description: 'Service arrives, doesn\'t know what the guest wants.',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+          <line x1="4" y1="4" x2="20" y2="20" strokeWidth="2" />
+        </svg>
+      ),
     },
     solution: {
       title: 'Voice to Text',
       subtitle: 'OFFLINE',
+      description: 'Guests speak naturally. Crew receives clear, written requests instantly – no internet required.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
           <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
@@ -26,10 +34,18 @@ const PAIRS = [
     problem: {
       title: 'No multi-language support.',
       description: 'Guest speaks English, French, or Chinese – crew guesses.',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+          <line x1="12" y1="17" x2="12.01" y2="17" strokeWidth="2" />
+        </svg>
+      ),
     },
     solution: {
       title: 'Instant Translation',
       subtitle: '30+ LANGUAGES',
+      description: 'Real-time translation between guests and crew. Every request understood perfectly, every time.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
           <circle cx="12" cy="12" r="10" />
@@ -43,10 +59,18 @@ const PAIRS = [
     problem: {
       title: 'No real workflow.',
       description: 'System isn\'t built for yachts. No duty management, task reassignment, or guest preferences.',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <line x1="9" y1="9" x2="15" y2="15" strokeWidth="2" />
+          <line x1="15" y1="9" x2="9" y2="15" strokeWidth="2" />
+        </svg>
+      ),
     },
     solution: {
       title: 'Crew Management',
       subtitle: 'DUTY SYSTEM',
+      description: 'Built for yachts. Duty schedules, task assignments, and guest preferences – all in one system.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -189,12 +213,12 @@ function AnimatedArrow({ isHovered, direction = 'right' }: { isHovered: boolean;
 }
 
 // Problem Box Component
-function ProblemBox({ title, description, isHovered }: { title: string; description: string; isHovered: boolean }) {
+function ProblemBox({ title, description, icon, isHovered }: { title: string; description: string; icon: React.ReactNode; isHovered: boolean }) {
   return (
     <motion.div
       className={`relative p-8 rounded-xl border transition-all duration-500 ${
         isHovered
-          ? 'bg-luxury-charcoal-light/60 border-luxury-gray-dark/50'
+          ? 'bg-luxury-charcoal-light/60 border-red-500/30'
           : 'bg-luxury-charcoal-light/30 border-luxury-gray-dark/20'
       }`}
       initial={{ opacity: 0, x: -20 }}
@@ -205,6 +229,11 @@ function ProblemBox({ title, description, isHovered }: { title: string; descript
       {/* Old/Problem indicator */}
       <div className="absolute top-4 right-4">
         <span className="text-xs uppercase tracking-wider text-red-400/60 font-medium">Problem</span>
+      </div>
+
+      {/* Icon */}
+      <div className={`mb-4 transition-all duration-500 ${isHovered ? 'text-red-400/80 scale-110' : 'text-red-400/50'}`}>
+        {icon}
       </div>
 
       <h3 className="text-2xl font-serif text-luxury-white/90 mb-3 pr-16">
@@ -218,7 +247,7 @@ function ProblemBox({ title, description, isHovered }: { title: string; descript
 }
 
 // Solution Box Component
-function SolutionBox({ title, subtitle, icon, isHovered }: { title: string; subtitle: string; icon: React.ReactNode; isHovered: boolean }) {
+function SolutionBox({ title, subtitle, description, icon, isHovered }: { title: string; subtitle: string; description: string; icon: React.ReactNode; isHovered: boolean }) {
   return (
     <motion.div
       className={`relative p-8 rounded-xl border transition-all duration-500 overflow-hidden ${
@@ -241,11 +270,14 @@ function SolutionBox({ title, subtitle, icon, isHovered }: { title: string; subt
         {icon}
       </div>
 
-      <h3 className={`text-3xl font-serif mb-2 transition-colors duration-500 ${isHovered ? 'text-luxury-bronze' : 'text-luxury-white'}`}>
+      <h3 className={`text-2xl font-serif mb-2 transition-colors duration-500 ${isHovered ? 'text-luxury-bronze' : 'text-luxury-white'}`}>
         {title}
       </h3>
-      <p className="text-luxury-bronze/80 text-xs uppercase tracking-[0.2em] font-medium">
+      <p className="text-luxury-bronze/80 text-xs uppercase tracking-[0.2em] font-medium mb-3">
         {subtitle}
+      </p>
+      <p className="text-luxury-gray-light/80 text-sm leading-relaxed">
+        {description}
       </p>
 
       {/* Glow effect */}
@@ -278,12 +310,14 @@ function ProblemSolutionRow({ pair, index }: { pair: typeof PAIRS[0]; index: num
         <ProblemBox
           title={pair.problem.title}
           description={pair.problem.description}
+          icon={pair.problem.icon}
           isHovered={isHovered}
         />
         <AnimatedArrow isHovered={isHovered} direction="right" />
         <SolutionBox
           title={pair.solution.title}
           subtitle={pair.solution.subtitle}
+          description={pair.solution.description}
           icon={pair.solution.icon}
           isHovered={isHovered}
         />
@@ -295,6 +329,7 @@ function ProblemSolutionRow({ pair, index }: { pair: typeof PAIRS[0]; index: num
           <ProblemBox
             title={pair.problem.title}
             description={pair.problem.description}
+            icon={pair.problem.icon}
             isHovered={isHovered}
           />
         </div>
@@ -303,6 +338,7 @@ function ProblemSolutionRow({ pair, index }: { pair: typeof PAIRS[0]; index: num
           <SolutionBox
             title={pair.solution.title}
             subtitle={pair.solution.subtitle}
+            description={pair.solution.description}
             icon={pair.solution.icon}
             isHovered={isHovered}
           />

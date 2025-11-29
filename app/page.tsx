@@ -2,6 +2,7 @@
 import HeroNew from '@/components/sections/HeroNew';
 import SignatureAnimation from '@/components/sections/SignatureAnimation';
 import ProblemSolution from '@/components/sections/ProblemSolution';
+import ForOwners from '@/components/sections/ForOwners';
 import ObedioExperience from '@/components/sections/ObedioExperience';
 import PrivacyFirst from '@/components/sections/PrivacyFirst';
 import LuxuryMaterials from '@/components/sections/LuxuryMaterials';
@@ -16,6 +17,7 @@ export default function Home() {
       <HeroNew />
       <SignatureAnimation />
       <ProblemSolution />
+      <ForOwners />
       <ObedioExperience />
       <PrivacyFirst />
       <LuxuryMaterials />

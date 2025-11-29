@@ -20,9 +20,9 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Features', href: '#features' },
-    { name: 'Integrators', href: '#integrators' },
-    { name: 'Crew', href: '#crew' },
+    { name: 'For Owners', href: '#owners' },
+    { name: 'For Integrators', href: '#integrators' },
+    { name: 'For Crew', href: '#crew' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -44,7 +44,7 @@ export default function Navbar() {
               alt="Obedio"
               width={120}
               height={40}
-              className="h-8 w-auto"
+              className="h-8 w-auto brightness-0 invert"
             />
           </Link>
 
@@ -61,10 +61,10 @@ export default function Navbar() {
             ))}
             <Button
               variant="primary"
-              href="#demo"
+              href="mailto:info@obedio.de?subject=Demo Request"
               className="px-6 py-2 text-sm"
             >
-              Book Demo
+              Request Demo
             </Button>
           </div>
 
@@ -114,11 +114,11 @@ export default function Navbar() {
               ))}
               <Button
                 variant="primary"
-                href="#demo"
+                href="mailto:info@obedio.de?subject=Demo Request"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="mt-4"
               >
-                Book Demo
+                Request Demo
               </Button>
             </div>
           </motion.div>

@@ -66,25 +66,6 @@ export default function FinalCTA() {
           </div>
         </motion.div>
 
-        {/* METSTRADE Reminder */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-r from-luxury-gold/10 via-luxury-gold-light/10 to-luxury-gold/10 border-2 border-luxury-gold/30 p-8 rounded-lg text-center"
-        >
-          <div className="text-4xl mb-4">🚢</div>
-          <h3 className="text-2xl font-serif font-bold text-luxury-gold mb-4">
-            Visit us at METSTRADE!
-          </h3>
-          <p className="text-lg text-luxury-cream/90 mb-2">
-            <strong>Stand 08.862</strong> (in partnership with Mr Smith)
-          </p>
-          <p className="text-luxury-cream/70">
-            See the future of service intelligence live
-          </p>
-        </motion.div>
       </div>
 
       {/* Footer */}
