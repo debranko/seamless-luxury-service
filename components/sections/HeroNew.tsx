@@ -51,9 +51,9 @@ export default function HeroNew() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-luxury-white mb-8 leading-[1.1]"
               >
-                You've seen call buttons,
+                Built to serve.
                 <br />
-                <span className="text-gradient-bronze">you haven't seen Obedio.</span>
+                <span className="text-gradient-bronze">Designed to seduce.</span>
               </motion.h1>
 
               <motion.p

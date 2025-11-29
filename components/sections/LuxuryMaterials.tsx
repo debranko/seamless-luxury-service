@@ -8,20 +8,34 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function LuxuryMaterials() {
   const materials = [
     {
-      name: 'Walnut Wood',
+      name: 'Leather & Bronze',
+      subtitle: 'Hand-stitched Italian leather with brushed bronze accents',
+      image: '/images/button-leather-gold.png',
+    },
+    {
+      name: 'Wave Pattern',
+      subtitle: 'Sculptured ridges for tactile elegance',
+      image: '/images/button-wood-6.jpg',
+    },
+    {
+      name: 'Natural Oak',
+      subtitle: 'Sustainably sourced European oak with matte finish',
       image: '/images/button-wood-4.jpg',
     },
     {
-      name: 'Brushed Aluminum',
+      name: 'Brushed Silver',
+      subtitle: 'Aerospace-grade aluminum with satin finish',
       image: '/images/button-wood-silver.jpg',
     },
     {
-      name: 'Bronze Accent Ring',
-      image: '/images/button-wood-labels.jpg',
+      name: 'Leather Side Profile',
+      subtitle: 'Precision stitching meets bronze craftsmanship',
+      image: '/images/button-leather-side.png',
     },
     {
-      name: 'Leather Base',
-      image: '/images/button-leather-gold.png',
+      name: 'Classic Top View',
+      subtitle: 'Eight auxiliary buttons for complete control',
+      image: '/images/button-leather-top.png',
     },
   ];
 
@@ -30,7 +44,7 @@ export default function LuxuryMaterials() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % materials.length);
-    }, 4000);
+    }, 5000);
 
     return () => clearInterval(timer);
   }, [materials.length]);
@@ -91,10 +105,10 @@ export default function LuxuryMaterials() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.6 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.02 }}
+                  transition={{ duration: 0.8, ease: 'easeOut' }}
                   className="relative"
                 >
                   <Image
@@ -112,9 +126,12 @@ export default function LuxuryMaterials() {
                     transition={{ duration: 0.6, delay: 0.3 }}
                     className="mt-8 text-center"
                   >
-                    <h3 className="text-4xl font-serif text-luxury-white">
+                    <h3 className="text-3xl md:text-4xl font-serif text-luxury-white mb-3">
                       {materials[currentIndex].name}
                     </h3>
+                    <p className="text-luxury-bronze/80 text-sm md:text-base tracking-wide">
+                      {materials[currentIndex].subtitle}
+                    </p>
                   </motion.div>
                 </motion.div>
               </AnimatePresence>
@@ -155,8 +172,27 @@ export default function LuxuryMaterials() {
             </button>
           </div>
 
+          {/* Slide counter */}
+          <div className="flex justify-center items-center gap-4 mt-10">
+            <span className="text-luxury-bronze/60 text-sm font-mono tracking-wider">
+              {String(currentIndex + 1).padStart(2, '0')}
+            </span>
+            <div className="w-32 h-px bg-luxury-bronze/20 relative overflow-hidden">
+              <motion.div
+                key={currentIndex}
+                className="absolute inset-y-0 left-0 bg-luxury-bronze"
+                initial={{ width: '0%' }}
+                animate={{ width: '100%' }}
+                transition={{ duration: 5, ease: 'linear' }}
+              />
+            </div>
+            <span className="text-luxury-bronze/40 text-sm font-mono tracking-wider">
+              {String(materials.length).padStart(2, '0')}
+            </span>
+          </div>
+
           {/* Dots navigation */}
-          <div className="flex justify-center gap-3 mt-12">
+          <div className="flex justify-center gap-3 mt-6">
             {materials.map((_, index) => (
               <button
                 key={index}

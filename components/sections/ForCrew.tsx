@@ -54,7 +54,7 @@ export default function ForCrew() {
   ];
 
   return (
-    <Section background="darker" className="bg-luxury-black">
+    <Section id="crew" background="darker" className="bg-luxury-black">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div

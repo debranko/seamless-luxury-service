@@ -116,8 +116,10 @@ export default function ForIntegrators() {
             <h3 className="text-3xl font-serif text-luxury-white mb-8">Key Benefits</h3>
             <ul className="space-y-4">
               {benefits.map((benefit, index) => (
-                <li key={index} className="flex items-start gap-4 text-luxury-cream">
-                  <span className="text-luxury-bronze mt-1 text-xl">—</span>
+                <li key={index} className="flex items-start gap-3 text-luxury-cream">
+                  <svg className="w-5 h-5 text-luxury-bronze mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                   <span className="text-lg">{benefit}</span>
                 </li>
               ))}
