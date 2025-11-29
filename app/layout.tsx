@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Cormorant_Garamond } from 'next/font/google'
 import Script from 'next/script'
 import Navbar from '@/components/Navbar'
+import VisitorNotifier from '@/components/VisitorNotifier'
 import StructuredData from './structured-data'
 import './globals.css'
 
@@ -106,6 +107,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${cormorant.variable} font-sans`}>
         <StructuredData />
+        <VisitorNotifier />
         <Navbar />
         {children}
       </body>
