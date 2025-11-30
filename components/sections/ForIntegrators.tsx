@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 export default function ForIntegrators() {
   const availableIntegrations = [
     { name: 'Crestron', logo: '/images/integrations/crestron.svg' },
-    { name: 'KNX', logo: '/images/integrations/knx.svg' },
+    { name: 'KNX', logo: '/images/integrations/knx.png' },
   ];
 
   const comingSoonIntegrations = [

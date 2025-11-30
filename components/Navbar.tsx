@@ -20,9 +20,9 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'For Owners', href: '#owners' },
+    { name: 'For Owners', href: '/for-owners' },
     { name: 'For Integrators', href: '/for-integrators' },
-    { name: 'For Crew', href: '#crew' },
+    { name: 'For Crew', href: '/for-crew' },
     { name: 'Contact', href: '#contact' },
   ];
 

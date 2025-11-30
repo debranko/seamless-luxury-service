@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 const integrations = {
   available: [
     { name: 'Crestron', logo: '/images/integrations/crestron.svg' },
-    { name: 'KNX', logo: '/images/integrations/knx.svg' },
+    { name: 'KNX', logo: '/images/integrations/knx.png' },
   ],
   comingSoon: [
     { name: 'Control4', logo: '/images/integrations/control4.svg' },
@@ -168,11 +168,11 @@ export default function ForIntegratorsPage() {
           </div>
         </section>
 
-        {/* Integration Partners */}
+        {/* Works With Existing Systems */}
         <section className="py-20 px-6 bg-luxury-charcoal">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-serif text-luxury-white text-center mb-4">
-              Integration Partners
+              Works With Existing Systems
             </h2>
             <p className="text-luxury-gray-light text-center mb-12 max-w-2xl mx-auto">
               Seamless integration with your existing automation system
