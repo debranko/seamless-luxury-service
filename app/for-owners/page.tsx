@@ -1,32 +1,37 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Obedio for Yacht & Villa Owners | Luxury Guest Service',
-  description: 'Transform spoken words into immediate action. Instant 30+ language translation, absolute privacy with two-step activation, and bespoke design for your vessel or villa.',
+  description: 'Transform spoken words into immediate action. Instant 30+ language translation, absolute privacy with two-step activation.',
   alternates: {
     canonical: 'https://obedio.de/for-owners',
   },
-  openGraph: {
-    title: 'Obedio for Owners',
-    description: 'Time is the only luxury you cannot buy back. Obedio transforms guest requests into immediate, precise action.',
-    url: 'https://obedio.de/for-owners',
-    siteName: 'Obedio',
-    images: [{
-      url: '/images/button-leather-gold.png',
-      width: 1200,
-      height: 630,
-      alt: 'Obedio Luxury Guest Service'
-    }],
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Obedio for Yacht & Villa Owners',
-    description: 'Instant translation, absolute privacy, bespoke design',
-    images: ['/images/button-leather-gold.png'],
-  },
 }
+
+const additionalBenefits = [
+  {
+    title: 'Instant Onboard Processing',
+    description: 'Zero latency. Voice requests are processed locally on the chip, ensuring immediate crew response without internet delays.',
+    image: '/images/icons/voice-offline.png',
+  },
+  {
+    title: 'Universal Communication',
+    description: 'Guests speak in their native tongue; crew receive orders in English. Seamless translation for 30+ languages.',
+    image: '/images/icons/languages.png',
+  },
+  {
+    title: 'Full Season Autonomy',
+    description: 'Engineered to last. A single charge covers an entire charter season (9+ months), eliminating daily maintenance.',
+    image: '/images/icons/battery.png',
+  },
+  {
+    title: '100% Air-Gapped Privacy',
+    description: 'Physical isolation from the web. Your conversations and data never leave the vessel. The ultimate security standard.',
+    image: '/images/icons/privacy.png',
+  },
+]
 
 const features = [
   {
@@ -46,90 +51,30 @@ const features = [
   },
 ]
 
-const additionalBenefits = [
-  {
-    title: 'Offline Voice-to-Text',
-    description: 'Works without internet. All processing happens locally on board.',
-  },
-  {
-    title: '30+ Languages',
-    description: 'Instant translation between guests and crew in over 30 languages.',
-  },
-  {
-    title: '9-Month Battery',
-    description: 'Guest buttons last up to 9 months on a single charge.',
-  },
-  {
-    title: 'Zero Cloud Dependency',
-    description: 'Your data never leaves your vessel. Complete privacy guaranteed.',
-  },
-]
-
-// JSON-LD Structured Data
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Organization',
-      name: 'Obedio',
-      url: 'https://obedio.de',
-      logo: 'https://obedio.de/images/logo.png',
-      description: 'Luxury guest service system for superyachts and luxury villas',
-    },
-    {
-      '@type': 'Product',
-      name: 'Obedio Guest Service System',
-      description: 'The first luxury guest service system with offline voice-to-text, instant 30+ language translation, and 9-month battery life. Built for superyachts and luxury villas.',
-      brand: {
-        '@type': 'Brand',
-        name: 'Obedio',
-      },
-      category: 'Marine Electronics',
-      audience: {
-        '@type': 'Audience',
-        audienceType: 'Yacht Owners, Villa Owners',
-      },
-    },
-  ],
-}
-
 export default function ForOwnersPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <main className="min-h-screen bg-[#050505]">
 
-      <main className="min-h-screen bg-luxury-black">
         {/* Hero Section */}
         <section className="relative pt-32 pb-20 px-6">
           <div className="max-w-6xl mx-auto text-center">
-            <p className="text-luxury-bronze text-sm uppercase tracking-[0.3em] mb-6">
+            <p className="text-[#C5A572] text-sm uppercase tracking-[0.3em] mb-6">
               For Yacht & Villa Owners
             </p>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-luxury-white mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight">
               Time is the only luxury
               <br />
-              <span className="text-gradient-bronze">you cannot buy back.</span>
+              <span className="text-[#C5A572]">you cannot buy back.</span>
             </h1>
-            <p className="text-xl md:text-2xl text-luxury-cream/80 max-w-3xl mx-auto mb-4">
+            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-4 font-light">
               Obedio transforms a spoken word into immediate, precise action.
             </p>
-            <p className="text-lg text-luxury-gray-light max-w-2xl mx-auto mb-10">
-              Your guests deserve service without delays, without barriers.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:info@obedio.de?subject=Book a Demo"
-                className="inline-flex items-center justify-center px-8 py-4 bg-luxury-bronze text-luxury-black font-medium rounded hover:bg-luxury-bronze-light transition-colors"
-              >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+              <a href="mailto:info@obedio.de" className="px-8 py-4 bg-[#C5A572] text-black font-medium rounded hover:bg-[#b08d55] transition-colors">
                 Book a Demo
               </a>
-              <a
-                href="mailto:info@obedio.de?subject=Inquiry from Owner"
-                className="inline-flex items-center justify-center px-8 py-4 border border-luxury-bronze text-luxury-bronze font-medium rounded hover:bg-luxury-bronze/10 transition-colors"
-              >
+              <a href="mailto:info@obedio.de" className="px-8 py-4 border border-[#C5A572] text-[#C5A572] font-medium rounded hover:bg-[#C5A572]/10 transition-colors">
                 Contact Us
               </a>
             </div>
@@ -137,114 +82,71 @@ export default function ForOwnersPage() {
         </section>
 
         {/* Key Features */}
-        <section className="py-20 px-6 bg-luxury-charcoal">
+        <section className="py-20 px-6 bg-[#0a0a0a]">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-serif text-luxury-white text-center mb-4">
-              What Makes Obedio Different
-            </h2>
-            <p className="text-luxury-gray-light text-center mb-12 max-w-2xl mx-auto">
-              Built for those who expect the extraordinary
-            </p>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="p-10 bg-gradient-to-br from-luxury-charcoal-light/50 to-luxury-black border border-luxury-bronze/20 rounded-xl hover:border-luxury-bronze/40 transition-all duration-500"
-                >
-                  <p className="text-luxury-bronze text-xs uppercase tracking-[0.2em] mb-3">
-                    {feature.subtitle}
-                  </p>
-                  <h3 className="text-2xl font-serif text-luxury-white mb-4">
-                    {feature.title}
-                  </h3>
-                  <p className="text-luxury-gray-light leading-relaxed">
-                    {feature.description}
-                  </p>
+                <div key={index} className="p-10 border border-white/5 bg-white/5 rounded-xl hover:border-[#C5A572]/30 transition-all duration-500">
+                  <p className="text-[#C5A572] text-xs uppercase tracking-[0.2em] mb-3">{feature.subtitle}</p>
+                  <h3 className="text-2xl font-serif text-white mb-4">{feature.title}</h3>
+                  <p className="text-gray-400 leading-relaxed">{feature.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Additional Benefits */}
-        <section className="py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-serif text-luxury-white text-center mb-12">
-              The Complete Solution
+        {/* Engineered for the Ultra-Private */}
+        <section className="py-24 px-6 bg-[#050505]">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-serif text-white text-center mb-16">
+              Engineered for the <span className="text-[#C5A572] italic">Ultra-Private</span>
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {additionalBenefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className="p-6 bg-luxury-charcoal/50 border border-luxury-bronze/10 rounded-lg text-center"
+                  className="group flex flex-col items-center p-8 bg-[#0a0a0a] border border-white/10 rounded-lg hover:border-[#C5A572]/50 transition-all duration-500 hover:-translate-y-1"
                 >
-                  <div className="w-10 h-10 flex items-center justify-center rounded-full bg-luxury-bronze/10 text-luxury-bronze mb-4 mx-auto">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
+                  {/* Title */}
+                  <h3 className="text-lg font-serif text-white mb-6 text-center tracking-wide">
+                    {benefit.title}
+                  </h3>
+
+                  {/* Image Icon */}
+                  <div className="relative w-20 h-20 mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <Image
+                      src={benefit.image}
+                      alt={benefit.title}
+                      fill
+                      className="object-contain"
+                    />
                   </div>
-                  <h3 className="text-xl font-serif text-luxury-white mb-2">{benefit.title}</h3>
-                  <p className="text-luxury-gray-light text-sm">{benefit.description}</p>
+
+                  {/* Description */}
+                  <p className="text-gray-400 text-sm text-center leading-relaxed font-light">
+                    {benefit.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Privacy Statement */}
-        <section className="py-20 px-6 bg-luxury-charcoal">
+        {/* Footer / Privacy Note */}
+        <section className="py-20 px-6 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-4 px-8 py-4 border border-luxury-bronze/30 rounded-full mb-8">
-              <div className="w-2 h-2 rounded-full bg-luxury-bronze animate-pulse" />
-              <p className="text-luxury-bronze text-sm uppercase tracking-[0.2em]">
-                100% Local • Absolute Privacy • Zero Internet Dependency
-              </p>
-              <div className="w-2 h-2 rounded-full bg-luxury-bronze animate-pulse" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-serif text-luxury-white mb-6">
-              Your Privacy is Non-Negotiable
-            </h2>
-            <p className="text-luxury-gray-light text-lg max-w-2xl mx-auto">
-              Every conversation, every request, every interaction stays on your vessel.
-              Obedio processes everything locally—no cloud, no external servers, no compromises.
-            </p>
-          </div>
-        </section>
-
-        {/* Final CTA */}
-        <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-serif text-luxury-white mb-6">
-              Experience the Difference
-            </h2>
-            <p className="text-luxury-gray-light mb-10 max-w-2xl mx-auto">
-              See how Obedio transforms guest service on superyachts and luxury villas.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:info@obedio.de?subject=Book a Demo"
-                className="inline-flex items-center justify-center px-8 py-4 bg-luxury-bronze text-luxury-black font-medium rounded hover:bg-luxury-bronze-light transition-colors"
-              >
-                Book a Demo
-              </a>
-              <a
-                href="mailto:info@obedio.de?subject=Inquiry from Owner"
-                className="inline-flex items-center justify-center px-8 py-4 border border-luxury-bronze text-luxury-bronze font-medium rounded hover:bg-luxury-bronze/10 transition-colors"
-              >
-                Contact Us
-              </a>
+            <h2 className="text-2xl font-serif text-white mb-4">Your Privacy is Non-Negotiable</h2>
+            <p className="text-gray-500">100% Local Processing • No Cloud • Air-Gapped</p>
+            <div className="py-8 text-center">
+              <Link href="/" className="text-[#C5A572] hover:text-white transition-colors text-sm uppercase tracking-widest">
+                ← Back to Home
+              </Link>
             </div>
           </div>
         </section>
 
-        {/* Back to Home */}
-        <div className="py-8 px-6 text-center">
-          <Link href="/" className="text-luxury-bronze hover:text-luxury-bronze-light transition-colors">
-            ← Back to Home
-          </Link>
-        </div>
       </main>
     </>
   )

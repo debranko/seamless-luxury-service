@@ -291,6 +291,22 @@ function SolutionBox({ title, subtitle, description, icon, isHovered }: { title:
   );
 }
 
+// Responsive Arrow - decorative element that changes direction based on breakpoint
+function ResponsiveArrow({ isHovered }: { isHovered: boolean }) {
+  return (
+    <>
+      {/* Desktop: horizontal arrow */}
+      <div className="hidden md:block">
+        <AnimatedArrow isHovered={isHovered} direction="right" />
+      </div>
+      {/* Mobile: vertical arrow */}
+      <div className="block md:hidden">
+        <AnimatedArrow isHovered={isHovered} direction="down" />
+      </div>
+    </>
+  );
+}
+
 // Row Component
 function ProblemSolutionRow({ pair, index }: { pair: typeof PAIRS[0]; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -305,15 +321,15 @@ function ProblemSolutionRow({ pair, index }: { pair: typeof PAIRS[0]; index: num
       transition={{ duration: 0.6, delay: index * 0.15 }}
       viewport={{ once: true }}
     >
-      {/* Desktop Layout */}
-      <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] gap-6 items-center">
+      {/* Single responsive layout: vertical on mobile, horizontal grid on desktop */}
+      <div className="flex flex-col items-center gap-2 md:grid md:grid-cols-[1fr_auto_1fr] md:gap-6 md:items-center">
         <ProblemBox
           title={pair.problem.title}
           description={pair.problem.description}
           icon={pair.problem.icon}
           isHovered={isHovered}
         />
-        <AnimatedArrow isHovered={isHovered} direction="right" />
+        <ResponsiveArrow isHovered={isHovered} />
         <SolutionBox
           title={pair.solution.title}
           subtitle={pair.solution.subtitle}
@@ -321,28 +337,6 @@ function ProblemSolutionRow({ pair, index }: { pair: typeof PAIRS[0]; index: num
           icon={pair.solution.icon}
           isHovered={isHovered}
         />
-      </div>
-
-      {/* Mobile Layout */}
-      <div className="md:hidden flex flex-col items-center gap-2">
-        <div className="w-full">
-          <ProblemBox
-            title={pair.problem.title}
-            description={pair.problem.description}
-            icon={pair.problem.icon}
-            isHovered={isHovered}
-          />
-        </div>
-        <AnimatedArrow isHovered={isHovered} direction="down" />
-        <div className="w-full">
-          <SolutionBox
-            title={pair.solution.title}
-            subtitle={pair.solution.subtitle}
-            description={pair.solution.description}
-            icon={pair.solution.icon}
-            isHovered={isHovered}
-          />
-        </div>
       </div>
     </motion.div>
   );
