@@ -1,65 +1,22 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import Button from '../Button';
 import Section from '../Section';
 import { motion } from 'framer-motion';
 
 export default function ForIntegrators() {
-  const keyReasons = [
-    {
-      title: 'Sovereign Autonomy',
-      subtitle: 'NO CLOUD, NO INTERNET',
-      description: 'The entire system operates locally. If the internet fails, the ship\'s network goes down, or a server blackout occurs, Obedio continues to function. In Emergency Mode, Repeaters form a mesh network.',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          <path d="M9 12l2 2 4-4" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Local Voice Processing',
-      subtitle: 'ALL DATA STAYS ON BOARD',
-      description: 'Voice-to-Text and translation happen on the local server. Guest data never leaves the vessel. No cloud dependency means no privacy concerns.',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10">
-          <rect x="2" y="3" width="20" height="14" rx="2" />
-          <path d="M8 21h8" />
-          <path d="M12 17v4" />
-          <circle cx="12" cy="10" r="3" />
-        </svg>
-      ),
-    },
-    {
-      title: 'True Integration',
-      subtitle: 'API & AUTOMATION READY',
-      description: 'REST API and WebHooks for advanced automation. Four auxiliary buttons can control lighting, scenes, or DND status via the server bridge.',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10">
-          <path d="M18 20V10" />
-          <path d="M12 20V4" />
-          <path d="M6 20v-6" />
-          <circle cx="18" cy="7" r="3" />
-          <circle cx="6" cy="11" r="3" />
-        </svg>
-      ),
-    },
+  const availableIntegrations = [
+    { name: 'Crestron', logo: '/images/integrations/crestron.svg' },
+    { name: 'KNX', logo: '/images/integrations/knx.svg' },
   ];
 
-  const benefits = [
-    'Zero cloud failures',
-    'Full documentation & support',
-    'Pre-provisioned systems (send GA, receive configured)',
-    'Bespoke enclosure design available',
-    'Optional white labeling for fleet owners',
-  ];
-
-  const integrations = [
-    { name: 'REST API', status: 'Available Now' },
-    { name: 'WebHooks', status: 'Available Now' },
-    { name: 'Crestron', status: 'Coming Soon' },
-    { name: 'Control4', status: 'Coming Soon' },
+  const comingSoonIntegrations = [
+    { name: 'Control4', logo: '/images/integrations/control4.svg' },
+    { name: 'Lutron', logo: '/images/integrations/lutron.svg' },
+    { name: 'AMX', logo: '/images/integrations/amx.svg' },
   ];
 
   return (
@@ -70,97 +27,142 @@ export default function ForIntegrators() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-luxury-white mb-6">
             Built for AV integrators.
             <br />
             <span className="text-gradient-bronze">Not just for guests.</span>
           </h2>
+          <p className="text-xl md:text-2xl text-luxury-cream/80 max-w-3xl mx-auto">
+            Works with what you already have
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {keyReasons.map((reason, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="p-8 bg-luxury-black/50 border border-luxury-bronze/20 rounded-lg group hover:border-luxury-bronze/40 transition-all duration-300"
-            >
-              <div className="text-luxury-bronze mb-4 group-hover:scale-110 transition-transform duration-300">
-                {reason.icon}
-              </div>
-              <p className="text-luxury-bronze text-xs uppercase tracking-[0.2em] mb-2">
-                {reason.subtitle}
-              </p>
-              <h3 className="text-2xl font-serif text-luxury-white mb-4 group-hover:text-luxury-bronze transition-colors">
-                {reason.title}
-              </h3>
-              <p className="text-luxury-gray-light text-base leading-relaxed">
-                {reason.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Benefits */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-3xl font-serif text-luxury-white mb-8">Key Benefits</h3>
-            <ul className="space-y-4">
-              {benefits.map((benefit, index) => (
-                <li key={index} className="flex items-start gap-3 text-luxury-cream">
-                  <svg className="w-5 h-5 text-luxury-bronze mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span className="text-lg">{benefit}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Integrations */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-3xl font-serif text-luxury-white mb-8">Integrations</h3>
-            <div className="space-y-4">
-              {integrations.map((integration, index) => (
-                <div
-                  key={index}
-                  className="flex items-center justify-between p-4 bg-luxury-black/30 border border-luxury-bronze/10 rounded"
-                >
-                  <span className="text-luxury-white text-lg">{integration.name}</span>
-                  <span className="text-xs text-luxury-bronze uppercase tracking-[0.2em]">
-                    {integration.status}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
+        {/* Integration Logos - Available */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="mb-8"
         >
+          <p className="text-luxury-bronze text-sm uppercase tracking-[0.2em] text-center mb-6">
+            Available Now
+          </p>
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10">
+            {availableIntegrations.map((integration) => (
+              <div
+                key={integration.name}
+                className="flex flex-col items-center p-4 md:p-6 bg-luxury-black/50 rounded-lg border border-luxury-bronze/20 hover:border-luxury-bronze/40 transition-colors"
+              >
+                <div className="h-12 md:h-16 w-32 md:w-44 flex items-center justify-center bg-white rounded p-3">
+                  <Image
+                    src={integration.logo}
+                    alt={`${integration.name} integration`}
+                    width={140}
+                    height={48}
+                    className="object-contain"
+                  />
+                </div>
+                <span className="mt-3 text-luxury-white font-medium">{integration.name}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Integration Logos - Coming Soon */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <p className="text-luxury-gray-light text-sm uppercase tracking-[0.2em] text-center mb-6">
+            Coming Soon
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+            {comingSoonIntegrations.map((integration) => (
+              <div
+                key={integration.name}
+                className="flex flex-col items-center p-3 opacity-60"
+              >
+                <div className="h-10 w-28 flex items-center justify-center bg-white/10 rounded p-2">
+                  <Image
+                    src={integration.logo}
+                    alt={`${integration.name} coming soon`}
+                    width={100}
+                    height={32}
+                    className="object-contain grayscale"
+                  />
+                </div>
+                <span className="mt-2 text-luxury-gray-light text-sm">{integration.name}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Key Features - Condensed */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+        >
+          <div className="text-center p-6 border border-luxury-bronze/10 rounded-lg">
+            <div className="text-luxury-bronze mb-3">
+              <svg className="w-8 h-8 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="M9 12l2 2 4-4" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-serif text-luxury-white mb-1">No Cloud</h3>
+            <p className="text-luxury-gray-light text-sm">100% local operation</p>
+          </div>
+          <div className="text-center p-6 border border-luxury-bronze/10 rounded-lg">
+            <div className="text-luxury-bronze mb-3">
+              <svg className="w-8 h-8 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8" />
+                <path d="M12 17v4" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-serif text-luxury-white mb-1">On-Prem</h3>
+            <p className="text-luxury-gray-light text-sm">Data stays on board</p>
+          </div>
+          <div className="text-center p-6 border border-luxury-bronze/10 rounded-lg">
+            <div className="text-luxury-bronze mb-3">
+              <svg className="w-8 h-8 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M18 20V10" />
+                <path d="M12 20V4" />
+                <path d="M6 20v-6" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-serif text-luxury-white mb-1">API Ready</h3>
+            <p className="text-luxury-gray-light text-sm">REST API & WebHooks</p>
+          </div>
+        </motion.div>
+
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <Link
+            href="/for-integrators"
+            className="inline-flex items-center justify-center px-8 py-4 bg-luxury-bronze text-luxury-black font-medium rounded hover:bg-luxury-bronze-light transition-colors"
+          >
+            Learn More
+          </Link>
           <Button
-            variant="primary"
-            href="mailto:info@obedio.de"
-            className="bg-luxury-bronze text-luxury-black hover:bg-luxury-bronze-light px-8 py-4"
+            variant="secondary"
+            href="mailto:info@obedio.de?subject=Partnership Inquiry"
+            className="border-luxury-bronze text-luxury-bronze hover:bg-luxury-bronze/10 px-8 py-4"
           >
             Partner with us
           </Button>

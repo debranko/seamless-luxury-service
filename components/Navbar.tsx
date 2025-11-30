@@ -21,7 +21,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'For Owners', href: '#owners' },
-    { name: 'For Integrators', href: '#integrators' },
+    { name: 'For Integrators', href: '/for-integrators' },
     { name: 'For Crew', href: '#crew' },
     { name: 'Contact', href: '#contact' },
   ];
