@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OBEDIO - Understood.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold:       #c9a962;
+      --gold-dim:   #c9a96220;
+      --gold-glow:  #c9a96212;
+      --cream:      #f0ebe0;
+      --black:      #080705;
+      --charcoal:   #0f0e0b;
+      --muted:      #6a6560;
+      --muted-light:#8a857e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: transparent;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 15vh;
+      font-family: 'Cormorant Garamond', serif;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Cinematic layers ── */
+
+    .vignette {
+      position: fixed; inset: 0;
+      background: radial-gradient(ellipse 80% 70% at 50% 40%, transparent 0%, rgba(8,7,5,0.6) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .ambient {
+      position: fixed;
+      width: 900px; height: 900px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse 50% 40% at 50% 50%, #c9a96208 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+      animation: breathe 8s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+      50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.08); }
+    }
+
+    .hero-product {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero-product {
+        width: 70vw;
+        bottom: -35%;
+        right: -5%;
+      }
+      .hero-product.visible {
+        bottom: -5%;
+      }
+      .hero-product.bright {
+        bottom: 0%;
+      }
+    }
+
+    .grain {
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+    }
+
+    /* ── Container ── */
+    .container {
+      text-align: center;
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      padding: 40px 24px;
+      z-index: 5;
+    }
+
+    /* ── THE STAGE ── */
+    .stage {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+    }
+
+    /* ── Subject ── */
+    .subject-wrap {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .subject {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0;
+    }
+    .subject.in  { opacity: 1; transform: translateY(0); }
+    .subject.out { opacity: 0; transform: translateY(-16px); transition-duration: 1.2s; }
+
+    .subject .dash {
+      display: inline-block;
+      width: 0;
+      overflow: hidden;
+      transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+      color: var(--gold);
+      font-style: normal;
+      opacity: 0.5;
+    }
+    .subject.in .dash { width: 36px; }
+
+    /* ── "Understood." ── */
+    .anchor { position: relative; display: inline-block; }
+
+    .understood {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 58px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      color: var(--cream);
+      opacity: 0;
+      transition: opacity 2.5s cubic-bezier(0.22, 1, 0.36, 1),
+                  font-size 2s cubic-bezier(0.22, 1, 0.36, 1),
+                  letter-spacing 2s cubic-bezier(0.22, 1, 0.36, 1),
+                  text-shadow 1.5s ease;
+      text-shadow: 0 0 80px transparent;
+    }
+    .understood.visible { opacity: 1; }
+    .understood.glow { text-shadow: 0 0 60px #c9a96215, 0 0 120px #c9a96208; }
+    .understood.solo { font-size: 72px; letter-spacing: 6px; }
+
+    .gold-line {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 1px;
+      width: 0;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+      opacity: 0.25;
+      transition: width 2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .gold-line.grow { width: 100%; }
+    .gold-line.shrink { width: 0; transition-duration: 1.2s; }
+    .gold-line.full { width: 130%; opacity: 0.15; transition-duration: 2.5s; }
+
+    /* ── Meaning ── */
+    .meaning-wrap {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .meaning {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 5.5px;
+      color: var(--cream);
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.5s,
+                  transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+    }
+    .meaning.in  { opacity: 0.85; transform: translateY(0); }
+    .meaning.out { opacity: 0; transform: translateY(-8px); transition-delay: 0s; transition-duration: 1s; }
+
+    /* ── Finale ── */
+    .finale {
+      margin-top: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 3s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .finale.visible { opacity: 1; transform: translateY(0); }
+
+    .logo-final {
+      font-family: 'Cinzel', serif;
+      font-size: 42px;
+      font-weight: 400;
+      letter-spacing: 18px;
+      color: var(--gold);
+      text-indent: 18px;
+      margin-bottom: 32px;
+    }
+
+    .finale-line {
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9a96230, transparent);
+      margin-bottom: 28px;
+      transition: width 2s cubic-bezier(0.22, 1, 0.36, 1) 0.6s;
+    }
+    .finale.visible .finale-line { width: 70px; }
+
+    .tagline {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 6px;
+      color: var(--muted);
+      opacity: 0;
+      transition: opacity 2s ease 1.2s;
+    }
+    .finale.visible .tagline { opacity: 1; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .understood { font-size: 40px; letter-spacing: 3px; }
+      .understood.solo { font-size: 52px; letter-spacing: 5px; }
+      .subject { font-size: 20px; }
+      .subject-wrap { top: 40px; }
+      .meaning { font-size: 11px; letter-spacing: 4px; }
+      .meaning-wrap { bottom: 35px; }
+      .logo-final { font-size: 30px; letter-spacing: 14px; }
+      .stage { min-height: 220px; }
+    }
+
+    @media (max-width: 400px) {
+      .understood { font-size: 32px; }
+      .understood.solo { font-size: 42px; }
+      .subject { font-size: 17px; }
+      .meaning { font-size: 9.5px; letter-spacing: 3px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient"></div>
+  <div class="vignette"></div>
+  <div class="grain"></div>
+  <img src="images/hero-product-bg.png" alt="" class="hero-product" id="heroProduct">
+
+  <div class="container">
+    <div class="stage" id="stage">
+      <div class="subject-wrap">
+        <span class="subject" id="subject"></span>
+      </div>
+
+      <div class="anchor">
+        <span class="understood" id="understood">Understood.</span>
+        <div class="gold-line" id="goldLine"></div>
+      </div>
+
+      <div class="meaning-wrap">
+        <span class="meaning" id="meaning"></span>
+      </div>
+    </div>
+
+    <div class="finale" id="finale">
+      <div class="logo-final">OBEDIO</div>
+      <div class="finale-line"></div>
+      <div class="tagline">THE INTELLIGENCE OF SERVICE</div>
+    </div>
+  </div>
+
+  <script>
+    const phrases = [
+      { subject: '\u201CYes sir,\u201D',  dash: false, meaning: 'The voice of service' },
+      { subject: 'The Problem',            dash: false, meaning: '10 years at sea taught us this' },
+      { subject: 'The Guest',              dash: false, meaning: 'They speak Russian. You read English.' },
+      { subject: 'The Request',            dash: false, meaning: 'One trip. Not three.' },
+      { subject: 'Your Work',              dash: false, meaning: 'Finally, someone sees it' },
+      { subject: 'Your Struggle',          dash: false, meaning: 'Built by crew. For crew.' },
+    ];
+
+    const understood = document.getElementById('understood');
+    const goldLine   = document.getElementById('goldLine');
+    const subjectEl  = document.getElementById('subject');
+    const meaningEl  = document.getElementById('meaning');
+    const finaleEl   = document.getElementById('finale');
+
+    let t = null, running = false;
+    const wait = ms => new Promise(r => t = setTimeout(r, ms));
+
+    function reset() {
+      clearTimeout(t);
+      running = false;
+      understood.className = 'understood';
+      goldLine.className = 'gold-line';
+      subjectEl.className = 'subject';
+      subjectEl.innerHTML = '';
+      meaningEl.className = 'meaning';
+      meaningEl.textContent = '';
+      finaleEl.classList.remove('visible');
+    }
+
+    async function play() {
+      if (running) return;
+      running = true;
+
+      const heroProduct = document.getElementById('heroProduct');
+
+      await wait(1500);
+      if (!running) return;
+
+      understood.classList.add('visible');
+      heroProduct.classList.add('visible');
+      await wait(800);
+      understood.classList.add('glow');
+      await wait(1200);
+      if (!running) return;
+
+      for (let i = 0; i < phrases.length; i++) {
+        if (!running) return;
+        const p = phrases[i];
+
+        const dashHtml = p.dash ? '<span class="dash">\u2002\u2014</span>' : '';
+        subjectEl.innerHTML = p.subject + dashHtml;
+        meaningEl.textContent = p.meaning;
+
+        subjectEl.className = 'subject';
+        meaningEl.className = 'meaning';
+        goldLine.className = 'gold-line';
+        void subjectEl.offsetWidth;
+
+        subjectEl.classList.add('in');
+        meaningEl.classList.add('in');
+        goldLine.classList.add('grow');
+
+        await wait(2500);
+        if (!running) return;
+
+        subjectEl.classList.remove('in');
+        subjectEl.classList.add('out');
+        meaningEl.classList.remove('in');
+        meaningEl.classList.add('out');
+        goldLine.classList.remove('grow');
+        goldLine.classList.add('shrink');
+
+        await wait(1000);
+        if (!running) return;
+      }
+
+      await wait(400);
+      understood.classList.add('solo');
+      goldLine.className = 'gold-line full';
+      heroProduct.classList.add('bright');
+
+      await wait(2500);
+      if (!running) return;
+
+      finaleEl.classList.add('visible');
+      understood.classList.remove('glow');
+
+      await wait(2500);
+      running = false;
+
+      // Notify parent page that animation is complete
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage('animation-complete', '*');
+      }
+    }
+
+    setTimeout(play, 800);
+  </script>
+</body>
+</html>

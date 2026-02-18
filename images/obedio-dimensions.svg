@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" fill="none">
+  <style>
+    text { font-family: 'Helvetica Neue', 'Arial', sans-serif; fill: #C9A962; }
+    .dim-line { stroke: #C9A962; stroke-width: 0.8; opacity: 0.5; }
+    .dim-value { font-size: 22px; font-weight: 400; letter-spacing: 1px; }
+    .label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; opacity: 0.6; }
+    .model-name { font-size: 16px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; }
+    .body-fill { fill: #1a1814; stroke: #C9A962; stroke-width: 1; opacity: 0.8; }
+    .body-fill-inner { fill: #0f0e0b; stroke: #C9A962; stroke-width: 0.5; opacity: 0.6; }
+    .arrow { stroke: #C9A962; stroke-width: 0.8; fill: #C9A962; opacity: 0.7; }
+    .dim-ext { stroke: #C9A962; stroke-width: 0.5; opacity: 0.3; stroke-dasharray: 3 3; }
+  </style>
+
+  <rect width="900" height="520" fill="#080705"/>
+
+  <!-- ═══════ LEFT: STANDARD 72mm (TOP VIEW) ═══════ -->
+
+  <rect x="80" y="110" width="180" height="180" rx="26" class="body-fill"/>
+  <circle cx="170" cy="200" r="42" class="body-fill-inner"/>
+  <circle cx="170" cy="200" r="3" fill="#C9A962" opacity="0.3"/>
+  <!-- Speaker lines -->
+  <line x1="148" y1="190" x2="192" y2="190" stroke="#C9A962" stroke-width="0.3" opacity="0.2"/>
+  <line x1="148" y1="196" x2="192" y2="196" stroke="#C9A962" stroke-width="0.3" opacity="0.2"/>
+  <line x1="148" y1="202" x2="192" y2="202" stroke="#C9A962" stroke-width="0.3" opacity="0.2"/>
+  <line x1="148" y1="208" x2="192" y2="208" stroke="#C9A962" stroke-width="0.3" opacity="0.2"/>
+
+  <!-- Width dimension -->
+  <line x1="80" y1="82" x2="80" y2="98" class="dim-ext"/>
+  <line x1="260" y1="82" x2="260" y2="98" class="dim-ext"/>
+  <line x1="80" y1="90" x2="260" y2="90" class="dim-line"/>
+  <polygon points="80,90 86,87 86,93" class="arrow"/>
+  <polygon points="260,90 254,87 254,93" class="arrow"/>
+  <text x="170" y="85" text-anchor="middle" class="dim-value">72 mm</text>
+
+  <!-- Height dimension -->
+  <line x1="275" y1="110" x2="290" y2="110" class="dim-ext"/>
+  <line x1="275" y1="290" x2="290" y2="290" class="dim-ext"/>
+  <line x1="282" y1="110" x2="282" y2="290" class="dim-line"/>
+  <polygon points="282,110 279,116 285,116" class="arrow"/>
+  <polygon points="282,290 279,284 285,284" class="arrow"/>
+  <text x="298" y="204" class="dim-value" dominant-baseline="middle">72 mm</text>
+
+  <text x="170" y="335" text-anchor="middle" class="model-name" fill="#C9A962">Standard</text>
+  <text x="170" y="355" text-anchor="middle" class="label">Square - Top View</text>
+
+
+  <!-- ═══════ CENTER: COMPACT 65mm (ROUND) ═══════ -->
+
+  <circle cx="500" cy="200" r="82" class="body-fill"/>
+  <circle cx="500" cy="200" r="52" class="body-fill-inner"/>
+  <!-- Spiral grille dots -->
+  <circle cx="500" cy="200" r="3" fill="#C9A962" opacity="0.15"/>
+  <circle cx="500" cy="188" r="1.5" fill="#C9A962" opacity="0.1"/>
+  <circle cx="512" cy="196" r="1.5" fill="#C9A962" opacity="0.1"/>
+  <circle cx="488" cy="196" r="1.5" fill="#C9A962" opacity="0.1"/>
+  <circle cx="496" cy="212" r="1.5" fill="#C9A962" opacity="0.1"/>
+  <circle cx="508" cy="208" r="1.5" fill="#C9A962" opacity="0.1"/>
+
+  <!-- Diameter dimension -->
+  <line x1="418" y1="82" x2="418" y2="98" class="dim-ext"/>
+  <line x1="582" y1="82" x2="582" y2="98" class="dim-ext"/>
+  <line x1="418" y1="90" x2="582" y2="90" class="dim-line"/>
+  <polygon points="418,90 424,87 424,93" class="arrow"/>
+  <polygon points="582,90 576,87 576,93" class="arrow"/>
+  <text x="500" y="85" text-anchor="middle" class="dim-value">&#8960; 65 mm</text>
+
+  <text x="500" y="335" text-anchor="middle" class="model-name" fill="#C9A962">Compact</text>
+  <text x="500" y="355" text-anchor="middle" class="label">Round - Top View</text>
+
+
+  <!-- ═══════ RIGHT: SIDE VIEW ═══════ -->
+
+  <rect x="680" y="180" width="150" height="44" rx="10" class="body-fill"/>
+  <rect x="680" y="196" width="150" height="16" rx="0" fill="#1a1814" stroke="#C9A962" stroke-width="0.3" opacity="0.3"/>
+  <!-- LED strip -->
+  <line x1="685" y1="212" x2="825" y2="212" stroke="#C9A962" stroke-width="1.5" opacity="0.2"/>
+
+  <!-- Width -->
+  <line x1="680" y1="152" x2="680" y2="168" class="dim-ext"/>
+  <line x1="830" y1="152" x2="830" y2="168" class="dim-ext"/>
+  <line x1="680" y1="160" x2="830" y2="160" class="dim-line"/>
+  <polygon points="680,160 686,157 686,163" class="arrow"/>
+  <polygon points="830,160 824,157 824,163" class="arrow"/>
+  <text x="755" y="155" text-anchor="middle" class="dim-value">72 mm</text>
+
+  <!-- Height -->
+  <line x1="845" y1="180" x2="860" y2="180" class="dim-ext"/>
+  <line x1="845" y1="224" x2="860" y2="224" class="dim-ext"/>
+  <line x1="852" y1="180" x2="852" y2="224" class="dim-line"/>
+  <polygon points="852,180 849,186 855,186" class="arrow"/>
+  <polygon points="852,224 849,218 855,218" class="arrow"/>
+  <text x="870" y="206" class="dim-value" dominant-baseline="middle">25</text>
+
+  <text x="755" y="268" text-anchor="middle" class="model-name" fill="#C9A962">Side</text>
+  <text x="755" y="288" text-anchor="middle" class="label">Profile View</text>
+
+
+  <!-- ═══════ BOTTOM: SIZE RANGE ═══════ -->
+
+  <line x1="60" y1="410" x2="840" y2="410" stroke="#C9A962" stroke-width="0.5" opacity="0.08"/>
+
+  <text x="170" y="448" text-anchor="middle" class="label">65 mm Compact</text>
+  <text x="170" y="470" text-anchor="middle" style="font-size:13px; fill:#C9A962; opacity:0.4;">Round</text>
+
+  <text x="450" y="448" text-anchor="middle" class="label">72 mm Standard</text>
+  <text x="450" y="470" text-anchor="middle" style="font-size:13px; fill:#C9A962; opacity:0.4;">Square</text>
+
+  <text x="730" y="448" text-anchor="middle" class="label">Custom</text>
+  <text x="730" y="470" text-anchor="middle" style="font-size:13px; fill:#C9A962; opacity:0.4;">Any shape. Any size.</text>
+
+  <!-- Connecting dots -->
+  <circle cx="300" cy="455" r="2" fill="#C9A962" opacity="0.15"/>
+  <circle cx="320" cy="455" r="2" fill="#C9A962" opacity="0.15"/>
+  <circle cx="340" cy="455" r="2" fill="#C9A962" opacity="0.15"/>
+
+  <circle cx="580" cy="455" r="2" fill="#C9A962" opacity="0.15"/>
+  <circle cx="600" cy="455" r="2" fill="#C9A962" opacity="0.15"/>
+  <circle cx="620" cy="455" r="2" fill="#C9A962" opacity="0.15"/>
+
+</svg>

@@ -1,0 +1,3232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OBEDIO  -  The Intelligence of Service</title>
+  <meta name="description" content="OBEDIO is the first luxury guest service system for superyachts with offline voice-to-text, 30+ language translation, and nine-month battery life. Understood.">
+  <meta name="keywords" content="superyacht, guest service, smart button, luxury yacht technology, crew call system, voice translation, offshore, privacy">
+  <meta name="author" content="Branko Blagojević">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="OBEDIO  -  The Intelligence of Service">
+  <meta property="og:description" content="The first luxury guest service system with offline voice-to-text, instant translation, and nine-month battery life.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://obedio.de">
+  <meta property="og:image" content="https://obedio.de/images/obedio-render.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OBEDIO  -  The Intelligence of Service">
+  <meta name="twitter:description" content="The first luxury guest service system with offline voice-to-text, instant translation, and nine-month battery life.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "OBEDIO SmartButton",
+    "description": "Luxury smart guest service button for superyachts with offline voice-to-text, 30+ language translation, and 9-month battery life.",
+    "brand": { "@type": "Brand", "name": "OBEDIO" },
+    "manufacturer": { "@type": "Organization", "name": "OBEDIO", "url": "https://obedio.de" },
+    "category": "Superyacht Technology"
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================================================
+       OBEDIO  -  Silent Luxury
+       Rolex meets Apple meets Bang & Olufsen
+       ================================================================ */
+
+    :root {
+      --gold: #C9A962;
+      --gold-dim: #c9a96225;
+      --gold-glow: #c9a96215;
+      --gold-bright: #d4b76e;
+      --black: #080705;
+      --charcoal: #0f0e0b;
+      --dark: #0a0908;
+      --cream: #F0EBE0;
+      --cream-dim: #f0ebe0cc;
+      --muted: #7a756e;
+      --muted-light: #a09a92;
+      --surface: #141210;
+      --surface-light: #1a1814;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold-dim) var(--black);
+    }
+
+    body {
+      background: transparent;
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    html {
+      background: var(--black);
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ── Typography ── */
+
+    h1, h2, h3, h4, .nav-logo, .section-label {
+      font-family: 'Cinzel', 'Georgia', serif;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 5px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      opacity: 0.85;
+    }
+
+    .section-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--cream);
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .section-headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .section-subline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 2.2vw, 24px);
+      font-weight: 300;
+      color: var(--muted-light);
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    .body-text {
+      font-size: clamp(17px, 1.8vw, 20px);
+      font-weight: 300;
+      color: var(--cream-dim);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    .gold-text { color: var(--gold); }
+
+    /* ── Layout ── */
+
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 140px 48px;
+      overflow: hidden;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-dark { background: rgba(8, 7, 5, 0.94); }
+    .section-charcoal { background: rgba(15, 14, 11, 0.94); }
+    .section-surface { background: rgba(20, 18, 16, 0.94); }
+
+    /* Subtle gold separator between sections */
+    .section + .section::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.15;
+      margin: 0 auto 0;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* ── Reveal animation ── */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+    .reveal-delay-4 { transition-delay: 0.6s; }
+    .reveal-delay-5 { transition-delay: 0.75s; }
+
+    /* ── Images ── */
+
+    .img-full {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 2px;
+    }
+
+    .img-cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Gold divider ── */
+
+    .gold-divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.3;
+      margin: 48px 0;
+    }
+
+    .gold-divider-center {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.3;
+      margin: 48px auto;
+    }
+
+    /* ================================================================
+       NAVIGATION
+       ================================================================ */
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.5s ease, box-shadow 0.5s ease, backdrop-filter 0.5s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(8, 7, 5, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 rgba(201, 169, 98, 0.08);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .nav-logo img {
+      height: 22px;
+      width: auto;
+    }
+
+    .nav-logo:hover { opacity: 0.7; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: var(--muted-light);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-links a.highlight {
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 8px 20px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a.highlight::after { display: none; }
+    .nav-links a.highlight:hover {
+      background: rgba(201, 169, 98, 0.08);
+      border-color: var(--gold);
+    }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      transition: all 0.3s ease;
+    }
+
+    .nav-hamburger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(4px, 4px);
+    }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(4px, -4px);
+    }
+
+    /* Mobile menu */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 7, 5, 0.97);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 5px;
+      color: var(--cream);
+      text-decoration: none;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-mobile a:hover { opacity: 1; color: var(--gold); }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav { padding: 0 24px; }
+    }
+
+    /* ================================================================
+       3D BACKGROUND  -  Rotating SmartButton (after hero)
+       ================================================================ */
+
+    #bg3d-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    #bg3d-canvas.visible {
+      opacity: 0.45;
+      filter: blur(3px);
+    }
+
+    /* ================================================================
+       SECTION 1: HERO  -  "Understood." Animation
+       ================================================================ */
+
+    #hero {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      padding: 0;
+      background: var(--black);
+    }
+
+    /* Hero background slideshow */
+    .hero-slideshow {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 2s ease;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+    }
+
+    .hero-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(8, 7, 5, 0.65) 0%,
+        rgba(8, 7, 5, 0.55) 40%,
+        rgba(8, 7, 5, 0.35) 75%,
+        rgba(8, 7, 5, 0.25) 100%
+      );
+    }
+
+    #hero-animation {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    /* Iframe for the hero animation */
+    #hero-animation iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+      cursor: pointer;
+    }
+
+    .scroll-indicator.visible { opacity: 1; }
+
+    .scroll-indicator-text {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .scroll-indicator-line {
+      width: 1px;
+      height: 32px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      opacity: 0.4;
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.2; transform: scaleY(0.7); }
+      50%      { opacity: 0.5; transform: scaleY(1); }
+    }
+
+
+    /* ================================================================
+       SECTION 2: THE PRODUCT
+       ================================================================ */
+
+    .product-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-bottom: 120px;
+    }
+
+    .product-hero-image {
+      position: relative;
+    }
+
+    .product-hero-image img {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Subtle glow around product image */
+    .product-hero-image::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(ellipse, rgba(201, 169, 98, 0.04) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .product-hero-image .img-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(ellipse, rgba(201, 169, 98, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .product-scale-ref {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--muted-light);
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Three pillars - big numbers */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin: 120px 0;
+      text-align: center;
+    }
+
+    .pillar-number {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(56px, 7vw, 96px);
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+      opacity: 0.9;
+    }
+
+    .pillar-label {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 5px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      opacity: 0.6;
+    }
+
+    .pillar-divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 24px;
+      opacity: 0.3;
+    }
+
+    .pillar h3 {
+      display: none;
+    }
+
+    .pillar p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted-light);
+      line-height: 1.7;
+      max-width: 260px;
+      margin: 0 auto;
+    }
+
+    /* Ecosystem section */
+    .ecosystem-block {
+      position: relative;
+      margin-top: 120px;
+      text-align: center;
+    }
+
+    .ecosystem-block img {
+      max-width: 800px;
+      width: 100%;
+      margin: 48px auto 0;
+      display: block;
+    }
+
+    /* ================================================================
+       SECTION 3: FOR OWNERS & GUESTS
+       ================================================================ */
+
+    .owners-hero-img {
+      width: 100%;
+      height: 60vh;
+      min-height: 400px;
+      object-fit: cover;
+      border-radius: 2px;
+      margin: 80px 0 0;
+    }
+
+    .owners-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 120px;
+    }
+
+    .owners-grid-reverse {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 120px;
+    }
+
+    .owners-img-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .owners-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 8s ease;
+    }
+
+    .owners-img-wrap:hover img {
+      transform: scale(1.03);
+    }
+
+    /* ================================================================
+       SECTION 4: FOR CREW
+       ================================================================ */
+
+    .crew-hero-banner {
+      width: 100%;
+      height: 50vh;
+      min-height: 350px;
+      object-fit: cover;
+      border-radius: 2px;
+      margin-bottom: 100px;
+    }
+
+    .crew-features {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+      margin-top: 80px;
+    }
+
+    .crew-feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .crew-feature-reverse {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .crew-feature-reverse .crew-feature-img { order: 2; }
+    .crew-feature-reverse .crew-feature-text { order: 1; }
+
+    .crew-feature-img {
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .crew-feature-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .crew-feature-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+
+    .crew-feature-text p {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--muted-light);
+      line-height: 1.7;
+    }
+
+    .crew-pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-top: 80px;
+    }
+
+    .crew-pain-card {
+      padding: 44px 36px;
+      border: 1px solid rgba(201, 169, 98, 0.06);
+      border-radius: 2px;
+      background: rgba(201, 169, 98, 0.02);
+      transition: border-color 0.5s ease, background 0.5s ease, transform 0.5s ease;
+    }
+
+    .crew-pain-card:hover {
+      border-color: rgba(201, 169, 98, 0.15);
+      background: rgba(201, 169, 98, 0.04);
+      transform: translateY(-3px);
+    }
+
+    .crew-pain-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .crew-pain-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: var(--gold);
+      stroke-width: 1.2;
+      fill: none;
+      opacity: 0.8;
+    }
+
+    .crew-pain-card:hover .crew-pain-icon svg {
+      opacity: 1;
+    }
+
+    .crew-pain-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .crew-pain-card p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--cream-dim);
+      line-height: 1.6;
+    }
+
+    /* ================================================================
+       SECTION 5: FOR INTEGRATORS
+       ================================================================ */
+
+    .integrator-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin: 80px 0;
+      text-align: center;
+    }
+
+    .integrator-stat {
+      padding: 40px 20px;
+      border: 1px solid rgba(201, 169, 98, 0.06);
+      border-radius: 2px;
+      background: rgba(201, 169, 98, 0.015);
+      transition: border-color 0.5s ease, transform 0.5s ease;
+    }
+
+    .integrator-stat:hover {
+      border-color: rgba(201, 169, 98, 0.15);
+      transform: translateY(-3px);
+    }
+
+    .integrator-stat-icon {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 20px;
+      display: block;
+    }
+
+    .integrator-stat-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: var(--gold);
+      stroke-width: 1.2;
+      fill: none;
+      opacity: 0.7;
+    }
+
+    .integrator-stat:hover .integrator-stat-icon svg {
+      opacity: 1;
+    }
+
+    .integrator-stat h3 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(36px, 4.5vw, 56px);
+      font-weight: 400;
+      color: var(--gold);
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .integrator-stat p {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--cream-dim);
+      text-transform: uppercase;
+    }
+
+    .compat-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      margin: 60px 0;
+      flex-wrap: wrap;
+    }
+
+    .compat-item {
+      text-align: center;
+    }
+
+    .compat-item .compat-name {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .compat-item .compat-status {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .compat-status.ready { color: var(--gold); }
+    .compat-status.soon { color: var(--muted); }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 48px;
+      margin-top: 80px;
+    }
+
+    .tech-card {
+      padding: 44px 36px;
+      border: 1px solid rgba(201, 169, 98, 0.06);
+      border-radius: 2px;
+      background: rgba(201, 169, 98, 0.015);
+      text-align: center;
+      transition: border-color 0.5s ease, background 0.5s ease, transform 0.5s ease;
+    }
+
+    .tech-card:hover {
+      border-color: rgba(201, 169, 98, 0.15);
+      background: rgba(201, 169, 98, 0.04);
+      transform: translateY(-3px);
+    }
+
+    .tech-icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 24px;
+      display: block;
+    }
+
+    .tech-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: var(--gold);
+      stroke-width: 1.2;
+      fill: none;
+      opacity: 0.8;
+    }
+
+    .tech-card:hover .tech-icon svg {
+      opacity: 1;
+    }
+
+    .tech-card h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .tech-card p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--cream-dim);
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    /* ================================================================
+       SECTION 6: CRAFTSMANSHIP
+       ================================================================ */
+
+    .materials-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 80px 0;
+    }
+
+    .material-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      aspect-ratio: 4/3;
+    }
+
+    .material-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 6s ease;
+    }
+
+    .material-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .material-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 40px;
+      background: linear-gradient(to top, rgba(8, 7, 5, 0.8), transparent);
+    }
+
+    .material-card-overlay h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      color: var(--cream);
+      text-transform: uppercase;
+    }
+
+    .material-card-overlay p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted-light);
+      margin-top: 4px;
+    }
+
+    /* Bespoke Journey Timeline */
+    .bespoke-journey {
+      margin: 80px 0 0;
+    }
+
+    .bespoke-steps {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0;
+      margin-top: 60px;
+    }
+
+    .bespoke-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      max-width: 180px;
+      text-align: center;
+    }
+
+    .bespoke-step-number {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      opacity: 0.7;
+    }
+
+    .bespoke-step-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(201,169,98,0.15);
+      position: relative;
+    }
+
+    .bespoke-step-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 4s ease;
+    }
+
+    .bespoke-step-img:hover img {
+      transform: scale(1.08);
+    }
+
+    .bespoke-step-label {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--cream);
+      text-transform: uppercase;
+      margin-top: 16px;
+    }
+
+    .bespoke-step-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted-light);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    .bespoke-arrow {
+      display: flex;
+      align-items: center;
+      padding-top: 60px;
+      color: var(--gold);
+      font-size: 24px;
+      opacity: 0.4;
+      flex-shrink: 0;
+      margin: 0 4px;
+    }
+
+    .bespoke-arrow svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .bespoke-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+      }
+      .bespoke-arrow {
+        padding-top: 0;
+        transform: rotate(90deg);
+        margin: -16px 0;
+      }
+      .bespoke-step {
+        max-width: 280px;
+      }
+      .bespoke-step-img {
+        width: 240px;
+        height: 240px;
+      }
+    }
+
+    .finishes-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 40px;
+      margin-top: 60px;
+      justify-content: center;
+    }
+
+    .finish-item {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--muted-light);
+      text-transform: uppercase;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .finish-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      transform: translateY(-50%);
+      background: var(--gold);
+      opacity: 0.4;
+    }
+
+    /* ================================================================
+       SECTION 7: SYTS BARCELONA
+       ================================================================ */
+
+    .syts-section {
+      text-align: center;
+      position: relative;
+    }
+
+    .syts-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--gold-dim));
+    }
+
+    .syts-date {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 400;
+      letter-spacing: 6px;
+      color: var(--cream);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .syts-booth {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 5px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-top: 16px;
+    }
+
+    .syts-detail {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--muted-light);
+      margin-top: 8px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 16px 48px;
+      text-decoration: none;
+      margin-top: 48px;
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .cta-button:hover {
+      background: rgba(201, 169, 98, 0.08);
+      border-color: var(--gold);
+      letter-spacing: 5px;
+      padding: 16px 56px;
+    }
+
+    /* ================================================================
+       SECTION 8: THE STORY
+       ================================================================ */
+
+    .story-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.3;
+      max-width: 800px;
+    }
+
+    .story-attribution {
+      margin-top: 48px;
+    }
+
+    .story-attribution .name {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .story-attribution .title {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted-light);
+      margin-top: 6px;
+    }
+
+    /* ================================================================
+       SECTION 9: CONTACT
+       ================================================================ */
+
+    .contact-section {
+      text-align: center;
+      padding: 160px 48px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .contact-links a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--cream-dim);
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    .contact-links a:hover { color: var(--gold); }
+
+    .contact-phones {
+      display: flex;
+      gap: 40px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .contact-phones a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--muted-light);
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    .contact-phones a:hover { color: var(--gold); }
+
+    /* ================================================================
+       FOOTER
+       ================================================================ */
+
+    .footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 48px;
+      border-top: 1px solid rgba(201, 169, 98, 0.06);
+      background: rgba(8, 7, 5, 0.95);
+    }
+
+    .footer-logo {
+      display: flex;
+      justify-content: center;
+      opacity: 0.4;
+    }
+
+    .footer-logo img {
+      height: 18px;
+      width: auto;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--muted-light);
+      margin-top: 12px;
+      letter-spacing: 1px;
+    }
+
+    /* ================================================================
+       RESPONSIVE
+       ================================================================ */
+
+    @media (max-width: 900px) {
+      .section { padding: 100px 24px; }
+
+      .product-hero-grid,
+      .owners-grid,
+      .owners-grid-reverse,
+      .crew-feature,
+      .crew-feature-reverse {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .crew-feature-reverse .crew-feature-img { order: 0; }
+      .crew-feature-reverse .crew-feature-text { order: 0; }
+
+      .pillars {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .integrator-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+
+      .materials-showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-section { padding: 100px 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .section { padding: 80px 20px; }
+
+      .integrator-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .compat-grid { gap: 32px; }
+
+      .owners-hero-img {
+        height: 40vh;
+        min-height: 280px;
+      }
+
+      .crew-hero-banner {
+        height: 35vh;
+        min-height: 250px;
+      }
+    }
+
+    /* ── Parallax for large screens ── */
+    @media (min-width: 901px) {
+      .parallax-img {
+        transition: transform 0.1s linear;
+      }
+    }
+
+    /* ════════════════════════════════════════
+       PARALLAX BREAK SECTIONS
+       ════════════════════════════════════════ */
+    .parallax-break {
+      height: 50vh;
+      min-height: 350px;
+      position: relative;
+      overflow: hidden;
+    }
+    .parallax-break-img {
+      position: absolute;
+      width: 100%;
+      height: 140%;
+      object-fit: cover;
+      top: -20%;
+      filter: brightness(0.45) contrast(1.1);
+      transition: transform 0.1s linear;
+    }
+    .parallax-break-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      text-align: center;
+      padding: 0 40px;
+    }
+    .parallax-break-overlay h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(28px, 4.5vw, 48px);
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: 6px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .parallax-break-overlay h2.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .parallax-break-overlay p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--gold-bright);
+      font-style: italic;
+      font-weight: 300;
+      margin-top: 12px;
+      letter-spacing: 1px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.9s ease 0.15s, transform 0.9s ease 0.15s;
+    }
+    .parallax-break-overlay p.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 900px) {
+      .parallax-break { height: 40vh; min-height: 250px; }
+    }
+
+    /* ════════════════════════════════════════
+       ECOSYSTEM VISUAL GRID
+       ════════════════════════════════════════ */
+
+    .eco-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 24px;
+      margin: 80px 0 0;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .eco-item {
+      text-align: center;
+      padding: 32px 16px;
+      border: 1px solid rgba(201, 169, 98, 0.06);
+      border-radius: 2px;
+      background: rgba(201, 169, 98, 0.02);
+      transition: border-color 0.5s ease, background 0.5s ease;
+    }
+
+    .eco-item:hover {
+      border-color: rgba(201, 169, 98, 0.15);
+      background: rgba(201, 169, 98, 0.04);
+    }
+
+    .eco-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .eco-item h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: var(--cream);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .eco-item p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted-light);
+      line-height: 1.5;
+    }
+
+    /* ════════════════════════════════════════
+       EMERGENCY BLOCK
+       ════════════════════════════════════════ */
+
+    .emergency-block {
+      margin-top: 120px;
+      padding: 60px;
+      border: 1px solid rgba(220, 60, 60, 0.15);
+      border-radius: 2px;
+      background: rgba(220, 60, 60, 0.03);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .emergency-block::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, #dc3c3c, transparent);
+      opacity: 0.6;
+    }
+
+    .emergency-block h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+
+    .emergency-block h3 em {
+      color: #dc3c3c;
+      font-style: italic;
+    }
+
+    .emergency-block p {
+      font-size: clamp(17px, 1.8vw, 20px);
+      font-weight: 300;
+      color: var(--cream-dim);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    /* ════════════════════════════════════════
+       PRIVACY FORTRESS
+       ════════════════════════════════════════ */
+
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 80px;
+    }
+
+    .privacy-card {
+      padding: 48px 36px;
+      border: 1px solid rgba(201, 169, 98, 0.08);
+      border-radius: 2px;
+      background: rgba(201, 169, 98, 0.015);
+      text-align: center;
+      transition: border-color 0.6s ease, background 0.6s ease, transform 0.6s ease;
+    }
+
+    .privacy-card:hover {
+      border-color: rgba(201, 169, 98, 0.2);
+      background: rgba(201, 169, 98, 0.04);
+      transform: translateY(-4px);
+    }
+
+    .privacy-card .priv-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 28px;
+      display: block;
+    }
+
+    .privacy-card .priv-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: var(--gold);
+      stroke-width: 1.2;
+      fill: none;
+      opacity: 0.85;
+      transition: opacity 0.4s ease;
+    }
+
+    .privacy-card:hover .priv-icon svg {
+      opacity: 1;
+    }
+
+    .privacy-card h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .privacy-card p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted-light);
+      line-height: 1.7;
+    }
+
+    /* ════════════════════════════════════════
+       MANAGEMENT / DASHBOARD
+       ════════════════════════════════════════ */
+
+    .mgmt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+      margin-top: 80px;
+    }
+
+    .mgmt-card {
+      padding: 40px;
+      border: 1px solid rgba(201, 169, 98, 0.06);
+      border-radius: 2px;
+      background: rgba(201, 169, 98, 0.02);
+      transition: border-color 0.5s ease;
+    }
+
+    .mgmt-card:hover {
+      border-color: rgba(201, 169, 98, 0.12);
+    }
+
+    .mgmt-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .mgmt-card p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted-light);
+      line-height: 1.6;
+    }
+
+    /* ════════════════════════════════════════
+       HANDS-FREE HERO
+       ════════════════════════════════════════ */
+
+    .handsfree-hero {
+      margin-top: 120px;
+      padding: 80px 60px;
+      background: rgba(201, 169, 98, 0.03);
+      border: 1px solid rgba(201, 169, 98, 0.08);
+      border-radius: 2px;
+      text-align: center;
+    }
+
+    .handsfree-hero h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .handsfree-hero h3 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .handsfree-hero p {
+      font-size: clamp(17px, 1.8vw, 20px);
+      font-weight: 300;
+      color: var(--cream-dim);
+      line-height: 1.8;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .handsfree-steps {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .handsfree-step {
+      text-align: center;
+      max-width: 180px;
+    }
+
+    .handsfree-step-num {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .handsfree-step p {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--cream-dim);
+      line-height: 1.5;
+      max-width: none;
+    }
+
+    @media (max-width: 600px) {
+      .eco-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .eco-item { padding: 20px 12px; }
+      .emergency-block { padding: 40px 24px; }
+      .handsfree-hero { padding: 60px 24px; }
+      .handsfree-steps { gap: 32px; }
+      .privacy-grid { grid-template-columns: 1fr; gap: 24px; }
+      .privacy-card { padding: 32px 24px; }
+    }
+
+    /* ── Film grain overlay (site-wide) ── */
+    .site-grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.018;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+    }
+  </style>
+  <!-- Three.js for 3D background -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.172.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.172.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <canvas id="bg3d-canvas"></canvas>
+
+  <!-- Film grain overlay -->
+  <div class="site-grain"></div>
+
+  <!-- ════════════════════════════════════════
+       NAVIGATION
+       ════════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav-logo"><img src="images/obedio-wordmark-gold.svg" alt="OBEDIO"></a>
+    <ul class="nav-links">
+      <li><a href="#product">Product</a></li>
+      <li><a href="#owners">Owners</a></li>
+      <li><a href="#crew">Crew</a></li>
+      <li><a href="#integrators">Integrators</a></li>
+      <li><a href="#craftsmanship">Craftsmanship</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#barcelona">SYTS 2026</a></li>
+      <li><a href="#contact" class="highlight">Contact</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="#product" onclick="closeMobile()">Product</a>
+    <a href="#owners" onclick="closeMobile()">Owners</a>
+    <a href="#crew" onclick="closeMobile()">Crew</a>
+    <a href="#integrators" onclick="closeMobile()">Integrators</a>
+    <a href="#craftsmanship" onclick="closeMobile()">Craftsmanship</a>
+    <a href="#story" onclick="closeMobile()">Story</a>
+    <a href="#barcelona" onclick="closeMobile()">SYTS 2026</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECTION 1: HERO  -  "Understood." Animation
+       ════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-slideshow">
+      <div class="hero-slide active" style="background-image:url('images/lifestyle-dining-table.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/lifestyle-sundeck-hand.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/lifestyle-nightstand-book.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/lifestyle-cinema.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/2026-02-17-obedio-studio-v3.png')"></div>
+    </div>
+    <div id="hero-animation">
+      <iframe src="hero-animation.html" title="OBEDIO  -  Understood." loading="eager"></iframe>
+    </div>
+    <div class="scroll-indicator" id="scrollIndicator" onclick="document.getElementById('product').scrollIntoView({behavior:'smooth'})">
+      <span class="scroll-indicator-text">Scroll to discover</span>
+      <div class="scroll-indicator-line"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 2: THE PRODUCT
+       ════════════════════════════════════════ -->
+  <section id="product" class="section section-dark">
+    <div class="section-inner">
+
+      <!-- Opening statement + hero product image -->
+      <div class="product-hero-grid">
+        <div>
+          <div class="section-label reveal">The SmartButton</div>
+          <h2 class="section-headline reveal reveal-delay-1">Press. Speak.<br><em>Understood.</em></h2>
+          <div class="gold-divider reveal reveal-delay-2"></div>
+          <p class="body-text reveal reveal-delay-2">The first luxury guest service button with real offline voice&#8209;to&#8209;text, instant translation in 30+ languages, and nine&#8209;month battery life. Everything processed locally. Nothing leaves the vessel.</p>
+          <p class="product-scale-ref reveal reveal-delay-3" style="text-align:left; margin-top:32px;">72 × 72 mm  -  the width of your iPhone. Also available in 65 mm compact.</p>
+        </div>
+        <div class="product-hero-image reveal reveal-delay-2">
+          <div class="img-glow"></div>
+          <img src="images/obedio-hero-render-v3.png" alt="OBEDIO SmartButton  -  polished brass with leather inlay" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Three pillars - big numbers -->
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="pillar-number">30+</div>
+          <div class="pillar-label">Languages</div>
+          <div class="pillar-divider"></div>
+          <p>Guest speaks Turkish.<br>Crew reads English.<br>5 AIs cross-check every word.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-1">
+          <div class="pillar-number">9</div>
+          <div class="pillar-label">Month Battery</div>
+          <div class="pillar-divider"></div>
+          <p>No nightly charging rounds.<br>No dead buttons during service.<br>Forget it exists.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-2">
+          <div class="pillar-number">100%</div>
+          <div class="pillar-label">Offline</div>
+          <div class="pillar-divider"></div>
+          <p>No internet. No WiFi. No cloud.<br>RF radio + WiFi hybrid with failover.<br>A request can never be lost.</p>
+        </div>
+      </div>
+
+      <!-- Studio shot  -  cinematic break -->
+      <div class="reveal" style="margin: 100px 0;">
+        <img src="images/2026-02-17-obedio-studio-v3.png" alt="OBEDIO SmartButton  -  studio shot" class="img-full" style="border-radius:2px;" loading="lazy">
+      </div>
+
+      <!-- Dimensions -->
+      <div class="reveal" style="margin: 100px 0; text-align:center;">
+        <div class="section-label" style="margin-bottom:24px;">Dimensions</div>
+        <img src="images/obedio-dimensions.svg" alt="OBEDIO SmartButton dimensions - 72x72x25mm standard, 65mm compact" class="img-full" style="max-width:900px; margin:0 auto;" loading="lazy">
+      </div>
+
+      <!-- Ecosystem -->
+      <div class="ecosystem-block reveal">
+        <div class="section-label">The Ecosystem</div>
+        <h2 class="section-headline" style="text-align:center;">One system. <em>Everything.</em></h2>
+        <p class="section-subline" style="text-align:center; margin: 0 auto;">From the guest's fingertip to the crew's wrist. Every device, every platform, one source. No cloud. No subscriptions. Entirely on&#8209;premises.</p>
+        <img src="images/2026-02-17-obedio-ecosystem-v2.png" alt="OBEDIO ecosystem  -  button, server, and smartwatch" loading="lazy">
+
+        <!-- Hover preview area -->
+        <div id="ecoPreview" style="max-width:700px; margin:40px auto 0; height:0; overflow:hidden; transition:height 0.4s ease, opacity 0.4s ease; opacity:0; border-radius:4px; border:1px solid rgba(201,169,98,0.1);">
+          <img id="ecoPreviewImg" src="" alt="" style="width:100%; display:block;">
+        </div>
+
+        <div class="eco-grid">
+          <div class="eco-item reveal" data-preview="images/obedio-hero-render-v3.png">
+            <span class="eco-icon">◉</span>
+            <h4>SmartButton</h4>
+            <p>Guest cabin, sundeck, salon. 9&#8209;month battery.</p>
+          </div>
+          <div class="eco-item reveal reveal-delay-1">
+            <span class="eco-icon">⬡</span>
+            <h4>Panels</h4>
+            <p>Crew interface + built&#8209;in RF repeater. Dual purpose.</p>
+          </div>
+          <div class="eco-item reveal reveal-delay-1">
+            <span class="eco-icon">⧫</span>
+            <h4>Local Server</h4>
+            <p>On&#8209;board AI. Translation. Routing. Full database.</p>
+          </div>
+          <div class="eco-item reveal reveal-delay-2">
+            <span class="eco-icon">⊕</span>
+            <h4>Repeaters</h4>
+            <p>Extend RF coverage. Backup batteries. Mesh capable.</p>
+          </div>
+          <div class="eco-item reveal reveal-delay-2">
+            <span class="eco-icon">⌚</span>
+            <h4>Apple Watch</h4>
+            <p>Full notifications. Shake gestures. Earpiece readout.</p>
+          </div>
+          <div class="eco-item reveal reveal-delay-3">
+            <span class="eco-icon">⌚</span>
+            <h4>Wear OS</h4>
+            <p>7&#8209;day battery. Same features. Crew&#8209;optimised.</p>
+          </div>
+          <div class="eco-item reveal reveal-delay-3">
+            <span class="eco-icon">📱</span>
+            <h4>iPhone & Android</h4>
+            <p>Full crew app. Profiles. Messaging. Duty roster.</p>
+          </div>
+          <div class="eco-item reveal reveal-delay-4" data-preview="images/app-dashboard.jpg">
+            <span class="eco-icon">▢</span>
+            <h4>iPad Dashboard</h4>
+            <p>Vessel map. All requests. Crew status. Real&#8209;time.</p>
+          </div>
+          <div class="eco-item reveal reveal-delay-4" data-preview="images/app-service-requests.jpg">
+            <span class="eco-icon">🖥</span>
+            <h4>Web App</h4>
+            <p>Browser&#8209;based. Any device. Full functionality.</p>
+          </div>
+          <div class="eco-item reveal reveal-delay-5" data-preview="images/app-messenger.jpg">
+            <span class="eco-icon">💬</span>
+            <h4>Messenger</h4>
+            <p>Offline crew chat. Nothing leaves the vessel.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── PARALLAX BREAK: Voice Intelligence ── -->
+  <div class="parallax-break">
+    <img src="images/lifestyle-nightstand-book.jpg" alt="OBEDIO SmartButton on yacht cabin nightstand" class="parallax-break-img" loading="lazy">
+    <div class="parallax-break-overlay">
+      <h2 class="reveal">Voice Intelligence</h2>
+      <p class="reveal">Five AIs. One perfect transcription. Thirty languages.</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECTION 3: FOR OWNERS & GUESTS
+       ════════════════════════════════════════ -->
+  <section id="owners" class="section section-charcoal">
+    <div class="section-inner">
+
+      <div class="section-label reveal">For Owners & Guests</div>
+      <h2 class="section-headline reveal reveal-delay-1" style="max-width:700px;">Time is the only luxury<br>you cannot buy back.</h2>
+      <p class="body-text reveal reveal-delay-2" style="margin-bottom:0;">No apps. No instructions. No learning curve. Press the button, speak in your language. The light confirms someone is already on the way. That's it.</p>
+
+      <img src="images/lifestyle-dining-table.jpg" alt="OBEDIO SmartButton on formal yacht dining table" class="owners-hero-img reveal" loading="lazy">
+
+      <!-- How it works  -  simple -->
+      <div style="text-align:center; margin-top:100px;">
+        <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);">Press. Speak. <em>Done.</em></h3>
+        <div class="gold-divider-center reveal reveal-delay-1"></div>
+        <p class="body-text reveal reveal-delay-1" style="margin:0 auto;">First press activates the button. Second press starts recording. Speak in any of 30+ languages. Your crew receives the request instantly, translated, in writing, on their watch. A light on the button confirms someone is on the way. One button. One trip. Zero friction.</p>
+      </div>
+
+      <!-- Language block -->
+      <div class="owners-grid-reverse" style="margin-top:120px;">
+        <div>
+          <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);">Speak your language.<br><em>Your crew reads theirs.</em></h3>
+          <div class="gold-divider reveal reveal-delay-1"></div>
+          <p class="body-text reveal reveal-delay-1">Speak Turkish, Russian, Mandarin, or any of 30+ languages. Five independent AI models transcribe every word simultaneously - the system cross-references all five and delivers the most accurate result. Your crew receives it in English, instantly. Two-way: they reply, you hear it in your language. All processed on the vessel. Nothing leaves the ship.</p>
+        </div>
+        <div class="owners-img-wrap reveal reveal-delay-1">
+          <img src="images/2026-02-17-obedio-hand-press.png" alt="White-gloved hand pressing the OBEDIO button" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Privacy fortress -->
+      <div style="margin-top:120px;">
+        <div class="owners-grid">
+          <div class="owners-img-wrap reveal">
+            <img src="images/2026-02-17-obedio-nightstand-v3.png" alt="OBEDIO in a yacht cabin  -  nightstand" loading="lazy">
+          </div>
+          <div>
+            <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);">Privacy is not a feature.<br><em>It is architecture.</em></h3>
+            <div class="gold-divider reveal reveal-delay-1"></div>
+            <p class="body-text reveal reveal-delay-1">Your conversations are yours. The microphone is physically disconnected until you press the button. Not a software switch - a hardware circuit. For absolute privacy, the entire microphone module can be physically removed.</p>
+          </div>
+        </div>
+
+        <div class="privacy-grid">
+          <div class="privacy-card reveal">
+            <div class="priv-icon">
+              <svg viewBox="0 0 56 56">
+                <!-- Microphone with broken circuit -->
+                <rect x="20" y="8" width="16" height="24" rx="8"/>
+                <path d="M14 28a14 14 0 0 0 28 0" stroke-linecap="round"/>
+                <line x1="28" y1="42" x2="28" y2="48" stroke-linecap="round"/>
+                <line x1="21" y1="48" x2="35" y2="48" stroke-linecap="round"/>
+                <!-- Circuit break gap -->
+                <line x1="8" y1="28" x2="14" y2="28" stroke-linecap="round" stroke-dasharray="2 3" opacity="0.5"/>
+                <line x1="42" y1="28" x2="48" y2="28" stroke-linecap="round" stroke-dasharray="2 3" opacity="0.5"/>
+              </svg>
+            </div>
+            <h4>Hardware Mic Switch</h4>
+            <p>The microphone circuit is physically open until you press the button. No software can override this. The microphone literally cannot listen.</p>
+          </div>
+          <div class="privacy-card reveal reveal-delay-1">
+            <div class="priv-icon">
+              <svg viewBox="0 0 56 56">
+                <!-- Module being removed (arrow up) -->
+                <rect x="14" y="22" width="28" height="26" rx="3"/>
+                <rect x="20" y="4" width="16" height="16" rx="2" stroke-dasharray="3 2"/>
+                <path d="M28 22V12" stroke-linecap="round"/>
+                <path d="M24 16l4-4 4 4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h4>Removable Module</h4>
+            <p>Don't trust any microphone? Remove the entire module. The button still works for calls - just without voice. Your choice, always.</p>
+          </div>
+          <div class="privacy-card reveal reveal-delay-2">
+            <div class="priv-icon">
+              <svg viewBox="0 0 56 56">
+                <!-- Shield with lock -->
+                <path d="M28 4L8 14v16c0 12 8.5 19.5 20 22 11.5-2.5 20-10 20-22V14z" stroke-linejoin="round"/>
+                <rect x="22" y="24" width="12" height="10" rx="2"/>
+                <circle cx="28" cy="22" r="5"/>
+                <path d="M24.5 24v-2a3.5 3.5 0 0 1 7 0v2"/>
+              </svg>
+            </div>
+            <h4>End-to-End Encryption</h4>
+            <p>Every message, every voice recording, every request. Encrypted from button to watch. No one in between can read it.</p>
+          </div>
+          <div class="privacy-card reveal reveal-delay-3">
+            <div class="priv-icon">
+              <svg viewBox="0 0 56 56">
+                <!-- Cloud crossed out -->
+                <path d="M16 36h-2a8 8 0 0 1-1-15.9A12 12 0 0 1 35.3 14 8 8 0 0 1 42 36H28"/>
+                <line x1="8" y1="8" x2="48" y2="48" stroke-linecap="round" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h4>Zero Cloud</h4>
+            <p>No data leaves the vessel. No cloud servers. No subscriptions. No third party ever sees your requests. Everything processed and stored on board.</p>
+          </div>
+          <div class="privacy-card reveal reveal-delay-4">
+            <div class="priv-icon">
+              <svg viewBox="0 0 56 56">
+                <!-- Chat bubble with anchor -->
+                <path d="M8 12a4 4 0 0 1 4-4h32a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H20l-8 8v-8h0a4 4 0 0 1-4-4z"/>
+                <circle cx="28" cy="20" r="3"/>
+                <line x1="28" y1="23" x2="28" y2="30" stroke-linecap="round"/>
+                <path d="M24 28c0 3 4 5 4 5s4-2 4-5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h4>Offline Messenger</h4>
+            <p>Crew communication stays on the yacht. No internet required. No WhatsApp, no iMessage, no external servers. A private network that exists only on your vessel.</p>
+          </div>
+          <div class="privacy-card reveal reveal-delay-5">
+            <div class="priv-icon">
+              <svg viewBox="0 0 56 56">
+                <!-- Processor/chip with brain pattern -->
+                <rect x="14" y="14" width="28" height="28" rx="4"/>
+                <!-- Pins -->
+                <line x1="20" y1="14" x2="20" y2="8" stroke-linecap="round"/>
+                <line x1="28" y1="14" x2="28" y2="8" stroke-linecap="round"/>
+                <line x1="36" y1="14" x2="36" y2="8" stroke-linecap="round"/>
+                <line x1="20" y1="42" x2="20" y2="48" stroke-linecap="round"/>
+                <line x1="28" y1="42" x2="28" y2="48" stroke-linecap="round"/>
+                <line x1="36" y1="42" x2="36" y2="48" stroke-linecap="round"/>
+                <line x1="14" y1="22" x2="8" y2="22" stroke-linecap="round"/>
+                <line x1="14" y1="34" x2="8" y2="34" stroke-linecap="round"/>
+                <line x1="42" y1="22" x2="48" y2="22" stroke-linecap="round"/>
+                <line x1="42" y1="34" x2="48" y2="34" stroke-linecap="round"/>
+                <!-- Neural paths inside -->
+                <circle cx="24" cy="24" r="2"/>
+                <circle cx="32" cy="24" r="2"/>
+                <circle cx="28" cy="32" r="2"/>
+                <line x1="26" y1="24" x2="30" y2="24"/>
+                <line x1="24" y1="26" x2="28" y2="30"/>
+                <line x1="32" y1="26" x2="28" y2="30"/>
+              </svg>
+            </div>
+            <h4>Local AI</h4>
+            <p>Voice recognition and translation run on the on-board server. Your words are processed by your own hardware. Nothing is sent anywhere.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emergency mode - timeline -->
+      <div class="emergency-block reveal" style="margin-top:120px;">
+        <h3>Not a feature. <em>A lifeline.</em></h3>
+        <div style="width:60px; height:1px; background:linear-gradient(90deg, transparent, #dc3c3c, transparent); opacity:0.4; margin:24px 0;"></div>
+        <p>Guest with a medical condition shakes the button. Instant emergency broadcast to every device on board. Location, medical profile, allergies, conditions. Every crew member sees it immediately.</p>
+
+        <div style="display:flex; justify-content:center; gap:0; margin-top:48px; flex-wrap:wrap; align-items:flex-start;">
+          <div style="text-align:center; flex:1; min-width:140px; padding:0 12px;">
+            <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,42px); color:#dc3c3c; font-weight:400; line-height:1;">0s</div>
+            <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:rgba(220,60,60,0.6); text-transform:uppercase; margin-top:8px;">Shake</div>
+            <div style="width:40px; height:40px; margin:16px auto; display:flex; align-items:center; justify-content:center;">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#dc3c3c" stroke-width="1.2">
+                <rect x="8" y="4" width="16" height="24" rx="4"/>
+                <path d="M4 12l2 2-2 2" stroke-linecap="round" opacity="0.5"/><path d="M28 12l-2 2 2 2" stroke-linecap="round" opacity="0.5"/>
+              </svg>
+            </div>
+            <p style="font-size:14px; color:rgba(220,60,60,0.8); font-weight:300; line-height:1.4;">Guest shakes<br>the button</p>
+          </div>
+
+          <div style="flex:0 0 40px; display:flex; align-items:center; justify-content:center; padding-top:20px;">
+            <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="#dc3c3c" stroke-width="1" opacity="0.4"><path d="M0 6h20m-4-4l4 4-4 4"/></svg>
+          </div>
+
+          <div style="text-align:center; flex:1; min-width:140px; padding:0 12px;">
+            <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,42px); color:#dc3c3c; font-weight:400; line-height:1;">0.3s</div>
+            <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:rgba(220,60,60,0.6); text-transform:uppercase; margin-top:8px;">Broadcast</div>
+            <div style="width:40px; height:40px; margin:16px auto; display:flex; align-items:center; justify-content:center;">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#dc3c3c" stroke-width="1.2">
+                <circle cx="16" cy="16" r="4"/>
+                <path d="M8 8a14 14 0 0 1 16 0" stroke-linecap="round"/><path d="M8 24a14 14 0 0 0 16 0" stroke-linecap="round"/>
+                <path d="M5 5a20 20 0 0 1 22 0" stroke-linecap="round" opacity="0.4"/><path d="M5 27a20 20 0 0 0 22 0" stroke-linecap="round" opacity="0.4"/>
+              </svg>
+            </div>
+            <p style="font-size:14px; color:rgba(220,60,60,0.8); font-weight:300; line-height:1.4;">Every device<br>on board alerts</p>
+          </div>
+
+          <div style="flex:0 0 40px; display:flex; align-items:center; justify-content:center; padding-top:20px;">
+            <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="#dc3c3c" stroke-width="1" opacity="0.4"><path d="M0 6h20m-4-4l4 4-4 4"/></svg>
+          </div>
+
+          <div style="text-align:center; flex:1; min-width:140px; padding:0 12px;">
+            <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,42px); color:#dc3c3c; font-weight:400; line-height:1;">&lt;60s</div>
+            <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:rgba(220,60,60,0.6); text-transform:uppercase; margin-top:8px;">Response</div>
+            <div style="width:40px; height:40px; margin:16px auto; display:flex; align-items:center; justify-content:center;">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#dc3c3c" stroke-width="1.2">
+                <path d="M16 4v12l6 4" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="16" cy="16" r="12"/>
+                <path d="M12 28l4 4 4-4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+              </svg>
+            </div>
+            <p style="font-size:14px; color:rgba(220,60,60,0.8); font-weight:300; line-height:1.4;">Crew arrives<br>with full profile</p>
+          </div>
+        </div>
+
+        <p style="margin-top:36px; font-size:15px; font-style:italic; opacity:0.7;">Seconds matter. OBEDIO delivers them.</p>
+      </div>
+
+      <!-- Room Control -->
+      <div class="owners-grid" style="margin-top:120px;">
+        <div>
+          <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);">One button.<br><em>The entire cabin.</em></h3>
+          <div class="gold-divider reveal reveal-delay-1"></div>
+          <p class="body-text reveal reveal-delay-1">Not just a service call. OBEDIO controls your cabin. Lights, blinds, climate, scenes - all from the same button on your nightstand. No separate keypads. No learning different interfaces. One touch point for everything.</p>
+          <p class="body-text reveal reveal-delay-2" style="margin-top:24px; color:var(--muted);">Native Crestron integration. Control4 coming soon.</p>
+        </div>
+        <div class="owners-img-wrap reveal reveal-delay-1">
+          <img src="images/2026-02-17-obedio-nightstand-v3.png" alt="OBEDIO controlling cabin lighting from the nightstand" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Bespoke block -->
+      <div class="owners-grid-reverse" style="margin-top:120px;">
+        <div>
+          <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);"><em>Truly bespoke.</em></h3>
+          <div class="gold-divider reveal reveal-delay-1"></div>
+          <p class="body-text reveal reveal-delay-1">Square. Round. 72 mm. 65 mm. Custom. Brass, steel, leather, black PVD. Every button is made to match your yacht - not the other way around. OBEDIO is not defined by its shape. It defines its own.</p>
+        </div>
+        <div class="owners-img-wrap reveal reveal-delay-1">
+          <img src="images/lifestyle-cinema.jpg" alt="OBEDIO SmartButton in yacht cinema - leather armrest, movie screen" loading="lazy">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── PARALLAX BREAK: Intelligent Routing ── -->
+  <div class="parallax-break">
+    <img src="images/2026-02-17-obedio-crew-corridor.png" alt="Crew member on yacht" class="parallax-break-img" loading="lazy">
+    <div class="parallax-break-overlay">
+      <h2 class="reveal">Intelligent Routing</h2>
+      <p class="reveal">The right person. Every time. Automatically.</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECTION 4: FOR CREW
+       ════════════════════════════════════════ -->
+  <section id="crew" class="section section-dark">
+    <div class="section-inner">
+
+      <div class="section-label reveal">For Crew</div>
+      <h2 class="section-headline reveal reveal-delay-1">Your Work - <em>Understood.</em></h2>
+      <p class="body-text reveal reveal-delay-2" style="margin-bottom:40px;">Built by someone who was crew. Ten years as an ETO on superyachts. Every frustration, every workaround, every "why doesn't this exist" moment. That became OBEDIO.</p>
+
+      <img src="images/2026-02-17-obedio-crew-corridor.png" alt="Crew member checking OBEDIO watch notification in yacht corridor" class="crew-hero-banner reveal" loading="lazy">
+
+      <!-- HANDS-FREE HERO -->
+      <div class="handsfree-hero reveal">
+        <h3>Completely <em>hands-free.</em></h3>
+        <p>Earpiece connected to the watch. A guest request comes in. The watch detects the earpiece and reads the request directly into the crew member's ear. No screen. No stopping. No looking at your wrist. You hear "Please bring still water to the sun deck" - and you're already on your way. Shake your wrist to accept.</p>
+        <div class="handsfree-steps">
+          <div class="handsfree-step reveal reveal-delay-1">
+            <div class="handsfree-step-num">1</div>
+            <p>Guest speaks into the button</p>
+          </div>
+          <div class="handsfree-step reveal reveal-delay-2">
+            <div class="handsfree-step-num">2</div>
+            <p>Earpiece reads the translated request</p>
+          </div>
+          <div class="handsfree-step reveal reveal-delay-3">
+            <div class="handsfree-step-num">3</div>
+            <p>Shake wrist to accept</p>
+          </div>
+          <div class="handsfree-step reveal reveal-delay-4">
+            <div class="handsfree-step-num">4</div>
+            <p>Button confirms to the guest</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pain point cards -->
+      <div class="crew-pain-grid" style="margin-top:120px;">
+        <div class="crew-pain-card reveal">
+          <div class="crew-pain-icon"><svg viewBox="0 0 48 48">
+            <!-- One finger tap + checkmark -->
+            <circle cx="24" cy="18" r="10"/>
+            <path d="M24 28v12" stroke-linecap="round"/>
+            <path d="M18 34l6 6 6-6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19 18l3 3 6-6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg></div>
+          <h4>One trip, not three.</h4>
+          <p>Guest speaks into the button in any language. You read the request on your watch, in your language. Tap once to accept. One trip.</p>
+        </div>
+        <div class="crew-pain-card reveal reveal-delay-1">
+          <div class="crew-pain-icon"><svg viewBox="0 0 48 48">
+            <!-- Wrist shake gesture -->
+            <rect x="14" y="10" width="20" height="28" rx="6"/>
+            <circle cx="24" cy="24" r="4"/>
+            <path d="M6 16l4 4-4 4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+            <path d="M42 16l-4 4 4 4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+          </svg></div>
+          <h4>Shake to delegate.</h4>
+          <p>Hands full, carrying a tray, mid-service. A call comes in. Shake your wrist. It re-delegates to the next crew member on duty. No screen, no tapping.</p>
+        </div>
+        <div class="crew-pain-card reveal reveal-delay-2">
+          <div class="crew-pain-icon"><svg viewBox="0 0 48 48">
+            <!-- Calendar/clock auto-routing -->
+            <rect x="8" y="10" width="32" height="30" rx="3"/>
+            <line x1="8" y1="18" x2="40" y2="18"/>
+            <line x1="16" y1="6" x2="16" y2="14" stroke-linecap="round"/>
+            <line x1="32" y1="6" x2="32" y2="14" stroke-linecap="round"/>
+            <circle cx="24" cy="29" r="6"/>
+            <path d="M24 26v3l2 2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg></div>
+          <h4>Auto duty roster.</h4>
+          <p>Everyone keeps their own device. The software knows your schedule. When your shift starts, calls route to you. When it ends, they stop.</p>
+        </div>
+        <div class="crew-pain-card reveal reveal-delay-3">
+          <div class="crew-pain-icon"><svg viewBox="0 0 48 48">
+            <!-- 3 levels ascending -->
+            <path d="M8 38h10v-8H8z"/>
+            <path d="M19 38h10v-16H19z"/>
+            <path d="M30 38h10v-24H30z"/>
+            <path d="M12 24l12-12 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 3" opacity="0.5"/>
+          </svg></div>
+          <h4>3-level escalation.</h4>
+          <p>Guest calls. No response? It rings again. Still nothing? Escalates to supervisor, then captain. Fully configurable. A request can never fall through.</p>
+        </div>
+        <div class="crew-pain-card reveal reveal-delay-4">
+          <div class="crew-pain-icon"><svg viewBox="0 0 48 48">
+            <!-- Chat bubbles + no-wifi -->
+            <path d="M6 10a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-5 5v-5H9a3 3 0 0 1-3-3z"/>
+            <path d="M30 17h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3h-1v5l-5-5h-6a3 3 0 0 1-3-3v-2"/>
+            <circle cx="18" cy="16" r="1.5" fill="currentColor" stroke="none"/>
+          </svg></div>
+          <h4>Offline Messenger.</h4>
+          <p>Send and receive messages from your watch, iPhone, Android, or web app. Silently, discreetly. No internet required. Everything stays on the yacht. Replaces radios completely.</p>
+        </div>
+        <div class="crew-pain-card reveal reveal-delay-5">
+          <div class="crew-pain-icon"><svg viewBox="0 0 48 48">
+            <!-- Battery full with 7 -->
+            <rect x="10" y="14" width="28" height="20" rx="3"/>
+            <rect x="38" y="20" width="4" height="8" rx="1"/>
+            <rect x="13" y="17" width="22" height="14" rx="1" opacity="0.3"/>
+            <text x="24" y="29" text-anchor="middle" font-family="Cinzel,serif" font-size="14" font-weight="500" fill="currentColor" stroke="none">7d</text>
+          </svg></div>
+          <h4>7-day watch battery.</h4>
+          <p>Not another thing to charge. The optimised Wear OS watch lasts up to seven days. A reliable tool, not another liability.</p>
+        </div>
+      </div>
+
+      <!-- Watch notification image -->
+      <div class="crew-features" style="margin-top:120px;">
+        <div class="crew-feature">
+          <div class="crew-feature-img reveal">
+            <img src="images/2026-02-17-obedio-watch-notification.png" alt="OBEDIO smartwatch showing translated guest request" loading="lazy">
+          </div>
+          <div class="crew-feature-text">
+            <h3 class="reveal">Guest speaks Russian.<br><span class="gold-text">You read English.</span></h3>
+            <div class="gold-divider reveal reveal-delay-1"></div>
+            <p class="reveal reveal-delay-1">Full request on the watch before you move. Translated. Five AIs cross-checked every word - you get the most accurate transcription possible. Guest profile with preferences, dietary restrictions, and location. You arrive prepared, not guessing. Still unsure? Play back the original audio.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MANAGEMENT & DASHBOARD -->
+      <div style="margin-top:120px;">
+        <div class="section-label reveal">Crew Management</div>
+        <h3 class="section-headline reveal reveal-delay-1" style="font-size:clamp(28px,3.5vw,44px);">Command the vessel.<br><em>From one screen.</em></h3>
+        <p class="body-text reveal reveal-delay-2">Crewify management software. iPad dashboard. Interactive vessel map. Everything a chief stew, purser, or captain needs to run service operations.</p>
+
+        <!-- Dashboard screenshot -->
+        <div class="reveal" style="margin: 60px 0;">
+          <img src="images/app-dashboard.jpg" alt="OBEDIO Dashboard - real-time vessel overview with duty roster, weather, system status" class="img-full" style="border-radius:6px; border: 1px solid rgba(201,169,98,0.1);" loading="lazy">
+        </div>
+
+        <!-- Service Requests screenshot -->
+        <div class="owners-grid" style="margin-top:80px;">
+          <div>
+            <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);">Live service requests.<br><em>Accept or delegate.</em></h3>
+            <div class="gold-divider reveal reveal-delay-1"></div>
+            <p class="body-text reveal reveal-delay-1">Every guest request appears as a card with location photo, voice transcript, and priority level. Accept with one tap or delegate to the next crew member. Three levels of automatic escalation ensure nothing is ever missed.</p>
+          </div>
+          <div class="reveal reveal-delay-1" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
+            <img src="images/app-service-requests.jpg" alt="OBEDIO Service Requests - voice transcripts with accept and delegate" style="width:100%; display:block;" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Crew + Duty Roster -->
+        <div class="owners-grid-reverse" style="margin-top:80px;">
+          <div>
+            <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);">Crew roster.<br><em>Who's on, who's next.</em></h3>
+            <div class="gold-divider reveal reveal-delay-1"></div>
+            <p class="body-text reveal reveal-delay-1">Full duty roster with shift scheduling calendar. Drag-and-drop crew assignment, autofill patterns, morning/afternoon/night shifts. Export, print, notify crew. Everything runs automatically once set up.</p>
+          </div>
+          <div class="reveal reveal-delay-1" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
+            <img src="images/app-duty-roster-calendar.jpg" alt="OBEDIO Duty Roster - monthly calendar with shift scheduling" style="width:100%; display:block;" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Guest Profiles + Locations -->
+        <div class="owners-grid" style="margin-top:80px;">
+          <div>
+            <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);">Guest profiles.<br><em>Know before you arrive.</em></h3>
+            <div class="gold-divider reveal reveal-delay-1"></div>
+            <p class="body-text reveal reveal-delay-1">Name, cabin, dietary restrictions, allergies, VIP status, check-in date. Every crew member sees who they're serving. Filter by onboard, expected, or VIP. Allergy alerts protect your guests.</p>
+          </div>
+          <div class="reveal reveal-delay-1" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
+            <img src="images/app-guests.jpg" alt="OBEDIO Guests List - profiles with dietary alerts and allergies" style="width:100%; display:block;" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Device Manager + Messenger -->
+        <div class="owners-grid-reverse" style="margin-top:80px;">
+          <div>
+            <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);">Device manager.<br><em>Every button, every watch.</em></h3>
+            <div class="gold-divider reveal reveal-delay-1"></div>
+            <p class="body-text reveal reveal-delay-1">Monitor all SmartButtons, watches, repeaters, and mobile apps from one screen. Battery levels, signal strength, temperature, connection status, last seen. Configure every button's press actions, LED behaviour, and shake sensitivity.</p>
+          </div>
+          <div class="reveal reveal-delay-1" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
+            <img src="images/app-device-manager.jpg" alt="OBEDIO Device Manager - SmartButton status and monitoring" style="width:100%; display:block;" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Locations + Messenger row -->
+        <div class="owners-grid" style="margin-top:80px;">
+          <div class="reveal" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
+            <img src="images/app-locations.jpg" alt="OBEDIO Locations - yacht areas with photos" style="width:100%; display:block;" loading="lazy">
+          </div>
+          <div class="reveal reveal-delay-1" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
+            <img src="images/app-messenger.jpg" alt="OBEDIO Messenger - offline crew communication" style="width:100%; display:block;" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Escalation settings -->
+        <div style="text-align:center; margin-top:80px;">
+          <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);"><em>Three levels. Fully configurable.</em></h3>
+          <div class="gold-divider-center reveal reveal-delay-1"></div>
+          <p class="body-text reveal reveal-delay-1" style="margin:0 auto;">Level 1: Re-alert on-duty crew. Level 2: Notify supervisors and HODs. Level 3: Emergency broadcast to entire crew. Timeouts, roles, and sound intensity - all adjustable.</p>
+          <div class="reveal reveal-delay-2" style="max-width:500px; margin:40px auto 0; border-radius:12px; overflow:hidden; border: 1px solid rgba(201,169,98,0.15);">
+            <img src="images/app-escalation.jpg" alt="OBEDIO Escalation Settings - 3-level automatic escalation configuration" style="width:100%; display:block;" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 5: FOR INTEGRATORS
+       ════════════════════════════════════════ -->
+  <section id="integrators" class="section section-surface">
+    <div class="section-inner">
+
+      <div class="section-label reveal">For Integrators</div>
+      <h2 class="section-headline reveal reveal-delay-1">Install it.<br><em>Sleep well.</em></h2>
+      <p class="body-text reveal reveal-delay-2">No 3 AM calls. Every layer has a failover. Designed by a Crestron-certified, KNX-certified engineer who spent a decade at sea and knows what breaks.</p>
+
+      <!-- Reliability stats -->
+      <div class="integrator-stats reveal">
+        <div class="integrator-stat">
+          <div class="integrator-stat-icon"><svg viewBox="0 0 44 44">
+            <!-- Two parallel signal paths -->
+            <path d="M6 16h12l4 6-4 6H6" stroke-linejoin="round"/>
+            <path d="M38 16H26l-4 6 4 6h12" stroke-linejoin="round"/>
+            <circle cx="22" cy="22" r="3"/>
+          </svg></div>
+          <h3>2</h3>
+          <p>Comm channels</p>
+        </div>
+        <div class="integrator-stat">
+          <div class="integrator-stat-icon"><svg viewBox="0 0 44 44">
+            <!-- Radio waves / antenna -->
+            <line x1="22" y1="28" x2="22" y2="38" stroke-linecap="round" stroke-width="1.5"/>
+            <line x1="16" y1="38" x2="28" y2="38" stroke-linecap="round"/>
+            <path d="M14 22a10 10 0 0 1 16 0" fill="none" stroke-linecap="round"/>
+            <path d="M10 16a16 16 0 0 1 24 0" fill="none" stroke-linecap="round" opacity="0.6"/>
+            <path d="M6 10a22 22 0 0 1 32 0" fill="none" stroke-linecap="round" opacity="0.3"/>
+          </svg></div>
+          <h3>3</h3>
+          <p>RF frequencies</p>
+        </div>
+        <div class="integrator-stat">
+          <div class="integrator-stat-icon"><svg viewBox="0 0 44 44">
+            <!-- Brain / neural network -->
+            <circle cx="22" cy="22" r="14"/>
+            <circle cx="16" cy="18" r="2.5"/>
+            <circle cx="28" cy="18" r="2.5"/>
+            <circle cx="22" cy="28" r="2.5"/>
+            <circle cx="16" cy="28" r="2"/>
+            <circle cx="28" cy="28" r="2"/>
+            <line x1="18" y1="19" x2="26" y2="19"/>
+            <line x1="17" y1="20" x2="21" y2="26"/>
+            <line x1="27" y1="20" x2="23" y2="26"/>
+            <line x1="18" y1="28" x2="20" y2="28"/>
+            <line x1="24" y1="28" x2="26" y2="28"/>
+          </svg></div>
+          <h3>5</h3>
+          <p>AI transcription engines</p>
+        </div>
+        <div class="integrator-stat">
+          <div class="integrator-stat-icon"><svg viewBox="0 0 44 44">
+            <!-- Cloud with zero / crossed out -->
+            <path d="M14 32h-2a7 7 0 0 1-.5-14A10.5 10.5 0 0 1 31 13a7 7 0 0 1 3 13.3"/>
+            <line x1="8" y1="8" x2="36" y2="36" stroke-linecap="round" stroke-width="1.5"/>
+          </svg></div>
+          <h3>0</h3>
+          <p>Cloud dependencies</p>
+        </div>
+      </div>
+
+      <!-- Button Configuration -->
+      <div class="owners-grid" style="margin:100px 0 0;">
+        <div>
+          <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);">Every press.<br><em>Fully configurable.</em></h3>
+          <div class="gold-divider reveal reveal-delay-1"></div>
+          <p class="body-text reveal reveal-delay-1">Single press, double press, long press, touch, shake - each action is independently configurable per button. Voice recording, simple call, urgent call, emergency broadcast. LED colours, audio feedback, shake sensitivity. Six tabs of configuration, zero complexity for the guest.</p>
+        </div>
+        <div class="reveal reveal-delay-1" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
+          <img src="images/app-device-config.jpg" alt="OBEDIO SmartButton Configuration - press actions, voice, shake settings" style="width:100%; display:block;" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Panels -->
+      <div class="owners-grid" style="margin:100px 0 0; gap:60px; align-items:center;">
+        <div class="owners-img-wrap reveal">
+          <img src="images/lifestyle-gym-wall.jpg" alt="OBEDIO SmartButton wall-mounted in yacht gym with ocean view" loading="lazy">
+        </div>
+        <div>
+          <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);"><em>Panels with built-in repeater.</em></h3>
+          <div class="gold-divider reveal reveal-delay-1"></div>
+          <p class="body-text reveal reveal-delay-1">Public area panels serve double duty: crew interface and RF repeater in one device. Place them in hallways, pantry, bridge. Fewer devices to install, fewer power points to plan, full coverage built in.</p>
+        </div>
+      </div>
+
+      <!-- Compatibility -->
+      <div style="text-align:center; margin:100px 0 0;">
+        <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);"><em>Everything from the nightstand.</em></h3>
+        <p class="body-text reveal reveal-delay-1" style="margin:0 auto;">Lights, blinds, climate, scenes - and a service call. One button replaces the keypad and the call button. No reaching for a panel, no getting out of bed. Native Crestron and KNX integration. Control4 in development.</p>
+      </div>
+
+      <div class="compat-grid reveal" style="margin-top:60px;">
+        <div class="compat-item">
+          <div class="compat-name">Crestron</div>
+          <div class="compat-status ready">✓ Available</div>
+        </div>
+        <div class="compat-item">
+          <div class="compat-name">KNX</div>
+          <div class="compat-status ready">✓ Available</div>
+        </div>
+        <div class="compat-item">
+          <div class="compat-name">Control4</div>
+          <div class="compat-status soon">Coming Soon</div>
+        </div>
+        <div class="compat-item">
+          <div class="compat-name">REST API</div>
+          <div class="compat-status ready">✓ Open</div>
+        </div>
+      </div>
+
+      <!-- Technical cards -->
+      <div class="tech-grid">
+        <div class="tech-card reveal">
+          <div class="tech-icon"><svg viewBox="0 0 52 52">
+            <!-- Dual paths splitting and merging -->
+            <path d="M8 20h10l4-6h8l4 6h10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 32h10l4 6h8l4-6h10" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="8" cy="26" r="3"/>
+            <circle cx="44" cy="26" r="3"/>
+            <text x="26" y="18" text-anchor="middle" font-family="Cinzel,serif" font-size="7" fill="currentColor" stroke="none" opacity="0.5">RF</text>
+            <text x="26" y="42" text-anchor="middle" font-family="Cinzel,serif" font-size="7" fill="currentColor" stroke="none" opacity="0.5">WiFi</text>
+          </svg></div>
+          <h4>Dual Communication</h4>
+          <p>RF radio + WiFi. Voice-to-text uses WiFi. Everything else runs on RF. If one drops, the other takes over. Two independent channels, switching automatically.</p>
+        </div>
+        <div class="tech-card reveal reveal-delay-1">
+          <div class="tech-icon"><svg viewBox="0 0 52 52">
+            <!-- Three frequency waves at different heights -->
+            <path d="M6 36c4-8 4-8 8 0s4-8 8 0s4-8 8 0s4-8 8 0s4-8 8 0" fill="none" stroke-linecap="round"/>
+            <path d="M6 26c4-6 4-6 8 0s4-6 8 0s4-6 8 0s4-6 8 0s4-6 8 0" fill="none" stroke-linecap="round" opacity="0.6"/>
+            <path d="M6 16c4-4 4-4 8 0s4-4 8 0s4-4 8 0s4-4 8 0s4-4 8 0" fill="none" stroke-linecap="round" opacity="0.3"/>
+            <text x="48" y="40" font-family="Cinzel,serif" font-size="6" fill="currentColor" stroke="none" opacity="0.5">433</text>
+            <text x="48" y="30" font-family="Cinzel,serif" font-size="6" fill="currentColor" stroke="none" opacity="0.5">868</text>
+            <text x="48" y="20" font-family="Cinzel,serif" font-size="6" fill="currentColor" stroke="none" opacity="0.5">915</text>
+          </svg></div>
+          <h4>Multi-Frequency RF</h4>
+          <p>Supports 433, 868, and 915 MHz. The system detects the vessel's location and switches to the correct regional frequency automatically. Install once, works everywhere.</p>
+        </div>
+        <div class="tech-card reveal reveal-delay-2">
+          <div class="tech-icon"><svg viewBox="0 0 52 52">
+            <!-- Two servers with arrow between -->
+            <rect x="6" y="12" width="16" height="28" rx="3"/>
+            <rect x="30" y="12" width="16" height="28" rx="3"/>
+            <line x1="11" y1="20" x2="17" y2="20" stroke-linecap="round" opacity="0.5"/>
+            <line x1="11" y1="24" x2="17" y2="24" stroke-linecap="round" opacity="0.5"/>
+            <circle cx="14" cy="34" r="1.5"/>
+            <line x1="35" y1="20" x2="41" y2="20" stroke-linecap="round" opacity="0.5"/>
+            <line x1="35" y1="24" x2="41" y2="24" stroke-linecap="round" opacity="0.5"/>
+            <circle cx="38" cy="34" r="1.5"/>
+            <path d="M22 22h8" stroke-linecap="round" stroke-dasharray="2 2"/>
+            <path d="M28 19l3 3-3 3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg></div>
+          <h4>Server Failover</h4>
+          <p>Primary server down? Backup takes over with full database replication. No backup? Repeaters form an emergency mesh network. Service continues.</p>
+        </div>
+        <div class="tech-card reveal reveal-delay-3">
+          <div class="tech-icon"><svg viewBox="0 0 52 52">
+            <!-- Download/update arrow into device -->
+            <rect x="14" y="24" width="24" height="20" rx="3"/>
+            <circle cx="26" cy="34" r="3"/>
+            <path d="M26 4v16" stroke-linecap="round" stroke-width="1.5"/>
+            <path d="M21 15l5 5 5-5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 34h-4" stroke-linecap="round" stroke-dasharray="1 3" opacity="0.4"/>
+            <path d="M46 34h-4" stroke-linecap="round" stroke-dasharray="1 3" opacity="0.4"/>
+          </svg></div>
+          <h4>OTA Updates</h4>
+          <p>Buttons, repeaters, server - all updated remotely. No truck rolls, no pulling the yacht out of charter. Push from shore, every device receives it.</p>
+        </div>
+        <div class="tech-card reveal reveal-delay-4">
+          <div class="tech-icon"><svg viewBox="0 0 52 52">
+            <!-- Battery with lightning bolt -->
+            <rect x="12" y="14" width="28" height="24" rx="4"/>
+            <rect x="40" y="22" width="4" height="8" rx="1.5"/>
+            <path d="M28 18l-5 10h6l-5 10" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+          </svg></div>
+          <h4>Power Independent</h4>
+          <p>Buttons run nine months. Repeaters have backup batteries. If the yacht loses all power, buttons and repeaters continue on RF. Guest can still call.</p>
+        </div>
+        <div class="tech-card reveal reveal-delay-5">
+          <div class="tech-icon"><svg viewBox="0 0 52 52">
+            <!-- Chain of checkmarks connected -->
+            <circle cx="10" cy="26" r="7"/>
+            <path d="M7 26l2 2 4-4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="26" cy="26" r="7"/>
+            <path d="M23 26l2 2 4-4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="42" cy="26" r="7"/>
+            <path d="M39 26l2 2 4-4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="17" y1="26" x2="19" y2="26" stroke-dasharray="1 1"/>
+            <line x1="33" y1="26" x2="35" y2="26" stroke-dasharray="1 1"/>
+          </svg></div>
+          <h4>End-to-End Ack</h4>
+          <p>Every call gets a unique ID. Button waits for server confirmation. Server confirms delivery to crew, confirms who accepted, sends feedback to guest. Full chain, no gaps.</p>
+        </div>
+      </div>
+
+      <!-- Bottom line -->
+      <div style="text-align:center; margin-top:100px;" class="reveal">
+        <p class="section-subline" style="margin:0 auto; font-style:italic; color:var(--cream-dim);">No internet? Works. No WiFi? Works. No power? Works. Server down? Works.<br>A guest request cannot be lost.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── PARALLAX BREAK: Craftsmanship ── -->
+  <div class="parallax-break">
+    <img src="images/lifestyle-sundeck-hand.jpg" alt="Hand pressing OBEDIO SmartButton on yacht sundeck" class="parallax-break-img" loading="lazy">
+    <div class="parallax-break-overlay">
+      <h2 class="reveal">Craftsmanship</h2>
+      <p class="reveal">10 bespoke finishes. Designed for the world's finest vessels.</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECTION 6: CRAFTSMANSHIP
+       ════════════════════════════════════════ -->
+  <section id="craftsmanship" class="section section-dark">
+    <div class="section-inner">
+
+      <div style="text-align:center;">
+        <div class="section-label reveal">Craftsmanship</div>
+        <h2 class="section-headline reveal reveal-delay-1" style="text-align:center;"><em>Every button is bespoke.</em></h2>
+        <p class="section-subline reveal reveal-delay-2" style="text-align:center; margin:0 auto;">From a sketch on a post-it to a precision-machined instrument. Every OBEDIO button follows the same journey.</p>
+      </div>
+
+      <!-- Bespoke Journey: 6 Steps -->
+      <div class="bespoke-journey">
+        <div class="bespoke-steps">
+
+          <!-- Step 1: Sketch -->
+          <div class="bespoke-step reveal">
+            <div class="bespoke-step-number">01</div>
+            <div class="bespoke-step-img">
+              <img src="images/bespoke-01-sketch.jpg" alt="Hand-drawn sketch of OBEDIO SmartButton on a post-it note" loading="lazy">
+            </div>
+            <div class="bespoke-step-label">Sketch</div>
+            <div class="bespoke-step-desc">Pen on paper. The idea takes shape.</div>
+          </div>
+
+          <div class="bespoke-arrow reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </div>
+
+          <!-- Step 2: AI Concept -->
+          <div class="bespoke-step reveal">
+            <div class="bespoke-step-number">02</div>
+            <div class="bespoke-step-img">
+              <img src="images/bespoke-02-ai-concept.png" alt="AI-generated concept render of OBEDIO SmartButton" loading="lazy">
+            </div>
+            <div class="bespoke-step-label">AI Concept</div>
+            <div class="bespoke-step-desc">The sketch becomes a vision.</div>
+          </div>
+
+          <div class="bespoke-arrow reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </div>
+
+          <!-- Step 3: 3D Model -->
+          <div class="bespoke-step reveal">
+            <div class="bespoke-step-number">03</div>
+            <div class="bespoke-step-img">
+              <img src="images/bespoke-03-3d-model.png" alt="Fusion 360 3D model of OBEDIO SmartButton with perforated grille" loading="lazy">
+            </div>
+            <div class="bespoke-step-label">3D Model</div>
+            <div class="bespoke-step-desc">Engineered to the last micron.</div>
+          </div>
+
+          <div class="bespoke-arrow reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </div>
+
+          <!-- Step 4: 3D Print Shell -->
+          <div class="bespoke-step reveal">
+            <div class="bespoke-step-number">04</div>
+            <div class="bespoke-step-img">
+              <img src="images/bespoke-04-3d-print.jpg" alt="3D printed shell of OBEDIO SmartButton in gold filament" loading="lazy">
+            </div>
+            <div class="bespoke-step-label">Prototype</div>
+            <div class="bespoke-step-desc">Printed. Tested. Refined.</div>
+          </div>
+
+          <div class="bespoke-arrow reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </div>
+
+          <!-- Step 5: Assembled -->
+          <div class="bespoke-step reveal">
+            <div class="bespoke-step-number">05</div>
+            <div class="bespoke-step-img">
+              <img src="images/bespoke-05-assembled.jpg" alt="Assembled OBEDIO SmartButton prototype with top plate" loading="lazy">
+            </div>
+            <div class="bespoke-step-label">Assembled</div>
+            <div class="bespoke-step-desc">Every piece finds its place.</div>
+          </div>
+
+          <div class="bespoke-arrow reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </div>
+
+          <!-- Step 6: The Real Thing -->
+          <div class="bespoke-step reveal">
+            <div class="bespoke-step-number">06</div>
+            <div class="bespoke-step-img">
+              <img src="images/bespoke-06-real-device.png" alt="Final CNC machined OBEDIO SmartButton in polished brass with LED diffuser" loading="lazy">
+            </div>
+            <div class="bespoke-step-label">The Real Thing</div>
+            <div class="bespoke-step-desc">CNC machined. Ready for sea.</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Exploded view - engineering -->
+      <div class="reveal" style="margin-top:120px; text-align:center;">
+        <div class="section-label">What's Inside</div>
+        <h3 class="section-headline" style="text-align:center; font-size:clamp(28px,3.5vw,44px);"><em>Every component has a purpose.</em></h3>
+        <p class="section-subline" style="text-align:center; margin:0 auto 48px;">PCB, battery, RF antenna, microphone module, LED diffuser, CNC-machined enclosure. Nothing is decorative. Everything is engineered.</p>
+        <img src="images/render-exploded-view.jpg" alt="OBEDIO SmartButton exploded view - PCB, battery, enclosure, buttons" class="img-full" style="max-width:1000px; margin:0 auto;" loading="lazy">
+      </div>
+
+      <!-- Three finishes image -->
+      <div class="reveal" style="margin-top:100px;">
+        <img src="images/2026-02-17-obedio-three-finishes-v2.png" alt="OBEDIO SmartButton  -  three finish variants" class="img-full" loading="lazy">
+      </div>
+
+      <!-- Finishes list -->
+      <div style="text-align:center; margin-top:80px;">
+        <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px); text-align:center;"><em>10 finishes.</em> One standard: yours.</h3>
+        <div class="finishes-list reveal reveal-delay-1">
+          <span class="finish-item">Polished Brass</span>
+          <span class="finish-item">Brushed Brass</span>
+          <span class="finish-item">Polished Stainless 316L</span>
+          <span class="finish-item">Brushed Stainless 316L</span>
+          <span class="finish-item">Polished Aluminium</span>
+          <span class="finish-item">Brushed Aluminium</span>
+          <span class="finish-item">Polished Copper</span>
+          <span class="finish-item">Phosphor Bronze</span>
+          <span class="finish-item">Gold-Plated Brass</span>
+          <span class="finish-item">Black PVD Stainless</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 7: SYTS BARCELONA
+       ════════════════════════════════════════ -->
+  <section id="barcelona" class="section section-charcoal syts-section" style="padding-top:180px;">
+    <div class="section-inner" style="text-align:center;">
+
+      <div class="reveal" style="margin-bottom:40px;">
+        <img src="images/syts-logo.png" alt="Superyacht Technology Show" style="max-width:280px; width:100%; display:block; margin:0 auto; opacity:0.9;">
+      </div>
+      <h2 class="section-headline reveal reveal-delay-1" style="text-align:center;">See you in <em>Barcelona.</em></h2>
+
+      <div class="gold-divider-center reveal reveal-delay-2"></div>
+
+      <div class="syts-date reveal reveal-delay-2">March 10 - 11, 2026</div>
+      <div class="syts-booth reveal reveal-delay-3">Booth IH12</div>
+      <p class="syts-detail reveal reveal-delay-3">TECHTalks Speaker - March 11, 13:45</p>
+
+      <!-- Countdown -->
+      <div class="reveal reveal-delay-3" style="display:flex; justify-content:center; gap:0; margin-top:60px; flex-wrap:wrap; text-align:center;">
+        <div style="flex:0 0 auto; padding:16px 32px; border-right:1px solid rgba(201,169,98,0.1);">
+          <div id="countDays" style="font-family:'Cinzel',serif; font-size:clamp(36px,5vw,64px); color:var(--gold); font-weight:400; line-height:1;">--</div>
+          <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Days</div>
+        </div>
+        <div style="flex:0 0 auto; padding:16px 32px; border-right:1px solid rgba(201,169,98,0.1);">
+          <div id="countHours" style="font-family:'Cinzel',serif; font-size:clamp(36px,5vw,64px); color:var(--gold); font-weight:400; line-height:1;">--</div>
+          <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Hours</div>
+        </div>
+        <div style="flex:0 0 auto; padding:16px 32px;">
+          <div id="countMin" style="font-family:'Cinzel',serif; font-size:clamp(36px,5vw,64px); color:var(--gold); font-weight:400; line-height:1;">--</div>
+          <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Minutes</div>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;" class="reveal reveal-delay-4">
+        <a href="mailto:info@obedio.de?subject=SYTS%20Barcelona%20 - %20Meeting%20Request" class="cta-button">Book a Meeting</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 8: THE STORY
+       ════════════════════════════════════════ -->
+  <section id="story" class="section section-dark">
+    <div class="section-inner">
+
+      <div class="section-label reveal">The Story</div>
+
+      <div class="owners-grid" style="gap:60px; align-items:center;">
+        <div>
+          <blockquote class="story-quote reveal reveal-delay-1" style="font-size:clamp(24px, 3.5vw, 40px);">
+            "Ten years at sea taught me one thing: the call system was always the weakest link."
+          </blockquote>
+
+          <div class="gold-divider reveal reveal-delay-2"></div>
+
+          <p class="body-text reveal reveal-delay-2" style="max-width:640px;">Every system I tried left the same problems unsolved. Dead batteries by dinner service. Three trips for a glass of water. Radios ruining the uniform. Language barriers that no one addressed. So I built the system I wished existed. Not from a boardroom - from the crew mess, from the engine room, from years of doing the work.</p>
+
+          <div class="story-attribution reveal reveal-delay-3">
+            <div class="name">Branko Blagojević</div>
+            <div class="title">Founder - ETO, Crestron Certified, KNX Certified</div>
+          </div>
+
+          <p class="reveal reveal-delay-3" style="margin-top:36px; font-family:'Cormorant Garamond',serif; font-size:clamp(20px,2.5vw,28px); font-weight:400; font-style:italic; color:var(--gold); opacity:0.8;">Built by crew. For crew.</p>
+        </div>
+        <div class="reveal reveal-delay-2" style="text-align:center;">
+          <img src="images/branko-portrait-officer.jpg" alt="Branko Blagojević - Founder of OBEDIO, former yacht ETO" style="width:100%; max-width:440px; border-radius:2px; display:block; margin:0 auto;" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Credential stats -->
+      <div class="reveal" style="display:flex; justify-content:center; gap:0; margin-top:80px; flex-wrap:wrap; text-align:center;">
+        <div style="flex:1; min-width:120px; padding:24px 16px; border-right:1px solid rgba(201,169,98,0.1);">
+          <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,40px); color:var(--gold); font-weight:400; line-height:1;">10</div>
+          <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Years at sea</div>
+        </div>
+        <div style="flex:1; min-width:120px; padding:24px 16px; border-right:1px solid rgba(201,169,98,0.1);">
+          <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,40px); color:var(--gold); font-weight:400; line-height:1;">30+</div>
+          <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Languages</div>
+        </div>
+        <div style="flex:1; min-width:120px; padding:24px 16px; border-right:1px solid rgba(201,169,98,0.1);">
+          <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,40px); color:var(--gold); font-weight:400; line-height:1;">100%</div>
+          <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Offline</div>
+        </div>
+        <div style="flex:1; min-width:120px; padding:24px 16px;">
+          <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,40px); color:var(--gold); font-weight:400; line-height:1;">0</div>
+          <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Cloud dependency</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 9: CONTACT
+       ════════════════════════════════════════ -->
+  <section id="contact" class="section section-surface contact-section">
+    <div class="section-inner" style="text-align:center;">
+
+      <div class="section-label reveal">Contact</div>
+      <h2 class="section-headline reveal reveal-delay-1" style="text-align:center;"><em>Begin the conversation.</em></h2>
+
+      <div class="gold-divider-center reveal reveal-delay-2"></div>
+
+      <div class="contact-links reveal reveal-delay-2">
+        <a href="mailto:info@obedio.de">info@obedio.de</a>
+        <div class="contact-phones">
+          <a href="tel:+381692696969">+381 69 2 69 69 69</a>
+          <a href="tel:+491762203696">+49 176 2 203 69 62</a>
+        </div>
+        <a href="https://obedio.de" style="color:var(--muted); font-size:16px;">obedio.de</a>
+      </div>
+
+      <div style="margin-top:60px;" class="reveal reveal-delay-3">
+        <a href="mailto:info@obedio.de?subject=Inquiry%20 - %20OBEDIO" class="cta-button">Get in Touch</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-logo"><img src="images/obedio-wordmark-gold.svg" alt="OBEDIO"></div>
+    <div class="footer-copy">© 2026 OBEDIO. The Intelligence of Service.</div>
+    <div style="margin-top:20px; display:flex; justify-content:center; gap:24px; align-items:center;">
+      <a href="https://www.linkedin.com/in/branko-blagojevic-820548a6" target="_blank" title="Branko on LinkedIn" style="color:var(--muted); transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/obedio" target="_blank" title="OBEDIO on LinkedIn" style="color:var(--muted); transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
+      </a>
+    </div>
+    <div style="margin-top:16px; font-size:12px; letter-spacing:1px;">
+      <a href="impressum.html" style="color:var(--muted); text-decoration:none; margin:0 12px; transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">Impressum</a>
+      <span style="color:var(--muted); opacity:0.3;">|</span>
+      <a href="mailto:info@obedio.de" style="color:var(--muted); text-decoration:none; margin:0 12px; transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">info@obedio.de</a>
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════
+       JAVASCRIPT
+       ════════════════════════════════════════ -->
+  <script>
+    /* ── Navigation scroll effect ── */
+    const nav = document.getElementById('nav');
+    const heroSection = document.getElementById('hero');
+
+    function updateNav() {
+      if (window.scrollY > 80) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+
+    /* ── Mobile menu ── */
+    function toggleMobile() {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.getElementById('hamburger');
+      menu.classList.toggle('open');
+      hamburger.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+
+    function closeMobile() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    /* ── Scroll-triggered reveal animations ── */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -60px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    /* ── Scroll indicator on hero ── */
+    const scrollIndicator = document.getElementById('scrollIndicator');
+
+    // Listen for the animation to finish inside the iframe
+    // Show scroll indicator after a delay (animation is ~35s total)
+    let scrollIndicatorTimeout = setTimeout(() => {
+      if (scrollIndicator) scrollIndicator.classList.add('visible');
+    }, 38000);
+
+    // Also show it if user scrolls at all (they've engaged)
+    let hasShownIndicator = false;
+
+    // If user hasn't scrolled and animation is still going, show after 38s
+    // If user starts scrolling, hide it
+    window.addEventListener('scroll', function hideIndicatorOnScroll() {
+      if (window.scrollY > 100) {
+        scrollIndicator.classList.remove('visible');
+      } else if (hasShownIndicator) {
+        scrollIndicator.classList.add('visible');
+      }
+    }, { passive: true });
+
+    // Also show scroll indicator earlier if the iframe animation finishes
+    // We'll listen for a message from the iframe
+    window.addEventListener('message', (e) => {
+      if (e.data === 'animation-complete') {
+        hasShownIndicator = true;
+        clearTimeout(scrollIndicatorTimeout);
+        setTimeout(() => {
+          scrollIndicator.classList.add('visible');
+        }, 2000);
+      }
+    });
+
+    /* ── Smooth scroll for nav links ── */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    /* ── Parallax break scroll effect ── */
+    window.addEventListener('scroll', function() {
+      document.querySelectorAll('.parallax-break-img').forEach(function(img) {
+        var rect = img.parentElement.getBoundingClientRect();
+        var speed = 0.3;
+        var yPos = -(rect.top * speed);
+        img.style.transform = 'translateY(' + yPos + 'px)';
+      });
+    }, { passive: true });
+
+    /* ── Ecosystem hover preview ── */
+    const ecoPreview = document.getElementById('ecoPreview');
+    const ecoPreviewImg = document.getElementById('ecoPreviewImg');
+    let previewTimeout;
+
+    document.querySelectorAll('.eco-item[data-preview]').forEach(item => {
+      item.style.cursor = 'pointer';
+      item.addEventListener('mouseenter', () => {
+        clearTimeout(previewTimeout);
+        const src = item.getAttribute('data-preview');
+        if (src && ecoPreview && ecoPreviewImg) {
+          ecoPreviewImg.src = src;
+          ecoPreviewImg.alt = item.querySelector('h4').textContent;
+          ecoPreview.style.height = 'auto';
+          ecoPreview.style.opacity = '1';
+        }
+      });
+      item.addEventListener('mouseleave', () => {
+        previewTimeout = setTimeout(() => {
+          if (ecoPreview) {
+            ecoPreview.style.opacity = '0';
+            setTimeout(() => { ecoPreview.style.height = '0'; }, 400);
+          }
+        }, 300);
+      });
+    });
+
+    // Keep preview open when hovering the preview itself
+    if (ecoPreview) {
+      ecoPreview.addEventListener('mouseenter', () => clearTimeout(previewTimeout));
+      ecoPreview.addEventListener('mouseleave', () => {
+        previewTimeout = setTimeout(() => {
+          ecoPreview.style.opacity = '0';
+          setTimeout(() => { ecoPreview.style.height = '0'; }, 400);
+        }, 300);
+      });
+    }
+
+    /* ── SYTS Barcelona Countdown ── */
+    function updateCountdown() {
+      const syts = new Date('2026-03-10T09:00:00+01:00');
+      const now = new Date();
+      const diff = syts - now;
+      if (diff <= 0) {
+        const d = document.getElementById('countDays');
+        if (d) d.textContent = 'NOW';
+        return;
+      }
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+      const dEl = document.getElementById('countDays');
+      const hEl = document.getElementById('countHours');
+      const mEl = document.getElementById('countMin');
+      if (dEl) dEl.textContent = days;
+      if (hEl) hEl.textContent = hours;
+      if (mEl) mEl.textContent = mins;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+
+    /* ── Hero slideshow ── */
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    if (heroSlides.length > 1) {
+      setInterval(() => {
+        heroSlides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % heroSlides.length;
+        heroSlides[currentSlide].classList.add('active');
+      }, 6000);
+    }
+
+    /* ── Image load enhancement ── */
+    /* Images inside .reveal containers get animated by IntersectionObserver.
+       Only add fade for images that load after their container is visible. */
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      if (!img.complete) {
+        img.style.transition = 'opacity 0.6s ease';
+        img.addEventListener('load', () => {
+          img.style.opacity = '1';
+        });
+      }
+    });
+  </script>
+
+  <!-- ══════════════════════════════════════
+       3D Background  -  Mouse-Controlled SmartButton
+       ══════════════════════════════════════ -->
+  <script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+
+    const canvas = document.getElementById('bg3d-canvas');
+    if (!canvas) throw new Error('No canvas');
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      alpha: true,
+      powerPreference: 'high-performance'
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x080705, 1);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.3;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x080705);
+
+    // Camera - looking at the button from slightly above
+    const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.01, 10);
+    camera.position.set(0, 0.06, 0.10);
+    camera.lookAt(0, 0, 0);
+
+    // ── Luxury Lighting ──
+    const keyLight = new THREE.DirectionalLight(0xf5e6c8, 3.0);
+    keyLight.position.set(0.6, 1.0, 0.5);
+    scene.add(keyLight);
+
+    const fillLight = new THREE.DirectionalLight(0xb8c4d4, 0.8);
+    fillLight.position.set(-0.7, 0.5, 0.3);
+    scene.add(fillLight);
+
+    const rimLight = new THREE.DirectionalLight(0xc9a962, 2.0);
+    rimLight.position.set(0, 0.3, -0.8);
+    scene.add(rimLight);
+
+    const bottomLight = new THREE.DirectionalLight(0x1a1814, 0.4);
+    bottomLight.position.set(0, -1, 0);
+    scene.add(bottomLight);
+
+    const ambient = new THREE.AmbientLight(0x1a1814, 1.0);
+    scene.add(ambient);
+
+    const spotLight = new THREE.SpotLight(0xc9a962, 4, 2, Math.PI / 5, 0.6, 1.2);
+    spotLight.position.set(0, 0.8, 0.2);
+    spotLight.target.position.set(0, 0, 0);
+    scene.add(spotLight);
+    scene.add(spotLight.target);
+
+    // ── Load Model ──
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.172.0/examples/jsm/libs/draco/');
+
+    const loader = new GLTFLoader();
+    loader.setDRACOLoader(dracoLoader);
+
+    let model = null;
+    let modelReady = false;
+
+    // Scroll-driven rotation targets
+    var targetRotY = 0;
+    var targetRotX = 0.15;
+    var targetRotZ = 0;
+    // Current (smoothed)
+    var currentRotY = 0;
+    var currentRotX = 0.15;
+    var currentRotZ = 0;
+
+    loader.load('models/obedio-button.glb', function(gltf) {
+      model = gltf.scene;
+
+      var box = new THREE.Box3().setFromObject(model);
+      var center = box.getCenter(new THREE.Vector3());
+      model.position.sub(center);
+
+      var size = box.getSize(new THREE.Vector3());
+      var maxDim = Math.max(size.x, size.y, size.z);
+      var scale = 0.07 / maxDim;
+      model.scale.setScalar(scale);
+
+      model.traverse(function(child) {
+        if (child.isMesh) {
+          if (child.material.metalness !== undefined) {
+            child.material.metalness = Math.min(child.material.metalness + 0.15, 1);
+            child.material.roughness = Math.max(child.material.roughness - 0.05, 0);
+          }
+          child.material.envMapIntensity = 1.5;
+        }
+      });
+
+      scene.add(model);
+      modelReady = true;
+    });
+
+    // ── Scroll-driven rotation ──
+    var heroEl = document.getElementById('hero');
+    var pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+    function onScroll() {
+      if (!heroEl) return;
+      var heroBottom = heroEl.getBoundingClientRect().bottom;
+
+      // Visibility
+      if (heroBottom < window.innerHeight * 0.3) {
+        canvas.classList.add('visible');
+      } else {
+        canvas.classList.remove('visible');
+      }
+
+      // Scroll progress (0 at hero bottom, 1 at page bottom)
+      var heroH = heroEl.offsetHeight;
+      var scrollPast = Math.max(0, window.scrollY - heroH);
+      var totalAfterHero = pageHeight - heroH;
+      var progress = totalAfterHero > 0 ? scrollPast / totalAfterHero : 0;
+
+      // Y-axis: ~2 full rotations across entire page scroll
+      targetRotY = progress * Math.PI * 4;
+
+      // X-axis: gentle wave between top view and angled view (never bottom)
+      // Oscillates with scroll so you see different angles as you go
+      targetRotX = 0.15 + Math.sin(progress * Math.PI * 3) * 0.35;
+
+      // Z-axis: subtle sway
+      targetRotZ = Math.sin(progress * Math.PI * 5) * 0.08;
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // ── Resize ──
+    window.addEventListener('resize', function() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+    });
+
+    // ── Animation Loop ──
+    var clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      var delta = clock.getDelta();
+      var elapsed = clock.getElapsedTime();
+
+      if (model && modelReady) {
+        // Smooth lerp toward mouse targets (graceful, ~0.8s lag)
+        var lerp = 1 - Math.pow(0.35, delta);
+        currentRotX += (targetRotX - currentRotX) * lerp;
+        currentRotY += (targetRotY - currentRotY) * lerp;
+        currentRotZ += (targetRotZ - currentRotZ) * lerp;
+
+        model.rotation.x = currentRotX;
+        model.rotation.y = currentRotY;
+        model.rotation.z = currentRotZ;
+
+        // Very subtle float
+        model.position.y = Math.sin(elapsed * 0.4) * 0.0003;
+      }
+
+      // Light breathing
+      spotLight.intensity = 4 + Math.sin(elapsed * 0.6) * 0.8;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  </script>
+
+</body>
+</html>
