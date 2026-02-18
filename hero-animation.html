@@ -25,7 +25,7 @@
       display: flex;
       align-items: flex-start;
       justify-content: center;
-      padding-top: 15vh;
+      padding-top: 8vh;
       font-family: 'Cormorant Garamond', serif;
       overflow: hidden;
       -webkit-font-smoothing: antialiased;
@@ -333,12 +333,12 @@
 
       const heroProduct = document.getElementById('heroProduct');
 
-      await wait(1500);
+      await wait(200);
       if (!running) return;
 
       understood.classList.add('visible');
       heroProduct.classList.add('visible');
-      await wait(800);
+      await wait(600);
       understood.classList.add('glow');
       await wait(1200);
       if (!running) return;
@@ -394,7 +394,7 @@
       }
     }
 
-    setTimeout(play, 800);
+    setTimeout(play, 300);
   </script>
 </body>
 </html>
