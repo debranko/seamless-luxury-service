@@ -70,7 +70,7 @@ const translations = {
     'owners.how.description': 'Press the button. Speak. The same switch powers the microphone - no power, no listening. Physically impossible to eavesdrop. Speak in any of 30+ languages. Your crew receives the request instantly, translated, in writing, on their watch. A light on the button confirms someone is on the way. One press. One trip. Zero friction.',
     'owners.language.headline': 'Speak your language.<br><em>Your crew reads theirs.</em>',
     'owners.language.description': 'Speak Turkish, Russian, Mandarin, or any of 30+ languages. Five independent AI models transcribe every word simultaneously - the system cross-references all five and delivers the most accurate result. Your crew receives it in English, instantly. Two-way: they reply, you hear it in your language. All processed on the vessel. Nothing leaves the ship.',
-    'owners.privacy.headline': 'Privacy is not a feature.<br><em>It is architecture.</em>',
+    'owners.privacy.headline': 'Privacy is not just a feature.<br><em>It is architecture.</em>',
     'owners.privacy.description': 'Your conversations are yours. The microphone is physically disconnected until you press the button. Not a software switch - a hardware circuit. For absolute privacy, the entire microphone module can be physically removed.',
 
     // Privacy Cards
@@ -325,7 +325,7 @@ const translations = {
     'owners.how.description': 'Притисните дугме. Говорите. Исти прекидач укључује микрофон - нема струје, нема слушања. Физички немогуће подслушкивати. Говорите на било ком од 30+ језика. Ваша посада добија захтев тренутно, преведен, писмено, на руци. Светло на дугмету потврђује да неко долази. Један притисак. Једна шетња. Нула трења.',
     'owners.language.headline': 'Говорите свој језик.<br><em>Посада чита свој.</em>',
     'owners.language.description': 'Говорите турски, руски, мандаринки, или било који од 30+ језика. Пет независних AI модела истовремено преписује сваку реч - систем упоређује свих пет и даје најпрецизнији резултат. Ваша посада добија на српском, тренутно. У оба смера: они одговоре, ви чујете на свом језику. Све се обрађује на броду. Ништа не напушта јахту.',
-    'owners.privacy.headline': 'Приватност није карактеристика.<br><em>То је архитектура.</em>',
+    'owners.privacy.headline': 'Приватност није само карактеристика.<br><em>То је архитектура.</em>',
     'owners.privacy.description': 'Ваши разговори су ваши. Микрофон је физички искључен док не притиснете дугме. Није софтверски прекидач - хардверско коло. За апсолутну приватност, цео микрофонски модул се може физички уклонити.',
 
     // Privacy Cards
