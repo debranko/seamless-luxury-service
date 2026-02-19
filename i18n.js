@@ -98,7 +98,7 @@ const translations = {
     // Room Control
     'owners.control.headline': 'One button.<br><em>The entire cabin.</em>',
     'owners.control.description': 'Not just a service call. OBEDIO controls your cabin. Lights, blinds, climate, scenes - all from the same button on your nightstand. No separate keypads. No learning different interfaces. One touch point for everything.',
-    'owners.control.compatibility': 'Native Crestron integration. Control4 coming soon.',
+    'owners.control.compatibility': 'Crestron and Control4 integration.',
 
     // Bespoke
     'owners.bespoke.headline': '<em>Truly bespoke.</em>',
@@ -179,7 +179,7 @@ const translations = {
 
     // Room Control
     'integrators.roomcontrol.headline': '<em>Everything from the nightstand.</em>',
-    'integrators.roomcontrol.description': 'Lights, blinds, climate, scenes - and a service call. One button replaces the keypad and the call button. No reaching for a panel, no getting out of bed. Native Crestron and KNX integration. Control4 in development.',
+    'integrators.roomcontrol.description': 'Lights, blinds, climate, scenes - and a service call. One button replaces the keypad and the call button. No reaching for a panel, no getting out of bed. Crestron, KNX, and Control4 integration.',
 
     // Compatibility
     'integrators.compat.crestron': 'Crestron',
@@ -187,7 +187,7 @@ const translations = {
     'integrators.compat.knx': 'KNX',
     'integrators.compat.knx.status': '✓ Available',
     'integrators.compat.control4': 'Control4',
-    'integrators.compat.control4.status': 'Coming Soon',
+    'integrators.compat.control4.status': '✓ Available',
     'integrators.compat.api': 'REST API',
     'integrators.compat.api.status': '✓ Open',
 
@@ -280,7 +280,7 @@ const translations = {
     // Section: Product
     'product.label': 'SmartButton',
     'product.headline': 'Pritisni. Govori.<br><em>Understood.</em>',
-    'product.description': 'Prvo luksuzno dugme za usluge gostiju sa pravom oflajn prepoznavanjem glasa, trenutnim prevodom na 30+ jezika i devet meseci rada baterije. Sve se obrađuje lokalno. Ništa ne napušta brod.',
+    'product.description': 'Prvo luksuzno dugme za usluge gostiju sa pravim oflajn prepoznavanjem glasa, trenutnim prevodom na 30+ jezika i devet meseci rada baterije. Sve se obrađuje lokalno. Ništa ne napušta brod.',
     'product.scale': '72 × 72 mm - širina vašeg iPhone-a. Dostupno i u kompaktnoj varijanti od 65 mm.',
     
     // Three Pillars
@@ -304,7 +304,7 @@ const translations = {
     'ecosystem.repeaters': 'Pojačavači',
     'ecosystem.repeaters.desc': 'Proširuju RF pokrivenost. Rezervne baterije. Mrežni rad.',
     'ecosystem.applewatch': 'Apple Watch',
-    'ecosystem.applewatch.desc': 'Kompletna obaveštenja. Potresi. Čitanje u slušalicu.',
+    'ecosystem.applewatch.desc': 'Kompletna obaveštenja. Vibracije. Čitanje u slušalicu.',
     'ecosystem.wearos': 'Wear OS',
     'ecosystem.wearos.desc': '7 dana baterija. Iste funkcije. Optimizovano za posadu.',
     'ecosystem.mobile': 'iPhone i Android',
@@ -356,7 +356,7 @@ const translations = {
     // Room Control
     'owners.control.headline': 'Jedno dugme.<br><em>Cela kabina.</em>',
     'owners.control.description': 'Nije samo poziv za uslugu. OBEDIO kontroliše vašu kabinu. Svetla, zavese, klimu, scene - sve sa istog dugmeta na noćnom stočiću. Bez zasebnih tastatura. Bez učenja različitih interfejsa. Jedna tačka kontakta za sve.',
-    'owners.control.compatibility': 'Nativna Crestron integracija. Control4 uskoro.',
+    'owners.control.compatibility': 'Crestron i Control4 integracija.',
 
     // Bespoke
     'owners.bespoke.headline': '<em>Zaista po meri.</em>',
@@ -437,7 +437,7 @@ const translations = {
 
     // Room Control
     'integrators.roomcontrol.headline': '<em>Sve sa noćnog stočića.</em>',
-    'integrators.roomcontrol.description': 'Svetla, zavese, klima, scene - i poziv za uslugu. Jedno dugme zamenjuje tastaturu i dugme za poziv. Bez dosezanja panela, bez ustajanja iz kreveta. Nativna Crestron i KNX integracija. Control4 u razvoju.',
+    'integrators.roomcontrol.description': 'Svetla, zavese, klima, scene - i poziv za uslugu. Jedno dugme zamenjuje tastaturu i dugme za poziv. Bez dosezanja panela, bez ustajanja iz kreveta. Crestron, KNX i Control4 integracija.',
 
     // Compatibility
     'integrators.compat.crestron': 'Crestron',
@@ -445,7 +445,7 @@ const translations = {
     'integrators.compat.knx': 'KNX',
     'integrators.compat.knx.status': '✓ Dostupno',
     'integrators.compat.control4': 'Control4',
-    'integrators.compat.control4.status': 'Uskoro',
+    'integrators.compat.control4.status': '✓ Dostupno',
     'integrators.compat.api': 'REST API',
     'integrators.compat.api.status': '✓ Otvoren',
 
@@ -502,7 +502,7 @@ const translations = {
     // Section: Story
     'story.label': 'Priča',
     'story.quote': '"Deset godina na moru me je naučilo jednoj stvari: sistem pozivanja je uvek bio najslabija karika."',
-    'story.description': 'Svaki sistem koji sam probao ostavio je iste probleme nerešene. Prazne baterije do večernje službe. Tri odlaska za čašu vode. Racije koje gužvaju uniformu. Jezičke barijere koje niko nije rešavao. Zato sam napravio sistem koji sam želeo da postoji. Ne iz konferencijske sale - iz posadske mese, iz mašinske, iz godina rada.',
+    'story.description': 'Svaki sistem koji sam probao ostavljao je iste probleme nerešene. Baterije prazne pre večernje službe. Tri odlaska za čašu vode. Voki-tokiji koji kvare uniformu. Jezičke barijere koje niko nije rešavao. Zato sam napravio sistem koji sam želeo da postoji. Ne iz kancelarije - iz posadske trpezarije, iz mašinskog odeljenja, iz godina rada.',
     'story.founder': 'Branko Blagojević',
     'story.title': 'Osnivač - ETO, Crestron sertifikovan, KNX sertifikovan',
     'story.tagline': 'Napravljen od posade. Za posadu.',
