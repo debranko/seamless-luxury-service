@@ -280,7 +280,7 @@ const translations = {
     // Section: Product
     'product.label': 'SmartButton',
     'product.headline': 'Pritisni. Govori.<br><em>Understood.</em>',
-    'product.description': 'Prvi luksuzni dugme za usluge gostiju sa pravom oflajn prepoznavanjem glasa, trenutnim prevodom na 30+ jezika i devet meseci rada baterije. Sve se obrađuje lokalno. Ništa ne napušta brod.',
+    'product.description': 'Prvo luksuzno dugme za usluge gostiju sa pravom oflajn prepoznavanjem glasa, trenutnim prevodom na 30+ jezika i devet meseci rada baterije. Sve se obrađuje lokalno. Ništa ne napušta brod.',
     'product.scale': '72 × 72 mm - širina vašeg iPhone-a. Dostupno i u kompaktnoj varijanti od 65 mm.',
     
     // Three Pillars
@@ -327,7 +327,7 @@ const translations = {
     'owners.how.headline': 'Pritisni. Govori. <em>Gotovo.</em>',
     'owners.how.description': 'Pritisnite dugme. Govorite. Isti prekidač uključuje mikrofon - nema struje, nema slušanja. Fizički nemoguće podsluškivati. Govorite na bilo kom od 30+ jezika. Vaša posada dobija zahtev trenutno, preveden, pismeno, na ruci. Svetlo na dugmetu potvrđuje da neko dolazi. Jedan pritisak. Jedna šetnja. Nula trenja.',
     'owners.language.headline': 'Govorite svoj jezik.<br><em>Posada čita svoj.</em>',
-    'owners.language.description': 'Govorite turski, ruski, mandarinki, ili bilo koji od 30+ jezika. Pet nezavisnih AI modela istovremeno prepisuje svaku reč - sistem upoređuje svih pet i daje najprecizniji rezultat. Vaša posada dobija na srpskom, trenutno. U oba smera: oni odgovore, vi čujete na svom jeziku. Sve se obrađuje na brodu. Ništa ne napušta jahtu.',
+    'owners.language.description': 'Govorite turski, ruski, mandarinski, ili bilo koji od 30+ jezika. Pet nezavisnih AI modela istovremeno prepisuje svaku reč - sistem upoređuje svih pet i daje najprecizniji rezultat. Vaša posada dobija na srpskom, trenutno. U oba smera: oni odgovore, vi čujete na svom jeziku. Sve se obrađuje na brodu. Ništa ne napušta jahtu.',
     'owners.privacy.headline': 'Privatnost nije samo karakteristika.<br><em>To je arhitektura.</em>',
     'owners.privacy.description': 'Vaši razgovori su vaši. Mikrofon je fizički isključen dok ne pritisnete dugme. Nije softverski prekidač - hardversko kolo. Za apsolutnu privatnost, ceo mikrofonski modul se može fizički ukloniti.',
 
@@ -360,7 +360,7 @@ const translations = {
 
     // Bespoke
     'owners.bespoke.headline': '<em>Zaista po meri.</em>',
-    'owners.bespoke.description': 'Kvadrat. Krug. 72 mm. 65 mm. Po meri. Mesing, čelik, koža, crni PVD. Svako dugme se pravi da odgovara vašoj jahti - a ne obrnuto. OBEDIO nije definisan svojim oblikom. On definiše svoj sopstveni.',
+    'owners.bespoke.description': 'Kvadrat. Krug. 72 mm. 65 mm. Po meri. Mesing, čelik, koža, crni PVD. Svako dugme se pravi da odgovara vašoj jahti - a ne obrnuto. OBEDIO nije definisan svojim oblikom. On definiše sopstveni.',
 
     // Parallax Break: Intelligent Routing
     'break.routing.title': 'Inteligentno Rutiranje',
@@ -373,7 +373,7 @@ const translations = {
 
     // Hands-free Hero
     'crew.handsfree.headline': 'Potpuno <em>bez ruku.</em>',
-    'crew.handsfree.description': 'Slušalica povezana sa rukom. Stiže zahtev gosta. Ruka prepoznaje slušalicu i čita zahtev direktno u uvo člana posade. Bez ekrana. Bez zaustavljanja. Bez gledanja na ruku. Čujete "Donesite negaziranu vodu na sundek" - i već ste na putu. Potresite ruku da prihvatite.',
+    'crew.handsfree.description': 'Slušalica povezana sa satom. Stiže zahtev gosta. Sat prepoznaje slušalicu i čita zahtev direktno u uvo člana posade. Bez ekrana. Bez zaustavljanja. Bez gledanja na ruku. Čujete "Donesite negaziranu vodu na sundek" - i već ste na putu. Potresite ruku da prihvatite.',
     'crew.handsfree.step1': 'Gost govori u dugme',
     'crew.handsfree.step2': 'Slušalica čita prevedeni zahtev',
     'crew.handsfree.step3': 'Potresite ruku da prihvatite',
@@ -383,15 +383,15 @@ const translations = {
     'crew.pain.onetrip.title': 'Jedna šetnja, ne tri.',
     'crew.pain.onetrip.desc': 'Gost govori u dugme na bilo kom jeziku. Čitate zahtev na ruci, na svom jeziku. Tapnite jednom da prihvatite. Jedna šetnja.',
     'crew.pain.delegate.title': 'Potresi da delegiraš.',
-    'crew.pain.delegate.desc': 'Pune ruke, nosite poslužavnik, u sredini službe. Stiže poziv. Potresite ruku. Preležeguje se sledećem članu posade na dužnosti. Bez ekrana, bez tapkanja.',
+    'crew.pain.delegate.desc': 'Pune ruke, nosite poslužavnik, u sredini službe. Stiže poziv. Potresite ruku. Prosleđuje se sledećem članu posade na dužnosti. Bez ekrana, bez tapkanja.',
     'crew.pain.roster.title': 'Auto raspored dužnosti.',
     'crew.pain.roster.desc': 'Svako zadržava svoj uređaj. Softver zna vaš raspored. Kada počne vaša smena, pozivi se rutiraju vama. Kada se završi, prestaju.',
     'crew.pain.escalation.title': '3 nivoa eskalacije.',
     'crew.pain.escalation.desc': 'Gost zove. Nema odgovora? Zvoni ponovo. I dalje ništa? Eskalira supervizoru, zatim kapetanu. Potpuno podesivo. Zahtev ne može da prođe nezapaženo.',
     'crew.pain.messenger.title': 'Oflajn Poruke.',
     'crew.pain.messenger.desc': 'Šaljite i primajte poruke sa ruke, iPhone-a, Android-a ili veb aplikacije. Tiho, diskretno. Bez interneta. Sve ostaje na jahti. U potpunosti zamenjuje racije.',
-    'crew.pain.battery.title': '7 dana baterija ruke.',
-    'crew.pain.battery.desc': 'Ne još jedna stvar za punjenje. Optimizovana Wear OS ruka traje do sedam dana. Pouzdan alat, ne još jedna odgovornost.',
+    'crew.pain.battery.title': '7 dana baterija sata.',
+    'crew.pain.battery.desc': 'Ne još jedna stvar za punjenje. Optimizovan Wear OS sat traje do sedam dana. Pouzdan alat, ne još jedna odgovornost.',
 
     // Crew Watch Feature
     'crew.watch.headline': 'Gost govori ruski.<br><span class="gold-text">Vi čitate srpski.</span>',
@@ -455,7 +455,7 @@ const translations = {
     'tech.frequency.title': 'Višefrekventni RF',
     'tech.frequency.desc': 'Podržava 433, 868 i 915 MHz. Sistem otkriva lokaciju broda i automatski prebacuje na ispravnu regionalnu frekvenciju. Instaliraj jednom, radi svugde.',
     'tech.failover.title': 'Rezerva Servera',
-    'tech.failover.desc': 'Glavni server nije radan? Rezerva preuzima sa punom replikacijom baze podataka. Nema rezerve? Pojačavači formiraju hitnu mrežu. Usluga se nastavlja.',
+    'tech.failover.desc': 'Glavni server ne radi? Rezerva preuzima sa punom replikacijom baze podataka. Nema rezerve? Pojačavači formiraju hitnu mrežu. Usluga se nastavlja.',
     'tech.ota.title': 'OTA Ažuriranja',
     'tech.ota.desc': 'Dugmići, pojačavači, server - sve se ažurira udaljeno. Nema kamiona, nema vađenja jahte iz čartera. Pošalji sa obale, svaki uređaj to primi.',
     'tech.power.title': 'Nezavisno od Struje',
@@ -464,7 +464,7 @@ const translations = {
     'tech.ack.desc': 'Svaki poziv dobija jedinstveni ID. Dugme čeka potvrdu servera. Server potvrđuje isporuku posadi, potvrđuje ko je prihvatio, šalje povratnu informaciju gostu. Pun lanac, bez praznina.',
 
     // Bottom Line
-    'integrators.bottomline': 'Nema interneta? Radi. Nema WiFi? Radi. Nema struje? Radi. Server nije radan? Radi.<br>Zahtev gosta se ne može izgubiti.',
+    'integrators.bottomline': 'Nema interneta? Radi. Nema WiFi? Radi. Nema struje? Radi. Server ne radi? Radi.<br>Zahtev gosta se ne može izgubiti.',
 
     // Parallax Break: Craftsmanship
     'break.craftsmanship.title': 'Zanatstvo',
@@ -502,7 +502,7 @@ const translations = {
     // Section: Story
     'story.label': 'Priča',
     'story.quote': '"Deset godina na moru me je naučilo jednoj stvari: sistem pozivanja je uvek bio najslabija karika."',
-    'story.description': 'Svaki sistem koji sam probao ostavio je iste probleme nerešene. Prazne baterije do večernje službe. Tri odlaska za čašu vode. Racije koje kvaze uniformu. Jezičke barijere koje niko nije rešavao. Zato sam napravio sistem koji sam želeo da postoji. Ne iz konferencijske sale - iz posadske mese, iz mašinske, iz godina rada.',
+    'story.description': 'Svaki sistem koji sam probao ostavio je iste probleme nerešene. Prazne baterije do večernje službe. Tri odlaska za čašu vode. Racije koje gužvaju uniformu. Jezičke barijere koje niko nije rešavao. Zato sam napravio sistem koji sam želeo da postoji. Ne iz konferencijske sale - iz posadske mese, iz mašinske, iz godina rada.',
     'story.founder': 'Branko Blagojević',
     'story.title': 'Osnivač - ETO, Crestron sertifikovan, KNX sertifikovan',
     'story.tagline': 'Napravljen od posade. Za posadu.',
