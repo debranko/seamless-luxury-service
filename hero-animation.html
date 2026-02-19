@@ -316,6 +316,41 @@
     let t = null, running = false;
     const wait = ms => new Promise(r => t = setTimeout(r, ms));
 
+    // Language support
+    let currentLang = 'en';
+    const translations = {
+      en: {
+        understood: 'Understood.',
+        tagline: 'THE INTELLIGENCE OF SERVICE'
+      },
+      sr: {
+        understood: 'Разумем.',
+        tagline: 'ИНТЕЛИГЕНЦИЈА УСЛУГЕ'
+      }
+    };
+
+    // Listen for language change messages from parent
+    window.addEventListener('message', (event) => {
+      if (event.data && event.data.type === 'language-change') {
+        currentLang = event.data.language;
+        updateLanguage();
+      }
+    });
+
+    function updateLanguage() {
+      // Update "Understood." text
+      const understoodEl = document.getElementById('understood');
+      if (understoodEl) {
+        understoodEl.textContent = translations[currentLang].understood;
+      }
+
+      // Update tagline
+      const taglineEl = document.querySelector('.tagline');
+      if (taglineEl) {
+        taglineEl.textContent = translations[currentLang].tagline;
+      }
+    }
+
     function reset() {
       clearTimeout(t);
       running = false;

@@ -378,6 +378,42 @@
       border-color: var(--gold);
     }
 
+    /* Language switcher */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 16px;
+    }
+
+    .lang-link {
+      font-family: 'Cinzel', serif !important;
+      font-size: 10px !important;
+      font-weight: 500 !important;
+      letter-spacing: 2px !important;
+      color: var(--muted-light) !important;
+      text-decoration: none !important;
+      text-transform: uppercase !important;
+      transition: color 0.3s ease !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+
+    .lang-link:hover,
+    .lang-link.active {
+      color: var(--gold) !important;
+    }
+
+    .lang-link::after {
+      display: none !important;
+    }
+
+    .lang-separator {
+      color: var(--muted);
+      font-size: 10px;
+      opacity: 0.5;
+    }
+
     /* Hamburger */
     .nav-hamburger {
       display: none;
@@ -435,10 +471,36 @@
 
     .nav-mobile a:hover { opacity: 1; color: var(--gold); }
 
+    .mobile-lang-switcher {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .mobile-lang-switcher a {
+      font-size: 11px !important;
+      letter-spacing: 3px !important;
+      color: var(--muted-light) !important;
+      opacity: 0.8 !important;
+    }
+
+    .mobile-lang-switcher a:hover {
+      color: var(--gold) !important;
+      opacity: 1 !important;
+    }
+
+    .mobile-lang-switcher span {
+      color: var(--muted);
+      opacity: 0.5;
+    }
+
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
       .nav { padding: 0 24px; }
+      .lang-switcher { display: none; }
     }
 
     /* ================================================================
@@ -1818,14 +1880,19 @@
   <nav class="nav" id="nav">
     <a href="#hero" class="nav-logo"><img src="images/obedio-wordmark-gold.svg" alt="OBEDIO"></a>
     <ul class="nav-links">
-      <li><a href="#product">Product</a></li>
-      <li><a href="#owners">Owners</a></li>
-      <li><a href="#crew">Crew</a></li>
-      <li><a href="#integrators">Integrators</a></li>
-      <li><a href="#craftsmanship">Craftsmanship</a></li>
-      <li><a href="#story">Story</a></li>
-      <li><a href="#barcelona">SYTS 2026</a></li>
-      <li><a href="#contact" class="highlight">Contact</a></li>
+      <li><a href="#product" data-i18n="nav.product">Product</a></li>
+      <li><a href="#owners" data-i18n="nav.owners">Owners</a></li>
+      <li><a href="#crew" data-i18n="nav.crew">Crew</a></li>
+      <li><a href="#integrators" data-i18n="nav.integrators">Integrators</a></li>
+      <li><a href="#craftsmanship" data-i18n="nav.craftsmanship">Craftsmanship</a></li>
+      <li><a href="#story" data-i18n="nav.story">Story</a></li>
+      <li><a href="#barcelona" data-i18n="nav.syts">SYTS 2026</a></li>
+      <li><a href="#contact" class="highlight" data-i18n="nav.contact">Contact</a></li>
+      <li class="lang-switcher">
+        <a href="#" id="lang-en" class="lang-link active">EN</a>
+        <span class="lang-separator">|</span>
+        <a href="#" id="lang-sr" class="lang-link">SR</a>
+      </li>
     </ul>
     <div class="nav-hamburger" id="hamburger" onclick="toggleMobile()">
       <span></span><span></span><span></span>
@@ -1834,14 +1901,19 @@
 
   <!-- Mobile menu -->
   <div class="nav-mobile" id="mobileMenu">
-    <a href="#product" onclick="closeMobile()">Product</a>
-    <a href="#owners" onclick="closeMobile()">Owners</a>
-    <a href="#crew" onclick="closeMobile()">Crew</a>
-    <a href="#integrators" onclick="closeMobile()">Integrators</a>
-    <a href="#craftsmanship" onclick="closeMobile()">Craftsmanship</a>
-    <a href="#story" onclick="closeMobile()">Story</a>
-    <a href="#barcelona" onclick="closeMobile()">SYTS 2026</a>
-    <a href="#contact" onclick="closeMobile()">Contact</a>
+    <a href="#product" onclick="closeMobile()" data-i18n="nav.product">Product</a>
+    <a href="#owners" onclick="closeMobile()" data-i18n="nav.owners">Owners</a>
+    <a href="#crew" onclick="closeMobile()" data-i18n="nav.crew">Crew</a>
+    <a href="#integrators" onclick="closeMobile()" data-i18n="nav.integrators">Integrators</a>
+    <a href="#craftsmanship" onclick="closeMobile()" data-i18n="nav.craftsmanship">Craftsmanship</a>
+    <a href="#story" onclick="closeMobile()" data-i18n="nav.story">Story</a>
+    <a href="#barcelona" onclick="closeMobile()" data-i18n="nav.syts">SYTS 2026</a>
+    <a href="#contact" onclick="closeMobile()" data-i18n="nav.contact">Contact</a>
+    <div class="mobile-lang-switcher">
+      <a href="#" id="mobile-lang-en" onclick="window.obedioI18n.switchLanguage('en'); closeMobile();">EN</a>
+      <span>|</span>
+      <a href="#" id="mobile-lang-sr" onclick="window.obedioI18n.switchLanguage('sr'); closeMobile();">SR</a>
+    </div>
   </div>
 
   <!-- ════════════════════════════════════════
@@ -1873,11 +1945,11 @@
       <!-- Opening statement + hero product image -->
       <div class="product-hero-grid">
         <div>
-          <div class="section-label reveal">The SmartButton</div>
-          <h2 class="section-headline reveal reveal-delay-1">Press. Speak.<br><em>Understood.</em></h2>
+          <div class="section-label reveal" data-i18n="product.label">The SmartButton</div>
+          <h2 class="section-headline reveal reveal-delay-1" data-i18n-html="product.headline">Press. Speak.<br><em>Understood.</em></h2>
           <div class="gold-divider reveal reveal-delay-2"></div>
-          <p class="body-text reveal reveal-delay-2">The first luxury guest service button with real offline voice&#8209;to&#8209;text, instant translation in 30+ languages, and nine&#8209;month battery life. Everything processed locally. Nothing leaves the vessel.</p>
-          <p class="product-scale-ref reveal reveal-delay-3" style="text-align:left; margin-top:32px;">72 × 72 mm  -  the width of your iPhone. Also available in 65 mm compact.</p>
+          <p class="body-text reveal reveal-delay-2" data-i18n="product.description">The first luxury guest service button with real offline voice&#8209;to&#8209;text, instant translation in 30+ languages, and nine&#8209;month battery life. Everything processed locally. Nothing leaves the vessel.</p>
+          <p class="product-scale-ref reveal reveal-delay-3" style="text-align:left; margin-top:32px;" data-i18n="product.scale">72 × 72 mm  -  the width of your iPhone. Also available in 65 mm compact.</p>
         </div>
         <div class="product-hero-image reveal reveal-delay-2">
           <div class="img-glow"></div>
@@ -1889,21 +1961,21 @@
       <div class="pillars">
         <div class="pillar reveal">
           <div class="pillar-number">30+</div>
-          <div class="pillar-label">Languages</div>
+          <div class="pillar-label" data-i18n="pillar.languages.label">Languages</div>
           <div class="pillar-divider"></div>
-          <p>Guest speaks Turkish.<br>Crew reads English.<br>5 AIs cross-check every word.</p>
+          <p data-i18n-html="pillar.languages.desc">Guest speaks Turkish.<br>Crew reads English.<br>5 AIs cross-check every word.</p>
         </div>
         <div class="pillar reveal reveal-delay-1">
           <div class="pillar-number">9</div>
-          <div class="pillar-label">Month Battery</div>
+          <div class="pillar-label" data-i18n="pillar.battery.label">Month Battery</div>
           <div class="pillar-divider"></div>
-          <p>No nightly charging rounds.<br>No dead buttons during service.<br>Forget it exists.</p>
+          <p data-i18n-html="pillar.battery.desc">No nightly charging rounds.<br>No dead buttons during service.<br>Forget it exists.</p>
         </div>
         <div class="pillar reveal reveal-delay-2">
           <div class="pillar-number">100%</div>
-          <div class="pillar-label">Offline</div>
+          <div class="pillar-label" data-i18n="pillar.offline.label">Offline</div>
           <div class="pillar-divider"></div>
-          <p>No internet. No WiFi. No cloud.<br>RF radio + WiFi hybrid with failover.<br>A request can never be lost.</p>
+          <p data-i18n-html="pillar.offline.desc">No internet. No WiFi. No cloud.<br>RF radio + WiFi hybrid with failover.<br>A request can never be lost.</p>
         </div>
       </div>
 
@@ -1920,9 +1992,9 @@
 
       <!-- Ecosystem -->
       <div class="ecosystem-block reveal">
-        <div class="section-label">The Ecosystem</div>
-        <h2 class="section-headline" style="text-align:center;">One system. <em>Everything.</em></h2>
-        <p class="section-subline" style="text-align:center; margin: 0 auto;">From the guest's fingertip to the crew's wrist. Every device, every platform, one source. No cloud. No subscriptions. Entirely on&#8209;premises.</p>
+        <div class="section-label" data-i18n="ecosystem.label">The Ecosystem</div>
+        <h2 class="section-headline" style="text-align:center;" data-i18n-html="ecosystem.headline">One system. <em>Everything.</em></h2>
+        <p class="section-subline" style="text-align:center; margin: 0 auto;" data-i18n="ecosystem.description">From the guest's fingertip to the crew's wrist. Every device, every platform, one source. No cloud. No subscriptions. Entirely on&#8209;premises.</p>
         <img src="images/2026-02-17-obedio-ecosystem-v2.png" alt="OBEDIO ecosystem  -  button, server, and smartwatch" loading="lazy">
 
         <!-- Hover preview area -->
@@ -1933,53 +2005,53 @@
         <div class="eco-grid">
           <div class="eco-item reveal" data-preview="images/obedio-hero-render-v3.png">
             <span class="eco-icon">◉</span>
-            <h4>SmartButton</h4>
-            <p>Guest cabin, sundeck, salon. 9&#8209;month battery.</p>
+            <h4 data-i18n="ecosystem.smartbutton">SmartButton</h4>
+            <p data-i18n="ecosystem.smartbutton.desc">Guest cabin, sundeck, salon. 9&#8209;month battery.</p>
           </div>
           <div class="eco-item reveal reveal-delay-1">
             <span class="eco-icon">⬡</span>
-            <h4>Panels</h4>
-            <p>Crew interface + built&#8209;in RF repeater. Dual purpose.</p>
+            <h4 data-i18n="ecosystem.panels">Panels</h4>
+            <p data-i18n="ecosystem.panels.desc">Crew interface + built&#8209;in RF repeater. Dual purpose.</p>
           </div>
           <div class="eco-item reveal reveal-delay-1">
             <span class="eco-icon">⧫</span>
-            <h4>Local Server</h4>
-            <p>On&#8209;board AI. Translation. Routing. Full database.</p>
+            <h4 data-i18n="ecosystem.server">Local Server</h4>
+            <p data-i18n="ecosystem.server.desc">On&#8209;board AI. Translation. Routing. Full database.</p>
           </div>
           <div class="eco-item reveal reveal-delay-2">
             <span class="eco-icon">⊕</span>
-            <h4>Repeaters</h4>
-            <p>Extend RF coverage. Backup batteries. Mesh capable.</p>
+            <h4 data-i18n="ecosystem.repeaters">Repeaters</h4>
+            <p data-i18n="ecosystem.repeaters.desc">Extend RF coverage. Backup batteries. Mesh capable.</p>
           </div>
           <div class="eco-item reveal reveal-delay-2">
             <span class="eco-icon">⌚</span>
-            <h4>Apple Watch</h4>
-            <p>Full notifications. Shake gestures. Earpiece readout.</p>
+            <h4 data-i18n="ecosystem.applewatch">Apple Watch</h4>
+            <p data-i18n="ecosystem.applewatch.desc">Full notifications. Shake gestures. Earpiece readout.</p>
           </div>
           <div class="eco-item reveal reveal-delay-3">
             <span class="eco-icon">⌚</span>
-            <h4>Wear OS</h4>
-            <p>7&#8209;day battery. Same features. Crew&#8209;optimised.</p>
+            <h4 data-i18n="ecosystem.wearos">Wear OS</h4>
+            <p data-i18n="ecosystem.wearos.desc">7&#8209;day battery. Same features. Crew&#8209;optimised.</p>
           </div>
           <div class="eco-item reveal reveal-delay-3">
             <span class="eco-icon">📱</span>
-            <h4>iPhone & Android</h4>
-            <p>Full crew app. Profiles. Messaging. Duty roster.</p>
+            <h4 data-i18n="ecosystem.mobile">iPhone & Android</h4>
+            <p data-i18n="ecosystem.mobile.desc">Full crew app. Profiles. Messaging. Duty roster.</p>
           </div>
           <div class="eco-item reveal reveal-delay-4" data-preview="images/app-dashboard.jpg">
             <span class="eco-icon">▢</span>
-            <h4>iPad Dashboard</h4>
-            <p>Vessel map. All requests. Crew status. Real&#8209;time.</p>
+            <h4 data-i18n="ecosystem.dashboard">iPad Dashboard</h4>
+            <p data-i18n="ecosystem.dashboard.desc">Vessel map. All requests. Crew status. Real&#8209;time.</p>
           </div>
           <div class="eco-item reveal reveal-delay-4" data-preview="images/app-service-requests.jpg">
             <span class="eco-icon">🖥</span>
-            <h4>Web App</h4>
-            <p>Browser&#8209;based. Any device. Full functionality.</p>
+            <h4 data-i18n="ecosystem.webapp">Web App</h4>
+            <p data-i18n="ecosystem.webapp.desc">Browser&#8209;based. Any device. Full functionality.</p>
           </div>
           <div class="eco-item reveal reveal-delay-5" data-preview="images/app-messenger.jpg">
             <span class="eco-icon">💬</span>
-            <h4>Messenger</h4>
-            <p>Offline crew chat. Nothing leaves the vessel.</p>
+            <h4 data-i18n="ecosystem.messenger">Messenger</h4>
+            <p data-i18n="ecosystem.messenger.desc">Offline crew chat. Nothing leaves the vessel.</p>
           </div>
         </div>
       </div>
@@ -1991,8 +2063,8 @@
   <div id="owners" class="parallax-break">
     <img src="images/lifestyle-nightstand-book.jpg" alt="OBEDIO SmartButton on yacht cabin nightstand" class="parallax-break-img" loading="lazy">
     <div class="parallax-break-overlay">
-      <h2 class="reveal">Voice Intelligence</h2>
-      <p class="reveal">Five AIs. One perfect transcription. Thirty languages.</p>
+      <h2 class="reveal" data-i18n="break.voice.title">Voice Intelligence</h2>
+      <p class="reveal" data-i18n="break.voice.subtitle">Five AIs. One perfect transcription. Thirty languages.</p>
     </div>
   </div>
 
@@ -2002,25 +2074,25 @@
   <section class="section section-charcoal">
     <div class="section-inner">
 
-      <div class="section-label reveal">For Owners & Guests</div>
-      <h2 class="section-headline reveal reveal-delay-1" style="max-width:700px;">Time is the only luxury<br>you cannot buy back.</h2>
-      <p class="body-text reveal reveal-delay-2" style="margin-bottom:0;">No apps. No instructions. No learning curve. Press the button, speak in your language. The light confirms someone is already on the way. That's it.</p>
+      <div class="section-label reveal" data-i18n="owners.label">For Owners & Guests</div>
+      <h2 class="section-headline reveal reveal-delay-1" style="max-width:700px;" data-i18n-html="owners.headline">Time is the only luxury<br>you cannot buy back.</h2>
+      <p class="body-text reveal reveal-delay-2" style="margin-bottom:0;" data-i18n="owners.description">No apps. No instructions. No learning curve. Press the button, speak in your language. The light confirms someone is already on the way. That's it.</p>
 
       <img src="images/lifestyle-dining-table.jpg" alt="OBEDIO SmartButton on formal yacht dining table" class="owners-hero-img reveal" loading="lazy">
 
       <!-- How it works  -  simple -->
       <div style="text-align:center; margin-top:100px;">
-        <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);">Press. Speak. <em>Done.</em></h3>
+        <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);" data-i18n-html="owners.how.headline">Press. Speak. <em>Done.</em></h3>
         <div class="gold-divider-center reveal reveal-delay-1"></div>
-        <p class="body-text reveal reveal-delay-1" style="margin:0 auto;">Press the button. Speak. The same switch powers the microphone - no power, no listening. Physically impossible to eavesdrop. Speak in any of 30+ languages. Your crew receives the request instantly, translated, in writing, on their watch. A light on the button confirms someone is on the way. One press. One trip. Zero friction.</p>
+        <p class="body-text reveal reveal-delay-1" style="margin:0 auto;" data-i18n="owners.how.description">Press the button. Speak. The same switch powers the microphone - no power, no listening. Physically impossible to eavesdrop. Speak in any of 30+ languages. Your crew receives the request instantly, translated, in writing, on their watch. A light on the button confirms someone is on the way. One press. One trip. Zero friction.</p>
       </div>
 
       <!-- Language block -->
       <div class="owners-grid-reverse" style="margin-top:120px;">
         <div>
-          <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);">Speak your language.<br><em>Your crew reads theirs.</em></h3>
+          <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);" data-i18n-html="owners.language.headline">Speak your language.<br><em>Your crew reads theirs.</em></h3>
           <div class="gold-divider reveal reveal-delay-1"></div>
-          <p class="body-text reveal reveal-delay-1">Speak Turkish, Russian, Mandarin, or any of 30+ languages. Five independent AI models transcribe every word simultaneously - the system cross-references all five and delivers the most accurate result. Your crew receives it in English, instantly. Two-way: they reply, you hear it in your language. All processed on the vessel. Nothing leaves the ship.</p>
+          <p class="body-text reveal reveal-delay-1" data-i18n="owners.language.description">Speak Turkish, Russian, Mandarin, or any of 30+ languages. Five independent AI models transcribe every word simultaneously - the system cross-references all five and delivers the most accurate result. Your crew receives it in English, instantly. Two-way: they reply, you hear it in your language. All processed on the vessel. Nothing leaves the ship.</p>
         </div>
         <div class="owners-img-wrap reveal reveal-delay-1">
           <img src="images/2026-02-17-obedio-hand-press.png" alt="White-gloved hand pressing the OBEDIO button" loading="lazy">
@@ -2034,9 +2106,9 @@
             <img src="images/2026-02-17-obedio-nightstand-v3.png" alt="OBEDIO in a yacht cabin  -  nightstand" loading="lazy">
           </div>
           <div>
-            <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);">Privacy is not a feature.<br><em>It is architecture.</em></h3>
+            <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);" data-i18n-html="owners.privacy.headline">Privacy is not a feature.<br><em>It is architecture.</em></h3>
             <div class="gold-divider reveal reveal-delay-1"></div>
-            <p class="body-text reveal reveal-delay-1">Your conversations are yours. The microphone is physically disconnected until you press the button. Not a software switch - a hardware circuit. For absolute privacy, the entire microphone module can be physically removed.</p>
+            <p class="body-text reveal reveal-delay-1" data-i18n="owners.privacy.description">Your conversations are yours. The microphone is physically disconnected until you press the button. Not a software switch - a hardware circuit. For absolute privacy, the entire microphone module can be physically removed.</p>
           </div>
         </div>
 
@@ -2054,8 +2126,8 @@
                 <line x1="42" y1="28" x2="48" y2="28" stroke-linecap="round" stroke-dasharray="2 3" opacity="0.5"/>
               </svg>
             </div>
-            <h4>Hardware Mic Switch</h4>
-            <p>The microphone circuit is physically open until you press the button. No software can override this. The microphone literally cannot listen.</p>
+            <h4 data-i18n="privacy.hardware.title">Hardware Mic Switch</h4>
+            <p data-i18n="privacy.hardware.desc">The microphone circuit is physically open until you press the button. No software can override this. The microphone literally cannot listen.</p>
           </div>
           <div class="privacy-card reveal reveal-delay-1">
             <div class="priv-icon">
@@ -2067,8 +2139,8 @@
                 <path d="M24 16l4-4 4 4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <h4>Removable Module</h4>
-            <p>Don't trust any microphone? Remove the entire module. The button still works for calls - just without voice. Your choice, always.</p>
+            <h4 data-i18n="privacy.module.title">Removable Module</h4>
+            <p data-i18n="privacy.module.desc">Don't trust any microphone? Remove the entire module. The button still works for calls - just without voice. Your choice, always.</p>
           </div>
           <div class="privacy-card reveal reveal-delay-2">
             <div class="priv-icon">
@@ -2080,8 +2152,8 @@
                 <path d="M24.5 24v-2a3.5 3.5 0 0 1 7 0v2"/>
               </svg>
             </div>
-            <h4>End-to-End Encryption</h4>
-            <p>Every message, every voice recording, every request. Encrypted from button to watch. No one in between can read it.</p>
+            <h4 data-i18n="privacy.encryption.title">End-to-End Encryption</h4>
+            <p data-i18n="privacy.encryption.desc">Every message, every voice recording, every request. Encrypted from button to watch. No one in between can read it.</p>
           </div>
           <div class="privacy-card reveal reveal-delay-3">
             <div class="priv-icon">
@@ -2091,8 +2163,8 @@
                 <line x1="8" y1="8" x2="48" y2="48" stroke-linecap="round" stroke-width="1.5"/>
               </svg>
             </div>
-            <h4>Zero Cloud</h4>
-            <p>No data leaves the vessel. No cloud servers. No subscriptions. No third party ever sees your requests. Everything processed and stored on board.</p>
+            <h4 data-i18n="privacy.cloud.title">Zero Cloud</h4>
+            <p data-i18n="privacy.cloud.desc">No data leaves the vessel. No cloud servers. No subscriptions. No third party ever sees your requests. Everything processed and stored on board.</p>
           </div>
           <div class="privacy-card reveal reveal-delay-4">
             <div class="priv-icon">
@@ -2104,8 +2176,8 @@
                 <path d="M24 28c0 3 4 5 4 5s4-2 4-5" fill="none" stroke-linecap="round"/>
               </svg>
             </div>
-            <h4>Offline Messenger</h4>
-            <p>Crew communication stays on the yacht. No internet required. No WhatsApp, no iMessage, no external servers. A private network that exists only on your vessel.</p>
+            <h4 data-i18n="privacy.messenger.title">Offline Messenger</h4>
+            <p data-i18n="privacy.messenger.desc">Crew communication stays on the yacht. No internet required. No WhatsApp, no iMessage, no external servers. A private network that exists only on your vessel.</p>
           </div>
           <div class="privacy-card reveal reveal-delay-5">
             <div class="priv-icon">
@@ -2132,17 +2204,17 @@
                 <line x1="32" y1="26" x2="28" y2="30"/>
               </svg>
             </div>
-            <h4>Local AI</h4>
-            <p>Voice recognition and translation run on the on-board server. Your words are processed by your own hardware. Nothing is sent anywhere.</p>
+            <h4 data-i18n="privacy.ai.title">Local AI</h4>
+            <p data-i18n="privacy.ai.desc">Voice recognition and translation run on the on-board server. Your words are processed by your own hardware. Nothing is sent anywhere.</p>
           </div>
         </div>
       </div>
 
       <!-- Emergency mode - timeline -->
       <div class="emergency-block reveal" style="margin-top:120px;">
-        <h3>Not a feature. <em>A lifeline.</em></h3>
+        <h3 data-i18n-html="emergency.headline">Not a feature. <em>A lifeline.</em></h3>
         <div style="width:60px; height:1px; background:linear-gradient(90deg, transparent, #dc3c3c, transparent); opacity:0.4; margin:24px 0;"></div>
-        <p>Guest with a medical condition shakes the button. Instant emergency broadcast to every device on board. Location, medical profile, allergies, conditions. Every crew member sees it immediately.</p>
+        <p data-i18n="emergency.description">Guest with a medical condition shakes the button. Instant emergency broadcast to every device on board. Location, medical profile, allergies, conditions. Every crew member sees it immediately.</p>
 
         <div style="display:flex; justify-content:center; gap:0; margin-top:48px; flex-wrap:wrap; align-items:flex-start;">
           <div style="text-align:center; flex:1; min-width:140px; padding:0 12px;">
@@ -2154,7 +2226,7 @@
                 <path d="M4 12l2 2-2 2" stroke-linecap="round" opacity="0.5"/><path d="M28 12l-2 2 2 2" stroke-linecap="round" opacity="0.5"/>
               </svg>
             </div>
-            <p style="font-size:14px; color:rgba(220,60,60,0.8); font-weight:300; line-height:1.4;">Guest shakes<br>the button</p>
+            <p style="font-size:14px; color:rgba(220,60,60,0.8); font-weight:300; line-height:1.4;" data-i18n-html="emergency.timeline.shake">Guest shakes<br>the button</p>
           </div>
 
           <div style="flex:0 0 40px; display:flex; align-items:center; justify-content:center; padding-top:20px;">
@@ -2171,7 +2243,7 @@
                 <path d="M5 5a20 20 0 0 1 22 0" stroke-linecap="round" opacity="0.4"/><path d="M5 27a20 20 0 0 0 22 0" stroke-linecap="round" opacity="0.4"/>
               </svg>
             </div>
-            <p style="font-size:14px; color:rgba(220,60,60,0.8); font-weight:300; line-height:1.4;">Every device<br>on board alerts</p>
+            <p style="font-size:14px; color:rgba(220,60,60,0.8); font-weight:300; line-height:1.4;" data-i18n-html="emergency.timeline.broadcast">Every device<br>on board alerts</p>
           </div>
 
           <div style="flex:0 0 40px; display:flex; align-items:center; justify-content:center; padding-top:20px;">
@@ -2188,20 +2260,20 @@
                 <path d="M12 28l4 4 4-4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
               </svg>
             </div>
-            <p style="font-size:14px; color:rgba(220,60,60,0.8); font-weight:300; line-height:1.4;">Crew arrives<br>with full profile</p>
+            <p style="font-size:14px; color:rgba(220,60,60,0.8); font-weight:300; line-height:1.4;" data-i18n-html="emergency.timeline.response">Crew arrives<br>with full profile</p>
           </div>
         </div>
 
-        <p style="margin-top:36px; font-size:15px; font-style:italic; opacity:0.7;">Seconds matter. OBEDIO delivers them.</p>
+        <p style="margin-top:36px; font-size:15px; font-style:italic; opacity:0.7;" data-i18n="emergency.tagline">Seconds matter. OBEDIO delivers them.</p>
       </div>
 
       <!-- Room Control -->
       <div class="owners-grid" style="margin-top:120px;">
         <div>
-          <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);">One button.<br><em>The entire cabin.</em></h3>
+          <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);" data-i18n-html="owners.control.headline">One button.<br><em>The entire cabin.</em></h3>
           <div class="gold-divider reveal reveal-delay-1"></div>
-          <p class="body-text reveal reveal-delay-1">Not just a service call. OBEDIO controls your cabin. Lights, blinds, climate, scenes - all from the same button on your nightstand. No separate keypads. No learning different interfaces. One touch point for everything.</p>
-          <p class="body-text reveal reveal-delay-2" style="margin-top:24px; color:var(--muted);">Native Crestron integration. Control4 coming soon.</p>
+          <p class="body-text reveal reveal-delay-1" data-i18n="owners.control.description">Not just a service call. OBEDIO controls your cabin. Lights, blinds, climate, scenes - all from the same button on your nightstand. No separate keypads. No learning different interfaces. One touch point for everything.</p>
+          <p class="body-text reveal reveal-delay-2" style="margin-top:24px; color:var(--muted);" data-i18n="owners.control.compatibility">Native Crestron integration. Control4 coming soon.</p>
         </div>
         <div class="owners-img-wrap reveal reveal-delay-1">
           <img src="images/2026-02-17-obedio-nightstand-v3.png" alt="OBEDIO controlling cabin lighting from the nightstand" loading="lazy">
@@ -2211,9 +2283,9 @@
       <!-- Bespoke block -->
       <div class="owners-grid-reverse" style="margin-top:120px;">
         <div>
-          <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);"><em>Truly bespoke.</em></h3>
+          <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);" data-i18n-html="owners.bespoke.headline"><em>Truly bespoke.</em></h3>
           <div class="gold-divider reveal reveal-delay-1"></div>
-          <p class="body-text reveal reveal-delay-1">Square. Round. 72 mm. 65 mm. Custom. Brass, steel, leather, black PVD. Every button is made to match your yacht - not the other way around. OBEDIO is not defined by its shape. It defines its own.</p>
+          <p class="body-text reveal reveal-delay-1" data-i18n="owners.bespoke.description">Square. Round. 72 mm. 65 mm. Custom. Brass, steel, leather, black PVD. Every button is made to match your yacht - not the other way around. OBEDIO is not defined by its shape. It defines its own.</p>
         </div>
         <div class="owners-img-wrap reveal reveal-delay-1">
           <img src="images/lifestyle-cinema.jpg" alt="OBEDIO SmartButton in yacht cinema - leather armrest, movie screen" loading="lazy">
@@ -2227,8 +2299,8 @@
   <div id="crew" class="parallax-break">
     <img src="images/2026-02-17-obedio-crew-corridor.png" alt="Crew member on yacht" class="parallax-break-img" loading="lazy">
     <div class="parallax-break-overlay">
-      <h2 class="reveal">Intelligent Routing</h2>
-      <p class="reveal">The right person. Every time. Automatically.</p>
+      <h2 class="reveal" data-i18n="break.routing.title">Intelligent Routing</h2>
+      <p class="reveal" data-i18n="break.routing.subtitle">The right person. Every time. Automatically.</p>
     </div>
   </div>
 
@@ -2238,32 +2310,32 @@
   <section class="section section-dark">
     <div class="section-inner">
 
-      <div class="section-label reveal">For Crew</div>
-      <h2 class="section-headline reveal reveal-delay-1">Your Work - <em>Understood.</em></h2>
-      <p class="body-text reveal reveal-delay-2" style="margin-bottom:40px;">Built by someone who was crew. Ten years as an ETO on superyachts. Every frustration, every workaround, every "why doesn't this exist" moment. That became OBEDIO.</p>
+      <div class="section-label reveal" data-i18n="crew.label">For Crew</div>
+      <h2 class="section-headline reveal reveal-delay-1" data-i18n-html="crew.headline">Your Work - <em>Understood.</em></h2>
+      <p class="body-text reveal reveal-delay-2" style="margin-bottom:40px;" data-i18n="crew.description">Built by someone who was crew. Ten years as an ETO on superyachts. Every frustration, every workaround, every "why doesn't this exist" moment. That became OBEDIO.</p>
 
       <img src="images/2026-02-17-obedio-crew-corridor.png" alt="Crew member checking OBEDIO watch notification in yacht corridor" class="crew-hero-banner reveal" loading="lazy">
 
       <!-- HANDS-FREE HERO -->
       <div class="handsfree-hero reveal">
-        <h3>Completely <em>hands-free.</em></h3>
-        <p>Earpiece connected to the watch. A guest request comes in. The watch detects the earpiece and reads the request directly into the crew member's ear. No screen. No stopping. No looking at your wrist. You hear "Please bring still water to the sun deck" - and you're already on your way. Shake your wrist to accept.</p>
+        <h3 data-i18n-html="crew.handsfree.headline">Completely <em>hands-free.</em></h3>
+        <p data-i18n="crew.handsfree.description">Earpiece connected to the watch. A guest request comes in. The watch detects the earpiece and reads the request directly into the crew member's ear. No screen. No stopping. No looking at your wrist. You hear "Please bring still water to the sun deck" - and you're already on your way. Shake your wrist to accept.</p>
         <div class="handsfree-steps">
           <div class="handsfree-step reveal reveal-delay-1">
             <div class="handsfree-step-num">1</div>
-            <p>Guest speaks into the button</p>
+            <p data-i18n="crew.handsfree.step1">Guest speaks into the button</p>
           </div>
           <div class="handsfree-step reveal reveal-delay-2">
             <div class="handsfree-step-num">2</div>
-            <p>Earpiece reads the translated request</p>
+            <p data-i18n="crew.handsfree.step2">Earpiece reads the translated request</p>
           </div>
           <div class="handsfree-step reveal reveal-delay-3">
             <div class="handsfree-step-num">3</div>
-            <p>Shake wrist to accept</p>
+            <p data-i18n="crew.handsfree.step3">Shake wrist to accept</p>
           </div>
           <div class="handsfree-step reveal reveal-delay-4">
             <div class="handsfree-step-num">4</div>
-            <p>Button confirms to the guest</p>
+            <p data-i18n="crew.handsfree.step4">Button confirms to the guest</p>
           </div>
         </div>
       </div>
@@ -2278,8 +2350,8 @@
             <path d="M18 34l6 6 6-6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M19 18l3 3 6-6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg></div>
-          <h4>One trip, not three.</h4>
-          <p>Guest speaks into the button in any language. You read the request on your watch, in your language. Tap once to accept. One trip.</p>
+          <h4 data-i18n="crew.pain.onetrip.title">One trip, not three.</h4>
+          <p data-i18n="crew.pain.onetrip.desc">Guest speaks into the button in any language. You read the request on your watch, in your language. Tap once to accept. One trip.</p>
         </div>
         <div class="crew-pain-card reveal reveal-delay-1">
           <div class="crew-pain-icon"><svg viewBox="0 0 48 48">
@@ -2289,8 +2361,8 @@
             <path d="M6 16l4 4-4 4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
             <path d="M42 16l-4 4 4 4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
           </svg></div>
-          <h4>Shake to delegate.</h4>
-          <p>Hands full, carrying a tray, mid-service. A call comes in. Shake your wrist. It re-delegates to the next crew member on duty. No screen, no tapping.</p>
+          <h4 data-i18n="crew.pain.delegate.title">Shake to delegate.</h4>
+          <p data-i18n="crew.pain.delegate.desc">Hands full, carrying a tray, mid-service. A call comes in. Shake your wrist. It re-delegates to the next crew member on duty. No screen, no tapping.</p>
         </div>
         <div class="crew-pain-card reveal reveal-delay-2">
           <div class="crew-pain-icon"><svg viewBox="0 0 48 48">
@@ -2302,8 +2374,8 @@
             <circle cx="24" cy="29" r="6"/>
             <path d="M24 26v3l2 2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg></div>
-          <h4>Auto duty roster.</h4>
-          <p>Everyone keeps their own device. The software knows your schedule. When your shift starts, calls route to you. When it ends, they stop.</p>
+          <h4 data-i18n="crew.pain.roster.title">Auto duty roster.</h4>
+          <p data-i18n="crew.pain.roster.desc">Everyone keeps their own device. The software knows your schedule. When your shift starts, calls route to you. When it ends, they stop.</p>
         </div>
         <div class="crew-pain-card reveal reveal-delay-3">
           <div class="crew-pain-icon"><svg viewBox="0 0 48 48">
@@ -2313,8 +2385,8 @@
             <path d="M30 38h10v-24H30z"/>
             <path d="M12 24l12-12 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 3" opacity="0.5"/>
           </svg></div>
-          <h4>3-level escalation.</h4>
-          <p>Guest calls. No response? It rings again. Still nothing? Escalates to supervisor, then captain. Fully configurable. A request can never fall through.</p>
+          <h4 data-i18n="crew.pain.escalation.title">3-level escalation.</h4>
+          <p data-i18n="crew.pain.escalation.desc">Guest calls. No response? It rings again. Still nothing? Escalates to supervisor, then captain. Fully configurable. A request can never fall through.</p>
         </div>
         <div class="crew-pain-card reveal reveal-delay-4">
           <div class="crew-pain-icon"><svg viewBox="0 0 48 48">
@@ -2323,8 +2395,8 @@
             <path d="M30 17h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3h-1v5l-5-5h-6a3 3 0 0 1-3-3v-2"/>
             <circle cx="18" cy="16" r="1.5" fill="currentColor" stroke="none"/>
           </svg></div>
-          <h4>Offline Messenger.</h4>
-          <p>Send and receive messages from your watch, iPhone, Android, or web app. Silently, discreetly. No internet required. Everything stays on the yacht. Replaces radios completely.</p>
+          <h4 data-i18n="crew.pain.messenger.title">Offline Messenger.</h4>
+          <p data-i18n="crew.pain.messenger.desc">Send and receive messages from your watch, iPhone, Android, or web app. Silently, discreetly. No internet required. Everything stays on the yacht. Replaces radios completely.</p>
         </div>
         <div class="crew-pain-card reveal reveal-delay-5">
           <div class="crew-pain-icon"><svg viewBox="0 0 48 48">
@@ -2334,8 +2406,8 @@
             <rect x="13" y="17" width="22" height="14" rx="1" opacity="0.3"/>
             <text x="24" y="29" text-anchor="middle" font-family="Cinzel,serif" font-size="14" font-weight="500" fill="currentColor" stroke="none">7d</text>
           </svg></div>
-          <h4>7-day watch battery.</h4>
-          <p>Not another thing to charge. The optimised Wear OS watch lasts up to seven days. A reliable tool, not another liability.</p>
+          <h4 data-i18n="crew.pain.battery.title">7-day watch battery.</h4>
+          <p data-i18n="crew.pain.battery.desc">Not another thing to charge. The optimised Wear OS watch lasts up to seven days. A reliable tool, not another liability.</p>
         </div>
       </div>
 
@@ -2346,18 +2418,18 @@
             <img src="images/2026-02-17-obedio-watch-notification.png" alt="OBEDIO smartwatch showing translated guest request" loading="lazy">
           </div>
           <div class="crew-feature-text">
-            <h3 class="reveal">Guest speaks Russian.<br><span class="gold-text">You read English.</span></h3>
+            <h3 class="reveal" data-i18n-html="crew.watch.headline">Guest speaks Russian.<br><span class="gold-text">You read English.</span></h3>
             <div class="gold-divider reveal reveal-delay-1"></div>
-            <p class="reveal reveal-delay-1">Full request on the watch before you move. Translated. Five AIs cross-checked every word - you get the most accurate transcription possible. Guest profile with preferences, dietary restrictions, and location. You arrive prepared, not guessing. Still unsure? Play back the original audio.</p>
+            <p class="reveal reveal-delay-1" data-i18n="crew.watch.description">Full request on the watch before you move. Translated. Five AIs cross-checked every word - you get the most accurate transcription possible. Guest profile with preferences, dietary restrictions, and location. You arrive prepared, not guessing. Still unsure? Play back the original audio.</p>
           </div>
         </div>
       </div>
 
       <!-- MANAGEMENT & DASHBOARD -->
       <div style="margin-top:120px;">
-        <div class="section-label reveal">Crew Management</div>
-        <h3 class="section-headline reveal reveal-delay-1" style="font-size:clamp(28px,3.5vw,44px);">Command the vessel.<br><em>From one screen.</em></h3>
-        <p class="body-text reveal reveal-delay-2">Crewify management software. iPad dashboard. Interactive vessel map. Everything a chief stew, purser, or captain needs to run service operations.</p>
+        <div class="section-label reveal" data-i18n="crew.mgmt.label">Crew Management</div>
+        <h3 class="section-headline reveal reveal-delay-1" style="font-size:clamp(28px,3.5vw,44px);" data-i18n-html="crew.mgmt.headline">Command the vessel.<br><em>From one screen.</em></h3>
+        <p class="body-text reveal reveal-delay-2" data-i18n="crew.mgmt.description">Crewify management software. iPad dashboard. Interactive vessel map. Everything a chief stew, purser, or captain needs to run service operations.</p>
 
         <!-- Dashboard screenshot -->
         <div class="reveal" style="margin: 60px 0;">
@@ -2367,9 +2439,9 @@
         <!-- Service Requests screenshot -->
         <div class="owners-grid" style="margin-top:80px;">
           <div>
-            <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);">Live service requests.<br><em>Accept or delegate.</em></h3>
+            <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);" data-i18n-html="crew.mgmt.requests.headline">Live service requests.<br><em>Accept or delegate.</em></h3>
             <div class="gold-divider reveal reveal-delay-1"></div>
-            <p class="body-text reveal reveal-delay-1">Every guest request appears as a card with location photo, voice transcript, and priority level. Accept with one tap or delegate to the next crew member. Three levels of automatic escalation ensure nothing is ever missed.</p>
+            <p class="body-text reveal reveal-delay-1" data-i18n="crew.mgmt.requests.description">Every guest request appears as a card with location photo, voice transcript, and priority level. Accept with one tap or delegate to the next crew member. Three levels of automatic escalation ensure nothing is ever missed.</p>
           </div>
           <div class="reveal reveal-delay-1" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
             <img src="images/app-service-requests.jpg" alt="OBEDIO Service Requests - voice transcripts with accept and delegate" style="width:100%; display:block;" loading="lazy">
@@ -2379,9 +2451,9 @@
         <!-- Crew + Duty Roster -->
         <div class="owners-grid-reverse" style="margin-top:80px;">
           <div>
-            <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);">Crew roster.<br><em>Who's on, who's next.</em></h3>
+            <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);" data-i18n-html="crew.mgmt.roster.headline">Crew roster.<br><em>Who's on, who's next.</em></h3>
             <div class="gold-divider reveal reveal-delay-1"></div>
-            <p class="body-text reveal reveal-delay-1">Full duty roster with shift scheduling calendar. Drag-and-drop crew assignment, autofill patterns, morning/afternoon/night shifts. Export, print, notify crew. Everything runs automatically once set up.</p>
+            <p class="body-text reveal reveal-delay-1" data-i18n="crew.mgmt.roster.description">Full duty roster with shift scheduling calendar. Drag-and-drop crew assignment, autofill patterns, morning/afternoon/night shifts. Export, print, notify crew. Everything runs automatically once set up.</p>
           </div>
           <div class="reveal reveal-delay-1" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
             <img src="images/app-duty-roster-calendar.jpg" alt="OBEDIO Duty Roster - monthly calendar with shift scheduling" style="width:100%; display:block;" loading="lazy">
@@ -2391,9 +2463,9 @@
         <!-- Guest Profiles + Locations -->
         <div class="owners-grid" style="margin-top:80px;">
           <div>
-            <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);">Guest profiles.<br><em>Know before you arrive.</em></h3>
+            <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);" data-i18n-html="crew.mgmt.profiles.headline">Guest profiles.<br><em>Know before you arrive.</em></h3>
             <div class="gold-divider reveal reveal-delay-1"></div>
-            <p class="body-text reveal reveal-delay-1">Name, cabin, dietary restrictions, allergies, VIP status, check-in date. Every crew member sees who they're serving. Filter by onboard, expected, or VIP. Allergy alerts protect your guests.</p>
+            <p class="body-text reveal reveal-delay-1" data-i18n="crew.mgmt.profiles.description">Name, cabin, dietary restrictions, allergies, VIP status, check-in date. Every crew member sees who they're serving. Filter by onboard, expected, or VIP. Allergy alerts protect your guests.</p>
           </div>
           <div class="reveal reveal-delay-1" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
             <img src="images/app-guests.jpg" alt="OBEDIO Guests List - profiles with dietary alerts and allergies" style="width:100%; display:block;" loading="lazy">
@@ -2403,9 +2475,9 @@
         <!-- Device Manager + Messenger -->
         <div class="owners-grid-reverse" style="margin-top:80px;">
           <div>
-            <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);">Device manager.<br><em>Every button, every watch.</em></h3>
+            <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);" data-i18n-html="crew.mgmt.devices.headline">Device manager.<br><em>Every button, every watch.</em></h3>
             <div class="gold-divider reveal reveal-delay-1"></div>
-            <p class="body-text reveal reveal-delay-1">Monitor all SmartButtons, watches, repeaters, and mobile apps from one screen. Battery levels, signal strength, temperature, connection status, last seen. Configure every button's press actions, LED behaviour, and shake sensitivity.</p>
+            <p class="body-text reveal reveal-delay-1" data-i18n="crew.mgmt.devices.description">Monitor all SmartButtons, watches, repeaters, and mobile apps from one screen. Battery levels, signal strength, temperature, connection status, last seen. Configure every button's press actions, LED behaviour, and shake sensitivity.</p>
           </div>
           <div class="reveal reveal-delay-1" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
             <img src="images/app-device-manager.jpg" alt="OBEDIO Device Manager - SmartButton status and monitoring" style="width:100%; display:block;" loading="lazy">
@@ -2424,9 +2496,9 @@
 
         <!-- Escalation settings -->
         <div style="text-align:center; margin-top:80px;">
-          <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);"><em>Three levels. Fully configurable.</em></h3>
+          <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);" data-i18n-html="crew.mgmt.escalation.headline"><em>Three levels. Fully configurable.</em></h3>
           <div class="gold-divider-center reveal reveal-delay-1"></div>
-          <p class="body-text reveal reveal-delay-1" style="margin:0 auto;">Level 1: Re-alert on-duty crew. Level 2: Notify supervisors and HODs. Level 3: Emergency broadcast to entire crew. Timeouts, roles, and sound intensity - all adjustable.</p>
+          <p class="body-text reveal reveal-delay-1" style="margin:0 auto;" data-i18n="crew.mgmt.escalation.description">Level 1: Re-alert on-duty crew. Level 2: Notify supervisors and HODs. Level 3: Emergency broadcast to entire crew. Timeouts, roles, and sound intensity - all adjustable.</p>
           <div class="reveal reveal-delay-2" style="max-width:500px; margin:40px auto 0; border-radius:12px; overflow:hidden; border: 1px solid rgba(201,169,98,0.15);">
             <img src="images/app-escalation.jpg" alt="OBEDIO Escalation Settings - 3-level automatic escalation configuration" style="width:100%; display:block;" loading="lazy">
           </div>
@@ -2440,8 +2512,8 @@
   <div id="integrators" class="parallax-break">
     <img src="images/render-exploded-view.jpg" alt="OBEDIO SmartButton exploded view - engineering detail" class="parallax-break-img" loading="lazy">
     <div class="parallax-break-overlay">
-      <h2 class="reveal">Integration</h2>
-      <p class="reveal">Crestron. KNX. Control4. Built to fit your stack.</p>
+      <h2 class="reveal" data-i18n="break.integration.title">Integration</h2>
+      <p class="reveal" data-i18n="break.integration.subtitle">Crestron. KNX. Control4. Built to fit your stack.</p>
     </div>
   </div>
 
@@ -2451,9 +2523,9 @@
   <section class="section section-surface">
     <div class="section-inner">
 
-      <div class="section-label reveal">For Integrators</div>
-      <h2 class="section-headline reveal reveal-delay-1">Install it.<br><em>Sleep well.</em></h2>
-      <p class="body-text reveal reveal-delay-2">No 3 AM calls. Every layer has a failover. Designed by a Crestron-certified, KNX-certified engineer who spent a decade at sea and knows what breaks.</p>
+      <div class="section-label reveal" data-i18n="integrators.label">For Integrators</div>
+      <h2 class="section-headline reveal reveal-delay-1" data-i18n-html="integrators.headline">Install it.<br><em>Sleep well.</em></h2>
+      <p class="body-text reveal reveal-delay-2" data-i18n="integrators.description">No 3 AM calls. Every layer has a failover. Designed by a Crestron-certified, KNX-certified engineer who spent a decade at sea and knows what breaks.</p>
 
       <!-- Reliability stats -->
       <div class="integrator-stats reveal">
@@ -2465,7 +2537,7 @@
             <circle cx="22" cy="22" r="3"/>
           </svg></div>
           <h3>2</h3>
-          <p>Comm channels</p>
+          <p data-i18n="integrators.stat.channels">Comm channels</p>
         </div>
         <div class="integrator-stat">
           <div class="integrator-stat-icon"><svg viewBox="0 0 44 44">
@@ -2477,7 +2549,7 @@
             <path d="M6 10a22 22 0 0 1 32 0" fill="none" stroke-linecap="round" opacity="0.3"/>
           </svg></div>
           <h3>3</h3>
-          <p>RF frequencies</p>
+          <p data-i18n="integrators.stat.frequencies">RF frequencies</p>
         </div>
         <div class="integrator-stat">
           <div class="integrator-stat-icon"><svg viewBox="0 0 44 44">
@@ -2495,7 +2567,7 @@
             <line x1="24" y1="28" x2="26" y2="28"/>
           </svg></div>
           <h3>5</h3>
-          <p>AI transcription engines</p>
+          <p data-i18n="integrators.stat.ai">AI transcription engines</p>
         </div>
         <div class="integrator-stat">
           <div class="integrator-stat-icon"><svg viewBox="0 0 44 44">
@@ -2504,16 +2576,16 @@
             <line x1="8" y1="8" x2="36" y2="36" stroke-linecap="round" stroke-width="1.5"/>
           </svg></div>
           <h3>0</h3>
-          <p>Cloud dependencies</p>
+          <p data-i18n="integrators.stat.cloud">Cloud dependencies</p>
         </div>
       </div>
 
       <!-- Button Configuration -->
       <div class="owners-grid" style="margin:100px 0 0;">
         <div>
-          <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);">Every press.<br><em>Fully configurable.</em></h3>
+          <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);" data-i18n-html="integrators.config.headline">Every press.<br><em>Fully configurable.</em></h3>
           <div class="gold-divider reveal reveal-delay-1"></div>
-          <p class="body-text reveal reveal-delay-1">Single press, double press, long press, touch, shake - each action is independently configurable per button. Voice recording, simple call, urgent call, emergency broadcast. LED colours, audio feedback, shake sensitivity. Six tabs of configuration, zero complexity for the guest.</p>
+          <p class="body-text reveal reveal-delay-1" data-i18n="integrators.config.description">Single press, double press, long press, touch, shake - each action is independently configurable per button. Voice recording, simple call, urgent call, emergency broadcast. LED colours, audio feedback, shake sensitivity. Six tabs of configuration, zero complexity for the guest.</p>
         </div>
         <div class="reveal reveal-delay-1" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
           <img src="images/app-device-config.jpg" alt="OBEDIO SmartButton Configuration - press actions, voice, shake settings" style="width:100%; display:block;" loading="lazy">
@@ -2526,34 +2598,34 @@
           <img src="images/lifestyle-gym-wall.jpg" alt="OBEDIO SmartButton wall-mounted in yacht gym with ocean view" loading="lazy">
         </div>
         <div>
-          <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);"><em>Panels with built-in repeater.</em></h3>
+          <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);" data-i18n-html="integrators.panels.headline"><em>Panels with built-in repeater.</em></h3>
           <div class="gold-divider reveal reveal-delay-1"></div>
-          <p class="body-text reveal reveal-delay-1">Public area panels serve double duty: crew interface and RF repeater in one device. Place them in hallways, pantry, bridge. Fewer devices to install, fewer power points to plan, full coverage built in.</p>
+          <p class="body-text reveal reveal-delay-1" data-i18n="integrators.panels.description">Public area panels serve double duty: crew interface and RF repeater in one device. Place them in hallways, pantry, bridge. Fewer devices to install, fewer power points to plan, full coverage built in.</p>
         </div>
       </div>
 
       <!-- Compatibility -->
       <div style="text-align:center; margin:100px 0 0;">
-        <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);"><em>Everything from the nightstand.</em></h3>
-        <p class="body-text reveal reveal-delay-1" style="margin:0 auto;">Lights, blinds, climate, scenes - and a service call. One button replaces the keypad and the call button. No reaching for a panel, no getting out of bed. Native Crestron and KNX integration. Control4 in development.</p>
+        <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);" data-i18n-html="integrators.roomcontrol.headline"><em>Everything from the nightstand.</em></h3>
+        <p class="body-text reveal reveal-delay-1" style="margin:0 auto;" data-i18n="integrators.roomcontrol.description">Lights, blinds, climate, scenes - and a service call. One button replaces the keypad and the call button. No reaching for a panel, no getting out of bed. Native Crestron and KNX integration. Control4 in development.</p>
       </div>
 
       <div class="compat-grid reveal" style="margin-top:60px;">
         <div class="compat-item">
-          <div class="compat-name">Crestron</div>
-          <div class="compat-status ready">✓ Available</div>
+          <div class="compat-name" data-i18n="integrators.compat.crestron">Crestron</div>
+          <div class="compat-status ready" data-i18n="integrators.compat.crestron.status">✓ Available</div>
         </div>
         <div class="compat-item">
-          <div class="compat-name">KNX</div>
-          <div class="compat-status ready">✓ Available</div>
+          <div class="compat-name" data-i18n="integrators.compat.knx">KNX</div>
+          <div class="compat-status ready" data-i18n="integrators.compat.knx.status">✓ Available</div>
         </div>
         <div class="compat-item">
-          <div class="compat-name">Control4</div>
-          <div class="compat-status soon">Coming Soon</div>
+          <div class="compat-name" data-i18n="integrators.compat.control4">Control4</div>
+          <div class="compat-status soon" data-i18n="integrators.compat.control4.status">Coming Soon</div>
         </div>
         <div class="compat-item">
-          <div class="compat-name">REST API</div>
-          <div class="compat-status ready">✓ Open</div>
+          <div class="compat-name" data-i18n="integrators.compat.api">REST API</div>
+          <div class="compat-status ready" data-i18n="integrators.compat.api.status">✓ Open</div>
         </div>
       </div>
 
@@ -2569,8 +2641,8 @@
             <text x="26" y="18" text-anchor="middle" font-family="Cinzel,serif" font-size="7" fill="currentColor" stroke="none" opacity="0.5">RF</text>
             <text x="26" y="42" text-anchor="middle" font-family="Cinzel,serif" font-size="7" fill="currentColor" stroke="none" opacity="0.5">WiFi</text>
           </svg></div>
-          <h4>Dual Communication</h4>
-          <p>RF radio + WiFi. Voice-to-text uses WiFi. Everything else runs on RF. If one drops, the other takes over. Two independent channels, switching automatically.</p>
+          <h4 data-i18n="tech.dual.title">Dual Communication</h4>
+          <p data-i18n="tech.dual.desc">RF radio + WiFi. Voice-to-text uses WiFi. Everything else runs on RF. If one drops, the other takes over. Two independent channels, switching automatically.</p>
         </div>
         <div class="tech-card reveal reveal-delay-1">
           <div class="tech-icon"><svg viewBox="0 0 52 52">
@@ -2582,8 +2654,8 @@
             <text x="48" y="30" font-family="Cinzel,serif" font-size="6" fill="currentColor" stroke="none" opacity="0.5">868</text>
             <text x="48" y="20" font-family="Cinzel,serif" font-size="6" fill="currentColor" stroke="none" opacity="0.5">915</text>
           </svg></div>
-          <h4>Multi-Frequency RF</h4>
-          <p>Supports 433, 868, and 915 MHz. The system detects the vessel's location and switches to the correct regional frequency automatically. Install once, works everywhere.</p>
+          <h4 data-i18n="tech.frequency.title">Multi-Frequency RF</h4>
+          <p data-i18n="tech.frequency.desc">Supports 433, 868, and 915 MHz. The system detects the vessel's location and switches to the correct regional frequency automatically. Install once, works everywhere.</p>
         </div>
         <div class="tech-card reveal reveal-delay-2">
           <div class="tech-icon"><svg viewBox="0 0 52 52">
@@ -2644,7 +2716,7 @@
 
       <!-- Bottom line -->
       <div style="text-align:center; margin-top:100px;" class="reveal">
-        <p class="section-subline" style="margin:0 auto; font-style:italic; color:var(--cream-dim);">No internet? Works. No WiFi? Works. No power? Works. Server down? Works.<br>A guest request cannot be lost.</p>
+        <p class="section-subline" style="margin:0 auto; font-style:italic; color:var(--cream-dim);" data-i18n-html="integrators.bottomline">No internet? Works. No WiFi? Works. No power? Works. Server down? Works.<br>A guest request cannot be lost.</p>
       </div>
 
     </div>
@@ -2654,8 +2726,8 @@
   <div id="craftsmanship" class="parallax-break">
     <img src="images/2026-02-17-obedio-sundeck-v2.png" alt="OBEDIO SmartButton on yacht sundeck" class="parallax-break-img" loading="lazy">
     <div class="parallax-break-overlay">
-      <h2 class="reveal">Craftsmanship</h2>
-      <p class="reveal">10 bespoke finishes. Designed for the world's finest vessels.</p>
+      <h2 class="reveal" data-i18n="break.craftsmanship.title">Craftsmanship</h2>
+      <p class="reveal" data-i18n="break.craftsmanship.subtitle">10 bespoke finishes. Designed for the world's finest vessels.</p>
     </div>
   </div>
 
@@ -2666,9 +2738,9 @@
     <div class="section-inner">
 
       <div style="text-align:center;">
-        <div class="section-label reveal">Craftsmanship</div>
-        <h2 class="section-headline reveal reveal-delay-1" style="text-align:center;"><em>Every button is bespoke.</em></h2>
-        <p class="section-subline reveal reveal-delay-2" style="text-align:center; margin:0 auto;">From a sketch on a post-it to a precision-machined instrument. Every OBEDIO button follows the same journey.</p>
+        <div class="section-label reveal" data-i18n="craftsmanship.label">Craftsmanship</div>
+        <h2 class="section-headline reveal reveal-delay-1" style="text-align:center;" data-i18n-html="craftsmanship.headline"><em>Every button is bespoke.</em></h2>
+        <p class="section-subline reveal reveal-delay-2" style="text-align:center; margin:0 auto;" data-i18n="craftsmanship.description">From a sketch on a post-it to a precision-machined instrument. Every OBEDIO button follows the same journey.</p>
       </div>
 
       <!-- Bespoke Journey: 6 Steps -->
@@ -2760,9 +2832,9 @@
 
       <!-- Exploded view - engineering -->
       <div class="reveal" style="margin-top:120px; text-align:center;">
-        <div class="section-label">What's Inside</div>
-        <h3 class="section-headline" style="text-align:center; font-size:clamp(28px,3.5vw,44px);"><em>Every component has a purpose.</em></h3>
-        <p class="section-subline" style="text-align:center; margin:0 auto 48px;">PCB, battery, RF antenna, microphone module, LED diffuser, CNC-machined enclosure. Nothing is decorative. Everything is engineered.</p>
+        <div class="section-label" data-i18n="craftsmanship.inside.label">What's Inside</div>
+        <h3 class="section-headline" style="text-align:center; font-size:clamp(28px,3.5vw,44px);" data-i18n-html="craftsmanship.inside.headline"><em>Every component has a purpose.</em></h3>
+        <p class="section-subline" style="text-align:center; margin:0 auto 48px;" data-i18n="craftsmanship.inside.description">PCB, battery, RF antenna, microphone module, LED diffuser, CNC-machined enclosure. Nothing is decorative. Everything is engineered.</p>
         <img src="images/render-exploded-view.jpg" alt="OBEDIO SmartButton exploded view - PCB, battery, enclosure, buttons" class="img-full" style="max-width:1000px; margin:0 auto;" loading="lazy">
       </div>
 
@@ -2773,7 +2845,7 @@
 
       <!-- Finishes list -->
       <div style="text-align:center; margin-top:80px;">
-        <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px); text-align:center;"><em>10 finishes.</em> One standard: yours.</h3>
+        <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px); text-align:center;" data-i18n-html="craftsmanship.finishes.headline"><em>10 finishes.</em> One standard: yours.</h3>
         <div class="finishes-list reveal reveal-delay-1">
           <span class="finish-item">Polished Brass</span>
           <span class="finish-item">Brushed Brass</span>
@@ -2800,32 +2872,32 @@
       <div class="reveal" style="margin-bottom:40px;">
         <img src="images/syts-logo.png" alt="Superyacht Technology Show" style="max-width:280px; width:100%; display:block; margin:0 auto; opacity:0.9;">
       </div>
-      <h2 class="section-headline reveal reveal-delay-1" style="text-align:center;">See you in <em>Barcelona.</em></h2>
+      <h2 class="section-headline reveal reveal-delay-1" style="text-align:center;" data-i18n-html="syts.headline">See you in <em>Barcelona.</em></h2>
 
       <div class="gold-divider-center reveal reveal-delay-2"></div>
 
-      <div class="syts-date reveal reveal-delay-2">March 10 - 11, 2026</div>
-      <div class="syts-booth reveal reveal-delay-3">Booth IH12</div>
-      <p class="syts-detail reveal reveal-delay-3">TECHTalks Speaker - March 11, 13:45</p>
+      <div class="syts-date reveal reveal-delay-2" data-i18n="syts.date">March 10 - 11, 2026</div>
+      <div class="syts-booth reveal reveal-delay-3" data-i18n="syts.booth">Booth IH12</div>
+      <p class="syts-detail reveal reveal-delay-3" data-i18n="syts.speaker">TECHTalks Speaker - March 11, 13:45</p>
 
       <!-- Countdown -->
       <div class="reveal reveal-delay-3" style="display:flex; justify-content:center; gap:0; margin-top:60px; flex-wrap:wrap; text-align:center;">
         <div style="flex:0 0 auto; padding:16px 32px; border-right:1px solid rgba(201,169,98,0.1);">
           <div id="countDays" style="font-family:'Cinzel',serif; font-size:clamp(36px,5vw,64px); color:var(--gold); font-weight:400; line-height:1;">--</div>
-          <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Days</div>
+          <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; margin-top:8px;" data-i18n="syts.countdown.days">Days</div>
         </div>
         <div style="flex:0 0 auto; padding:16px 32px; border-right:1px solid rgba(201,169,98,0.1);">
           <div id="countHours" style="font-family:'Cinzel',serif; font-size:clamp(36px,5vw,64px); color:var(--gold); font-weight:400; line-height:1;">--</div>
-          <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Hours</div>
+          <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; margin-top:8px;" data-i18n="syts.countdown.hours">Hours</div>
         </div>
         <div style="flex:0 0 auto; padding:16px 32px;">
           <div id="countMin" style="font-family:'Cinzel',serif; font-size:clamp(36px,5vw,64px); color:var(--gold); font-weight:400; line-height:1;">--</div>
-          <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Minutes</div>
+          <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; margin-top:8px;" data-i18n="syts.countdown.minutes">Minutes</div>
         </div>
       </div>
 
       <div style="margin-top:40px;" class="reveal reveal-delay-4">
-        <a href="mailto:info@obedio.de?subject=SYTS%20Barcelona%20 - %20Meeting%20Request" class="cta-button">Book a Meeting</a>
+        <a href="mailto:info@obedio.de?subject=SYTS%20Barcelona%20 - %20Meeting%20Request" class="cta-button" data-i18n="syts.cta">Book a Meeting</a>
       </div>
 
     </div>
@@ -2837,24 +2909,24 @@
   <section id="story" class="section section-dark">
     <div class="section-inner">
 
-      <div class="section-label reveal">The Story</div>
+      <div class="section-label reveal" data-i18n="story.label">The Story</div>
 
       <div class="owners-grid" style="gap:60px; align-items:center;">
         <div>
-          <blockquote class="story-quote reveal reveal-delay-1" style="font-size:clamp(24px, 3.5vw, 40px);">
+          <blockquote class="story-quote reveal reveal-delay-1" style="font-size:clamp(24px, 3.5vw, 40px);" data-i18n="story.quote">
             "Ten years at sea taught me one thing: the call system was always the weakest link."
           </blockquote>
 
           <div class="gold-divider reveal reveal-delay-2"></div>
 
-          <p class="body-text reveal reveal-delay-2" style="max-width:640px;">Every system I tried left the same problems unsolved. Dead batteries by dinner service. Three trips for a glass of water. Radios ruining the uniform. Language barriers that no one addressed. So I built the system I wished existed. Not from a boardroom - from the crew mess, from the engine room, from years of doing the work.</p>
+          <p class="body-text reveal reveal-delay-2" style="max-width:640px;" data-i18n="story.description">Every system I tried left the same problems unsolved. Dead batteries by dinner service. Three trips for a glass of water. Radios ruining the uniform. Language barriers that no one addressed. So I built the system I wished existed. Not from a boardroom - from the crew mess, from the engine room, from years of doing the work.</p>
 
           <div class="story-attribution reveal reveal-delay-3">
-            <div class="name">Branko Blagojević</div>
-            <div class="title">Founder - ETO, Crestron Certified, KNX Certified</div>
+            <div class="name" data-i18n="story.founder">Branko Blagojević</div>
+            <div class="title" data-i18n="story.title">Founder - ETO, Crestron Certified, KNX Certified</div>
           </div>
 
-          <p class="reveal reveal-delay-3" style="margin-top:36px; font-family:'Cormorant Garamond',serif; font-size:clamp(20px,2.5vw,28px); font-weight:400; font-style:italic; color:var(--gold); opacity:0.8;">Built by crew. For crew.</p>
+          <p class="reveal reveal-delay-3" style="margin-top:36px; font-family:'Cormorant Garamond',serif; font-size:clamp(20px,2.5vw,28px); font-weight:400; font-style:italic; color:var(--gold); opacity:0.8;" data-i18n="story.tagline">Built by crew. For crew.</p>
         </div>
         <div class="reveal reveal-delay-2" style="text-align:center;">
           <img src="images/branko-portrait-officer.jpg" alt="Branko Blagojević - Founder of OBEDIO, former yacht ETO" style="width:100%; max-width:440px; border-radius:2px; display:block; margin:0 auto;" loading="lazy">
@@ -2865,19 +2937,19 @@
       <div class="reveal" style="display:flex; justify-content:center; gap:0; margin-top:80px; flex-wrap:wrap; text-align:center;">
         <div style="flex:1; min-width:120px; padding:24px 16px; border-right:1px solid rgba(201,169,98,0.1);">
           <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,40px); color:var(--gold); font-weight:400; line-height:1;">10</div>
-          <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Years at sea</div>
+          <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:8px;" data-i18n="story.stat.years">Years at sea</div>
         </div>
         <div style="flex:1; min-width:120px; padding:24px 16px; border-right:1px solid rgba(201,169,98,0.1);">
           <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,40px); color:var(--gold); font-weight:400; line-height:1;">30+</div>
-          <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Languages</div>
+          <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:8px;" data-i18n="story.stat.languages">Languages</div>
         </div>
         <div style="flex:1; min-width:120px; padding:24px 16px; border-right:1px solid rgba(201,169,98,0.1);">
           <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,40px); color:var(--gold); font-weight:400; line-height:1;">100%</div>
-          <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Offline</div>
+          <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:8px;" data-i18n="story.stat.offline">Offline</div>
         </div>
         <div style="flex:1; min-width:120px; padding:24px 16px;">
           <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,40px); color:var(--gold); font-weight:400; line-height:1;">0</div>
-          <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:8px;">Cloud dependency</div>
+          <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:8px;" data-i18n="story.stat.cloud">Cloud dependency</div>
         </div>
       </div>
 
@@ -2890,8 +2962,8 @@
   <section id="contact" class="section section-surface contact-section">
     <div class="section-inner" style="text-align:center;">
 
-      <div class="section-label reveal">Contact</div>
-      <h2 class="section-headline reveal reveal-delay-1" style="text-align:center;"><em>Begin the conversation.</em></h2>
+      <div class="section-label reveal" data-i18n="contact.label">Contact</div>
+      <h2 class="section-headline reveal reveal-delay-1" style="text-align:center;" data-i18n-html="contact.headline"><em>Begin the conversation.</em></h2>
 
       <div class="gold-divider-center reveal reveal-delay-2"></div>
 
@@ -2905,7 +2977,7 @@
       </div>
 
       <div style="margin-top:60px;" class="reveal reveal-delay-3">
-        <a href="mailto:info@obedio.de?subject=Inquiry%20 - %20OBEDIO" class="cta-button">Get in Touch</a>
+        <a href="mailto:info@obedio.de?subject=Inquiry%20 - %20OBEDIO" class="cta-button" data-i18n="contact.cta">Get in Touch</a>
       </div>
 
     </div>
@@ -2916,7 +2988,7 @@
        ════════════════════════════════════════ -->
   <footer class="footer">
     <div class="footer-logo"><img src="images/obedio-wordmark-gold.svg" alt="OBEDIO"></div>
-    <div class="footer-copy">© 2026 OBEDIO. The Intelligence of Service.</div>
+    <div class="footer-copy" data-i18n="footer.copy">© 2026 OBEDIO. The Intelligence of Service.</div>
     <div style="margin-top:20px; display:flex; justify-content:center; gap:24px; align-items:center;">
       <a href="https://www.linkedin.com/in/branko-blagojevic-820548a6" target="_blank" title="Branko on LinkedIn" style="color:var(--muted); transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -3299,6 +3371,11 @@
 
     animate();
   </script>
+
+  <!-- ══════════════════════════════════════
+       I18N TRANSLATION SYSTEM
+       ══════════════════════════════════════ -->
+  <script src="i18n.js"></script>
 
 </body>
 </html>
