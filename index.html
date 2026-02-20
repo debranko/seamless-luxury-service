@@ -1997,11 +1997,7 @@
         <p class="section-subline" style="text-align:center; margin: 0 auto;" data-i18n="ecosystem.description">From the guest's fingertip to the crew's wrist. Every device, every platform, one source. No cloud. No subscriptions. Entirely on&#8209;premises.</p>
         <img src="images/2026-02-17-obedio-ecosystem-v2.webp" alt="OBEDIO ecosystem  -  button, server, and smartwatch" loading="lazy">
 
-        <!-- Hover preview area -->
-        <div id="ecoPreview" style="max-width:700px; margin:40px auto 0; overflow:hidden; transition:opacity 0.4s ease, max-height 0.4s ease; opacity:0; max-height:0; border-radius:4px; border:1px solid rgba(201,169,98,0.1);">
-          <img id="ecoPreviewImg" src="" alt="" style="width:100%; display:block; aspect-ratio:16/9;">
-        </div>
-
+        <div style="position:relative;">
         <div class="eco-grid">
           <div class="eco-item reveal" data-preview="images/obedio-hero-render-v3.webp">
             <span class="eco-icon">◉</span>
@@ -2053,6 +2049,11 @@
             <h4 data-i18n="ecosystem.messenger">Messenger</h4>
             <p data-i18n="ecosystem.messenger.desc">Offline crew chat. Nothing leaves the vessel.</p>
           </div>
+        </div>
+        <!-- Hover preview overlay - absolutely positioned so no layout shift -->
+        <div id="ecoPreview" style="position:absolute; top:0; left:50%; transform:translateX(-50%); max-width:700px; width:100%; z-index:10; overflow:hidden; transition:opacity 0.4s ease; opacity:0; pointer-events:auto; border-radius:4px; border:1px solid rgba(201,169,98,0.1); background:var(--black);">
+          <img id="ecoPreviewImg" src="" alt="" style="width:100%; display:block; aspect-ratio:16/9;">
+        </div>
         </div>
       </div>
 
@@ -3139,15 +3140,14 @@
         if (src && ecoPreview && ecoPreviewImg) {
           ecoPreviewImg.src = src;
           ecoPreviewImg.alt = item.querySelector('h4').textContent;
-          ecoPreview.style.maxHeight = '500px';
           ecoPreview.style.opacity = '1';
+          ecoPreview.style.pointerEvents = 'auto';
         }
       });
       item.addEventListener('mouseleave', () => {
         previewTimeout = setTimeout(() => {
           if (ecoPreview) {
-            ecoPreview.style.opacity = '0';
-            setTimeout(() => { ecoPreview.style.maxHeight = '0'; }, 400);
+            ecoPreview.style.opacity = '0'; ecoPreview.style.pointerEvents = 'none';
           }
         }, 300);
       });
@@ -3158,8 +3158,7 @@
       ecoPreview.addEventListener('mouseenter', () => clearTimeout(previewTimeout));
       ecoPreview.addEventListener('mouseleave', () => {
         previewTimeout = setTimeout(() => {
-          ecoPreview.style.opacity = '0';
-          setTimeout(() => { ecoPreview.style.maxHeight = '0'; }, 400);
+          ecoPreview.style.opacity = '0'; ecoPreview.style.pointerEvents = 'none';
         }, 300);
       });
     }
