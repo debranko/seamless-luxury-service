@@ -2049,8 +2049,8 @@
             <p data-i18n="ecosystem.messenger.desc">Offline crew chat. Nothing leaves the vessel.</p>
           </div>
         </div>
-        <!-- Hover preview - fixed height container to prevent layout shift -->
-        <div id="ecoPreview" style="max-width:700px; margin:40px auto 0; height:420px; overflow:hidden; transition:opacity 0.4s ease; opacity:0; border-radius:4px; border:1px solid rgba(201,169,98,0.1); display:none;">
+        <!-- Hover preview - floating toast overlay -->
+        <div id="ecoPreview" style="position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); max-width:600px; width:90%; z-index:9999; overflow:hidden; transition:opacity 0.3s ease; opacity:0; pointer-events:none; border-radius:8px; border:1px solid rgba(201,169,98,0.2); box-shadow:0 20px 60px rgba(0,0,0,0.8); display:none;">
           <img id="ecoPreviewImg" src="" alt="" style="width:100%; display:block;">
         </div>
       </div>
@@ -3139,9 +3139,9 @@
           ecoPreviewImg.src = src;
           ecoPreviewImg.alt = item.querySelector('h4').textContent;
           ecoPreview.style.display = 'block';
-          // Force reflow before opacity transition
           ecoPreview.offsetHeight;
           ecoPreview.style.opacity = '1';
+          ecoPreview.style.pointerEvents = 'none';
         }
       });
       item.addEventListener('mouseleave', () => {
