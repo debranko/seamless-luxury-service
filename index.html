@@ -1570,6 +1570,8 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* (reserved) */
     @media (max-width: 900px) {
       .parallax-break { height: 40vh; min-height: 250px; }
     }
@@ -2263,7 +2265,7 @@
           </div>
         </div>
 
-        <p style="margin-top:36px; font-size:15px; font-style:italic; opacity:0.7;" data-i18n="emergency.tagline">Seconds matter. OBEDIO delivers them.</p>
+        <p id="emergency-tagline" style="margin-top:48px; font-size:clamp(18px,2vw,22px); font-style:italic; color:rgba(220,60,60,0.85); text-align:center; letter-spacing:0.5px; font-weight:400; opacity:0; transform:translateY(10px); transition: opacity 0.8s ease, transform 0.8s ease;" data-i18n="emergency.tagline">Seconds matter. OBEDIO delivers them.</p>
       </div>
 
       <!-- Room Control -->
@@ -2279,8 +2281,21 @@
         </div>
       </div>
 
-      <!-- Bespoke block -->
+      <!-- Fully Mappable block -->
       <div class="owners-grid-reverse" style="margin-top:120px;">
+        <div>
+          <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);" data-i18n-html="owners.mappable.headline">Every button.<br><em>Your rules.</em></h3>
+          <div class="gold-divider reveal reveal-delay-1"></div>
+          <p class="body-text reveal reveal-delay-1" data-i18n="owners.mappable.description">Four auxiliary buttons. One main button. Shake gesture. Single press, double press. Every single interaction is fully mappable. Set a scene, dim the lights, call the crew, prepare the swim platform - assign any function to any button. Change your mind? Remap it instantly.</p>
+          <p class="body-text reveal reveal-delay-2" style="margin-top:24px; color:var(--muted);" data-i18n="owners.mappable.detail">Laser-engraved button covers are swappable. New icons, new functions - the button adapts to the owner, not the other way around.</p>
+        </div>
+        <div class="owners-img-wrap reveal reveal-delay-1">
+          <img src="images/mappable-buttons.webp" alt="OBEDIO SmartButton top view showing four customizable auxiliary buttons" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Bespoke block -->
+      <div class="owners-grid" style="margin-top:120px;">
         <div>
           <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);" data-i18n-html="owners.bespoke.headline"><em>Truly bespoke.</em></h3>
           <div class="gold-divider reveal reveal-delay-1"></div>
@@ -3069,6 +3084,25 @@
     document.querySelectorAll('.reveal').forEach(el => {
       revealObserver.observe(el);
     });
+
+    /* ── Emergency tagline delayed reveal (1.5s after section visible) ── */
+    const emergencyTagline = document.getElementById('emergency-tagline');
+    if (emergencyTagline) {
+      const taglineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              emergencyTagline.style.opacity = '1';
+              emergencyTagline.style.transform = 'translateY(0)';
+            }, 1500);
+            taglineObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      taglineObserver.observe(emergencyTagline);
+    }
+
+    /* ── (exploded view animation - reserved for future) ── */
 
     /* ── Scroll indicator on hero ── */
     const scrollIndicator = document.getElementById('scrollIndicator');
