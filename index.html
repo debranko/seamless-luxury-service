@@ -1859,6 +1859,17 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size: 128px 128px;
     }
+
+    /* Beyond Yachts - Responsive Grid */
+    @media (max-width: 900px) {
+      #beyond .section-inner > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+      #beyond .section-inner > div[style*="grid-template-columns"] > div {
+        order: unset !important;
+      }
+    }
   </style>
   <!-- Three.js for 3D background -->
   <script type="importmap">
@@ -1887,6 +1898,7 @@
       <li><a href="#crew" data-i18n="nav.crew">Crew</a></li>
       <li><a href="#integrators" data-i18n="nav.integrators">Integrators</a></li>
       <li><a href="#craftsmanship" data-i18n="nav.craftsmanship">Craftsmanship</a></li>
+      <li><a href="#beyond" data-i18n="nav.beyond">Beyond</a></li>
       <li><a href="#story" data-i18n="nav.story">Story</a></li>
       <li><a href="#barcelona" data-i18n="nav.syts">SYTS 2026</a></li>
       <li><a href="#contact" class="highlight" data-i18n="nav.contact">Contact</a></li>
@@ -1908,6 +1920,7 @@
     <a href="#crew" onclick="closeMobile()" data-i18n="nav.crew">Crew</a>
     <a href="#integrators" onclick="closeMobile()" data-i18n="nav.integrators">Integrators</a>
     <a href="#craftsmanship" onclick="closeMobile()" data-i18n="nav.craftsmanship">Craftsmanship</a>
+    <a href="#beyond" onclick="closeMobile()" data-i18n="nav.beyond">Beyond</a>
     <a href="#story" onclick="closeMobile()" data-i18n="nav.story">Story</a>
     <a href="#barcelona" onclick="closeMobile()" data-i18n="nav.syts">SYTS 2026</a>
     <a href="#contact" onclick="closeMobile()" data-i18n="nav.contact">Contact</a>
@@ -2086,6 +2099,7 @@
         <h3 class="section-headline reveal" style="font-size:clamp(28px,3.5vw,44px);" data-i18n-html="owners.how.headline">Press. Speak. <em>Done.</em></h3>
         <div class="gold-divider-center reveal reveal-delay-1"></div>
         <p class="body-text reveal reveal-delay-1" style="margin:0 auto;" data-i18n="owners.how.description">Press the button. Speak. The same switch powers the microphone - no power, no listening. Physically impossible to eavesdrop. Speak in any of 30+ languages. Your crew receives the request instantly, translated, in writing, on their watch. A light on the button confirms someone is on the way. One press. One trip. Zero friction.</p>
+        <p class="body-text reveal reveal-delay-2" style="margin:24px auto 0; color:var(--muted-light); font-size:17px;" data-i18n="owners.how.touch_led">Touch the button before pressing - the LED ring lights up, showing you what you're about to press in the dark. The device wakes instantly, microphone ready.</p>
       </div>
 
       <!-- Language block -->
@@ -2400,7 +2414,7 @@
             <path d="M12 24l12-12 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 3" opacity="0.5"/>
           </svg></div>
           <h4 data-i18n="crew.pain.escalation.title">3-level escalation.</h4>
-          <p data-i18n="crew.pain.escalation.desc">Guest calls. No response? It rings again. Still nothing? Escalates to supervisor, then captain. Fully configurable. A request can never fall through.</p>
+          <p data-i18n="crew.pain.escalation.desc">Every request has a priority - Low, Normal, Urgent, or Emergency. Guest calls. No response? It rings again. Still nothing? Escalates to supervisor, then captain. Fully configurable. A request can never fall through.</p>
         </div>
         <div class="crew-pain-card reveal reveal-delay-4">
           <div class="crew-pain-icon"><svg viewBox="0 0 48 48">
@@ -2443,7 +2457,7 @@
       <div style="margin-top:120px;">
         <div class="section-label reveal" data-i18n="crew.mgmt.label">Crew Management</div>
         <h3 class="section-headline reveal reveal-delay-1" style="font-size:clamp(28px,3.5vw,44px);" data-i18n-html="crew.mgmt.headline">Command the vessel.<br><em>From one screen.</em></h3>
-        <p class="body-text reveal reveal-delay-2" data-i18n="crew.mgmt.description">Crewify management software. iPad dashboard. Interactive vessel map. Everything a chief stew, purser, or captain needs to run service operations.</p>
+        <p class="body-text reveal reveal-delay-2" data-i18n="crew.mgmt.description">Management dashboard. iPad interface. Interactive vessel map. Everything a chief stew, purser, or captain needs to run service operations.</p>
 
         <!-- Dashboard screenshot -->
         <div class="reveal" style="margin: 60px 0;">
@@ -2479,7 +2493,7 @@
           <div>
             <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);" data-i18n-html="crew.mgmt.profiles.headline">Guest profiles.<br><em>Know before you arrive.</em></h3>
             <div class="gold-divider reveal reveal-delay-1"></div>
-            <p class="body-text reveal reveal-delay-1" data-i18n="crew.mgmt.profiles.description">Name, cabin, dietary restrictions, allergies, VIP status, check-in date. Every crew member sees who they're serving. Filter by onboard, expected, or VIP. Allergy alerts protect your guests.</p>
+            <p class="body-text reveal reveal-delay-1" data-i18n="crew.mgmt.profiles.description">Name, cabin, dietary restrictions, allergies, VIP status, check-in date. Every crew member sees who they're serving. Guest status tracking - Expected, Onboard, or Departed - keeps crew aware of active cabins. Filter by status or VIP. Allergy alerts protect your guests.</p>
           </div>
           <div class="reveal reveal-delay-1" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
             <img src="images/app-guests.webp" alt="OBEDIO Guests List - profiles with dietary alerts and allergies" style="width:100%; display:block;" loading="lazy">
@@ -2491,7 +2505,7 @@
           <div>
             <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);" data-i18n-html="crew.mgmt.devices.headline">Device manager.<br><em>Every button, every watch.</em></h3>
             <div class="gold-divider reveal reveal-delay-1"></div>
-            <p class="body-text reveal reveal-delay-1" data-i18n="crew.mgmt.devices.description">Monitor all SmartButtons, watches, repeaters, and mobile apps from one screen. Battery levels, signal strength, temperature, connection status, last seen. Configure every button's press actions, LED behaviour, and shake sensitivity.</p>
+            <p class="body-text reveal reveal-delay-1" data-i18n="crew.mgmt.devices.description">Monitor all SmartButtons, watches, repeaters, and mobile apps from one screen. Battery levels, signal strength, temperature, connection status, last seen. Device health monitoring shows charging, low battery, and error states - ETOs know if a device is broken or just needs a charge. Configure every button's press actions, LED behaviour, and shake sensitivity.</p>
           </div>
           <div class="reveal reveal-delay-1" style="border-radius:6px; overflow:hidden; border: 1px solid rgba(201,169,98,0.1);">
             <img src="images/app-device-manager.webp" alt="OBEDIO Device Manager - SmartButton status and monitoring" style="width:100%; display:block;" loading="lazy">
@@ -2517,6 +2531,14 @@
             <img src="images/app-escalation.webp" alt="OBEDIO Escalation Settings - 3-level automatic escalation configuration" style="width:100%; display:block;" loading="lazy">
           </div>
         </div>
+
+        <!-- Activity Log / Audit Trail -->
+        <div style="text-align:center; margin-top:100px;">
+          <h3 class="section-headline reveal" style="font-size:clamp(24px,3vw,36px);" data-i18n-html="crew.mgmt.audit.headline">Complete <em>accountability.</em></h3>
+          <div class="gold-divider-center reveal reveal-delay-1"></div>
+          <p class="body-text reveal reveal-delay-1" style="margin:0 auto;" data-i18n="crew.mgmt.audit.description">Every request is logged. Who answered, how long it took, what happened. Activity log provides full audit trail for captains and management. Accountability built in.</p>
+        </div>
+
       </div>
 
     </div>
@@ -2877,8 +2899,73 @@
     </div>
   </section>
 
+  <!-- ── PARALLAX BREAK: Beyond Yachts ── -->
+  <div id="beyond" class="parallax-break">
+    <img src="images/villa-poolside.webp" alt="OBEDIO SmartButton at luxury villa" class="parallax-break-img" loading="lazy">
+    <div class="parallax-break-overlay">
+      <h2 class="reveal">Beyond Yachts</h2>
+      <p class="reveal">Luxury demands the same everywhere.</p>
+    </div>
+  </div>
+
   <!-- ════════════════════════════════════════
-       SECTION 7: SYTS BARCELONA
+       SECTION 7: BEYOND YACHTS
+       ════════════════════════════════════════ -->
+  <section class="section section-dark">
+    <div class="section-inner">
+
+      <div style="text-align:center;">
+        <div class="section-label reveal">Beyond Yachts</div>
+        <h2 class="section-headline reveal reveal-delay-1" style="text-align:center;"><em>Seamless service knows no boundaries.</em></h2>
+        <p class="section-subline reveal reveal-delay-2" style="text-align:center; margin:0 auto;">From sundeck to poolside. From galley to kitchen. The same philosophy, the same precision, wherever luxury lives.</p>
+      </div>
+
+      <!-- Villas -->
+      <div class="reveal" style="margin-top:100px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; max-width:1200px; margin:0 auto;">
+          <div>
+            <img src="images/villa-poolside.webp" alt="OBEDIO SmartButton at Mediterranean villa poolside" class="img-full" style="border-radius:8px;" loading="lazy">
+          </div>
+          <div>
+            <h3 class="section-headline" style="font-size:clamp(24px,3vw,36px);"><em>Villas</em></h3>
+            <p style="color:var(--cream-dim); line-height:1.8; margin-top:20px;">
+              Mediterranean estates. Caribbean retreats. Alpine sanctuaries. Wherever guests expect perfection, staff need tools that work. No app downloads. No Wi-Fi dependency. Just press and speak.
+            </p>
+            <p style="color:var(--cream-dim); line-height:1.8; margin-top:16px;">
+              Pool service. Housekeeping. Concierge. Security. Everyone connected, nothing visible.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Private Estates -->
+      <div class="reveal" style="margin-top:120px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; max-width:1200px; margin:0 auto;">
+          <div style="order:2;">
+            <img src="images/estate-interior.webp" alt="OBEDIO SmartButton at private estate" class="img-full" style="border-radius:8px;" loading="lazy">
+          </div>
+          <div style="order:1;">
+            <h3 class="section-headline" style="font-size:clamp(24px,3vw,36px);"><em>Private Estates</em></h3>
+            <p style="color:var(--cream-dim); line-height:1.8; margin-top:20px;">
+              Multi-acre properties. Multiple residences. Staff across grounds, stables, garages, guesthouses. Coordination matters. Delays don't belong.
+            </p>
+            <p style="color:var(--cream-dim); line-height:1.8; margin-top:16px;">
+              One button in every building. One system. No blind spots. No excuses.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom line -->
+      <div style="text-align:center; margin-top:100px;" class="reveal">
+        <p class="section-subline" style="margin:0 auto; font-style:italic; color:var(--gold);">Built for yachts. Built for anywhere luxury lives.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 8: SYTS BARCELONA
        ════════════════════════════════════════ -->
   <section id="barcelona" class="section section-charcoal syts-section" style="padding-top:180px;">
     <div class="section-inner" style="text-align:center;">
@@ -2918,7 +3005,7 @@
   </section>
 
   <!-- ════════════════════════════════════════
-       SECTION 8: THE STORY
+       SECTION 9: THE STORY
        ════════════════════════════════════════ -->
   <section id="story" class="section section-dark">
     <div class="section-inner">
@@ -2988,7 +3075,7 @@
   </section>
 
   <!-- ════════════════════════════════════════
-       SECTION 9: CONTACT
+       SECTION 10: CONTACT
        ════════════════════════════════════════ -->
   <section id="contact" class="section section-surface contact-section">
     <div class="section-inner" style="text-align:center;">

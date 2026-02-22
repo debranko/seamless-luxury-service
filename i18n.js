@@ -11,6 +11,7 @@ const translations = {
     'nav.crew': 'Crew',
     'nav.integrators': 'Integrators',
     'nav.craftsmanship': 'Craftsmanship',
+    'nav.beyond': 'Beyond',
     'nav.story': 'Story',
     'nav.syts': 'SYTS 2026',
     'nav.contact': 'Contact',
@@ -99,6 +100,11 @@ const translations = {
     'owners.control.headline': 'One button.<br><em>The entire cabin.</em>',
     'owners.control.description': 'Not just a service call. OBEDIO controls your cabin. Lights, blinds, climate, scenes - all from the same button on your nightstand. No separate keypads. No learning different interfaces. One touch point for everything.',
     'owners.control.compatibility': 'Crestron and Control4 integration.',
+
+    // Fully Mappable
+    'owners.mappable.headline': 'Every button.<br><em>Your rules.</em>',
+    'owners.mappable.description': 'Four auxiliary buttons. One main button. Shake gesture. Single press, double press. Every single interaction is fully mappable. Set a scene, dim the lights, call the crew, prepare the swim platform - assign any function to any button. Change your mind? Remap it instantly.',
+    'owners.mappable.detail': 'Laser-engraved button covers are swappable. New icons, new functions - the button adapts to the owner, not the other way around.',
 
     // Bespoke
     'owners.bespoke.headline': '<em>Truly bespoke.</em>',
@@ -269,6 +275,7 @@ const translations = {
     'nav.crew': 'Posada',
     'nav.integrators': 'Integratori',
     'nav.craftsmanship': 'Zanatstvo',
+    'nav.beyond': 'Dalje',
     'nav.story': 'Priča',
     'nav.syts': 'SYTS 2026',
     'nav.contact': 'Kontakt',
@@ -357,6 +364,11 @@ const translations = {
     'owners.control.headline': 'Jedno dugme.<br><em>Cela kabina.</em>',
     'owners.control.description': 'Nije samo poziv za uslugu. OBEDIO kontroliše vašu kabinu. Svetla, zavese, klimu, scene - sve sa istog dugmeta na noćnom stočiću. Bez zasebnih tastatura. Bez učenja različitih interfejsa. Jedna tačka kontakta za sve.',
     'owners.control.compatibility': 'Crestron i Control4 integracija.',
+
+    // Fully Mappable
+    'owners.mappable.headline': 'Svako dugme.<br><em>Vaša pravila.</em>',
+    'owners.mappable.description': 'Četiri pomoćna dugmeta. Jedno glavno dugme. Pokret trešnje. Jedan pritisak, dupli pritisak. Svaka interakcija je potpuno prilagodljiva. Postavite scenu, prigušite svetla, pozovite posadu, pripremite platformu za kupanje - dodelite bilo koju funkciju bilo kom dugmetu. Promenili ste mišljenje? Promenite raspored trenutno.',
+    'owners.mappable.detail': 'Laserski gravirani poklopci dugmadi su zamenljivi. Nove ikone, nove funkcije - dugme se prilagođava vlasniku, a ne obrnuto.',
 
     // Bespoke
     'owners.bespoke.headline': '<em>Zaista po meri.</em>',
