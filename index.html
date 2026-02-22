@@ -2232,121 +2232,210 @@
         <p data-i18n="emergency.description">Guest with a medical condition shakes the button. Instant emergency broadcast to every device on board. Location, medical profile, allergies, conditions. Every crew member sees it immediately.</p>
 
         <style>
-          @keyframes emergencyPulse {
-            0%, 100% { filter: drop-shadow(0 0 0 transparent); }
-            50% { filter: drop-shadow(0 0 8px rgba(220,60,60,0.6)); }
-          }
-          @keyframes timelineDraw {
-            from { stroke-dashoffset: 500; }
-            to { stroke-dashoffset: 0; }
-          }
-          .emergency-timeline {
+          /* ECG Lifeline */
+          .ecg-container {
+            margin-top: 56px;
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 48px;
-            max-width: 400px;
+            width: 100%;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
           }
-          .timeline-line {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 60px;
-            height: calc(100% - 120px);
-            stroke: rgba(220,60,60,0.3);
-            stroke-width: 1;
-            stroke-dasharray: 500;
-            stroke-dashoffset: 500;
+          .ecg-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            overflow: visible;
           }
-          .emergency-timeline.animated .timeline-line {
-            animation: timelineDraw 2s ease-out forwards;
+          .ecg-path {
+            fill: none;
+            stroke: #dc3c3c;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
           }
-          .timeline-item {
-            position: relative;
-            text-align: center;
-            padding: 32px 0;
+          .ecg-glow {
+            fill: none;
+            stroke: #dc3c3c;
+            stroke-width: 6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            filter: url(#ecgBlur);
           }
-          .emergency-timeline.animated .timeline-item:nth-child(2) { transition-delay: 0.3s; }
-          .emergency-timeline.animated .timeline-item:nth-child(3) { transition-delay: 0.8s; }
-          .emergency-timeline.animated .timeline-item:nth-child(4) { transition-delay: 1.3s; }
-          .emergency-timeline.animated .timeline-item {
+          .ecg-container.animated .ecg-glow {
+            opacity: 0.35;
+          }
+          /* Milestone markers below ECG */
+          .ecg-milestones {
+            position: relative;
+            height: 140px;
+            margin-top: 8px;
+          }
+          .ecg-milestone {
+            position: absolute;
+            transform: translateX(-50%);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateX(-50%) translateY(12px);
+          }
+          .ecg-container.animated .ecg-milestone {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+          }
+          .ecg-container.animated .ecg-milestone:nth-child(1) { transition-delay: 1.8s; }
+          .ecg-container.animated .ecg-milestone:nth-child(2) { transition-delay: 2.3s; }
+          .ecg-container.animated .ecg-milestone:nth-child(3) { transition-delay: 2.8s; }
+          .ecg-milestone-tick {
+            width: 1px;
+            height: 16px;
+            background: rgba(220,60,60,0.3);
+            margin: 0 auto 10px;
+          }
+          .ecg-milestone-time {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(22px, 2.5vw, 32px);
+            color: #dc3c3c;
+            font-weight: 400;
+            line-height: 1;
+          }
+          .ecg-milestone-label {
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: rgba(220,60,60,0.55);
+            text-transform: uppercase;
+            margin-top: 6px;
+          }
+          .ecg-milestone-desc {
+            font-size: 13px;
+            color: rgba(220,60,60,0.7);
+            font-weight: 300;
+            line-height: 1.3;
+            margin-top: 6px;
+            white-space: nowrap;
+          }
+          /* Mobile: stack milestones vertically */
+          @media (max-width: 600px) {
+            .ecg-milestones {
+              position: static;
+              height: auto;
+              display: flex;
+              flex-direction: column;
+              gap: 28px;
+              margin-top: 32px;
+              align-items: center;
+            }
+            .ecg-milestone {
+              position: static !important;
+              transform: none !important;
+              opacity: 0;
+            }
+            .ecg-container.animated .ecg-milestone {
+              transform: none !important;
+            }
+            .ecg-milestone-tick { display: none; }
+            .ecg-milestone-desc { white-space: normal; }
+          }
+          /* Tagline */
+          .ecg-tagline {
+            margin-top: 56px;
+            font-size: clamp(18px, 2vw, 22px);
+            font-style: italic;
+            color: rgba(220,60,60,0.85);
+            text-align: center;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.8s ease 3.4s, transform 0.8s ease 3.4s;
+          }
+          .ecg-container.animated .ecg-tagline {
             opacity: 1;
             transform: translateY(0);
           }
-          .timeline-icon {
-            animation: emergencyPulse 2s ease-in-out infinite;
-          }
         </style>
 
-        <div class="emergency-timeline" id="emergency-timeline">
-          <svg class="timeline-line" width="2" height="100%" preserveAspectRatio="none">
-            <line x1="1" y1="0" x2="1" y2="100%" vector-effect="non-scaling-stroke"/>
+        <div class="ecg-container" id="ecg-lifeline">
+          <!-- ECG SVG -->
+          <svg class="ecg-svg" viewBox="0 0 1000 120" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <filter id="ecgBlur">
+                <feGaussianBlur stdDeviation="5"/>
+              </filter>
+            </defs>
+            <!-- Subtle baseline -->
+            <line x1="0" y1="60" x2="1000" y2="60" stroke="rgba(220,60,60,0.06)" stroke-width="1"/>
+            <!-- Glow layer (behind) -->
+            <path class="ecg-glow" d="M 0,60 L 555,60 L 568,60 L 571,58 L 575,18 L 579,88 L 583,60 L 590,54 L 600,60 L 675,60 L 688,60 L 691,56 L 695,10 L 699,94 L 703,60 L 710,50 L 720,60 L 795,60 L 808,60 L 811,54 L 815,4 L 819,100 L 823,60 L 830,48 L 840,60 L 1000,60"/>
+            <!-- Main ECG line -->
+            <path class="ecg-path" id="ecg-path" d="M 0,60 L 555,60 L 568,60 L 571,58 L 575,18 L 579,88 L 583,60 L 590,54 L 600,60 L 675,60 L 688,60 L 691,56 L 695,10 L 699,94 L 703,60 L 710,50 L 720,60 L 795,60 L 808,60 L 811,54 L 815,4 L 819,100 L 823,60 L 830,48 L 840,60 L 1000,60"/>
           </svg>
 
-          <div class="timeline-item">
-            <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,42px); color:#dc3c3c; font-weight:400; line-height:1;">0s</div>
-            <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:rgba(220,60,60,0.6); text-transform:uppercase; margin-top:8px;">Shake</div>
-            <div class="timeline-icon" style="width:40px; height:40px; margin:16px auto; display:flex; align-items:center; justify-content:center;">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#dc3c3c" stroke-width="1.2">
-                <rect x="8" y="4" width="16" height="24" rx="4"/>
-                <path d="M4 12l2 2-2 2" stroke-linecap="round" opacity="0.5"/><path d="M28 12l-2 2 2 2" stroke-linecap="round" opacity="0.5"/>
-              </svg>
+          <!-- Milestones positioned below the beats -->
+          <div class="ecg-milestones">
+            <div class="ecg-milestone" style="left: 57.5%;">
+              <div class="ecg-milestone-tick"></div>
+              <div class="ecg-milestone-time">0s</div>
+              <div class="ecg-milestone-label" data-i18n="emergency.timeline.shake.label">Shake</div>
+              <div class="ecg-milestone-desc" data-i18n="emergency.timeline.shake.desc">Guest shakes the button</div>
             </div>
-            <p style="font-size:14px; color:rgba(220,60,60,0.8); font-weight:300; line-height:1.4;" data-i18n-html="emergency.timeline.shake">Guest shakes<br>the button</p>
+            <div class="ecg-milestone" style="left: 69.5%;">
+              <div class="ecg-milestone-tick"></div>
+              <div class="ecg-milestone-time">0.3s</div>
+              <div class="ecg-milestone-label" data-i18n="emergency.timeline.broadcast.label">Broadcast</div>
+              <div class="ecg-milestone-desc" data-i18n="emergency.timeline.broadcast.desc">Every device on board alerts</div>
+            </div>
+            <div class="ecg-milestone" style="left: 81.5%;">
+              <div class="ecg-milestone-tick"></div>
+              <div class="ecg-milestone-time">&lt;60s</div>
+              <div class="ecg-milestone-label" data-i18n="emergency.timeline.response.label">Response</div>
+              <div class="ecg-milestone-desc" data-i18n="emergency.timeline.response.desc">Crew arrives with full profile</div>
+            </div>
           </div>
 
-          <div class="timeline-item">
-            <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,42px); color:#dc3c3c; font-weight:400; line-height:1;">0.3s</div>
-            <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:rgba(220,60,60,0.6); text-transform:uppercase; margin-top:8px;">Broadcast</div>
-            <div class="timeline-icon" style="width:40px; height:40px; margin:16px auto; display:flex; align-items:center; justify-content:center;">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#dc3c3c" stroke-width="1.2">
-                <circle cx="16" cy="16" r="4"/>
-                <path d="M8 8a14 14 0 0 1 16 0" stroke-linecap="round"/><path d="M8 24a14 14 0 0 0 16 0" stroke-linecap="round"/>
-                <path d="M5 5a20 20 0 0 1 22 0" stroke-linecap="round" opacity="0.4"/><path d="M5 27a20 20 0 0 0 22 0" stroke-linecap="round" opacity="0.4"/>
-              </svg>
-            </div>
-            <p style="font-size:14px; color:rgba(220,60,60,0.8); font-weight:300; line-height:1.4;" data-i18n-html="emergency.timeline.broadcast">Every device<br>on board alerts</p>
-          </div>
-
-          <div class="timeline-item">
-            <div style="font-family:'Cinzel',serif; font-size:clamp(28px,3.5vw,42px); color:#dc3c3c; font-weight:400; line-height:1;">&lt;60s</div>
-            <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; color:rgba(220,60,60,0.6); text-transform:uppercase; margin-top:8px;">Response</div>
-            <div class="timeline-icon" style="width:40px; height:40px; margin:16px auto; display:flex; align-items:center; justify-content:center;">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#dc3c3c" stroke-width="1.2">
-                <path d="M16 4v12l6 4" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="16" cy="16" r="12"/>
-                <path d="M12 28l4 4 4-4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
-              </svg>
-            </div>
-            <p style="font-size:14px; color:rgba(220,60,60,0.8); font-weight:300; line-height:1.4;" data-i18n-html="emergency.timeline.response">Crew arrives<br>with full profile</p>
-          </div>
+          <p class="ecg-tagline" data-i18n="emergency.tagline">Seconds matter. OBEDIO delivers them.</p>
         </div>
 
         <script>
-          // Emergency timeline animation trigger
+          // ECG Lifeline animation
           (function() {
-            const timeline = document.getElementById('emergency-timeline');
-            if (!timeline) return;
-            
+            const container = document.getElementById('ecg-lifeline');
+            if (!container) return;
+            const path = document.getElementById('ecg-path');
+            if (!path) return;
+
+            // Set up dash animation
+            const len = path.getTotalLength();
+            path.style.strokeDasharray = len;
+            path.style.strokeDashoffset = len;
+
+            // Also set up glow path
+            const glow = container.querySelector('.ecg-glow');
+            if (glow) {
+              glow.style.strokeDasharray = len;
+              glow.style.strokeDashoffset = len;
+            }
+
             const observer = new IntersectionObserver((entries) => {
               entries.forEach(entry => {
-                if (entry.isIntersecting && !timeline.classList.contains('animated')) {
-                  timeline.classList.add('animated');
+                if (entry.isIntersecting && !container.classList.contains('animated')) {
+                  container.classList.add('animated');
+                  // Animate the path drawing
+                  path.style.transition = 'stroke-dashoffset 3.2s linear';
+                  path.style.strokeDashoffset = '0';
+                  if (glow) {
+                    glow.style.transition = 'stroke-dashoffset 3.2s linear, opacity 0.5s ease 1.6s';
+                    glow.style.strokeDashoffset = '0';
+                  }
                 }
               });
-            }, { threshold: 0.3 });
-            
-            observer.observe(timeline);
+            }, { threshold: 0.4 });
+
+            observer.observe(container);
           })();
         </script>
-
-        <p id="emergency-tagline" style="margin-top:48px; font-size:clamp(18px,2vw,22px); font-style:italic; color:rgba(220,60,60,0.85); text-align:center; letter-spacing:0.5px; font-weight:400; opacity:0; transform:translateY(10px); transition: opacity 0.8s ease, transform 0.8s ease;" data-i18n="emergency.tagline">Seconds matter. OBEDIO delivers them.</p>
       </div>
 
       <!-- Room Control -->
