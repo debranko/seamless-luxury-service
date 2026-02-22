@@ -2250,14 +2250,14 @@
           .ecg-path {
             fill: none;
             stroke: #dc3c3c;
-            stroke-width: 2;
+            stroke-width: 2.5;
             stroke-linecap: round;
             stroke-linejoin: round;
           }
           .ecg-glow {
             fill: none;
             stroke: #dc3c3c;
-            stroke-width: 6;
+            stroke-width: 8;
             stroke-linecap: round;
             stroke-linejoin: round;
             opacity: 0;
@@ -2359,35 +2359,35 @@
 
         <div class="ecg-container" id="ecg-lifeline">
           <!-- ECG SVG -->
-          <svg class="ecg-svg" viewBox="0 0 1000 120" preserveAspectRatio="xMidYMid meet">
+          <svg class="ecg-svg" viewBox="0 0 1000 150" preserveAspectRatio="xMidYMid meet">
             <defs>
               <filter id="ecgBlur">
-                <feGaussianBlur stdDeviation="5"/>
+                <feGaussianBlur stdDeviation="6"/>
               </filter>
             </defs>
             <!-- Subtle baseline -->
-            <line x1="0" y1="60" x2="1000" y2="60" stroke="rgba(220,60,60,0.06)" stroke-width="1"/>
+            <line x1="0" y1="75" x2="1000" y2="75" stroke="rgba(220,60,60,0.05)" stroke-width="1"/>
             <!-- Glow layer (behind) -->
-            <path class="ecg-glow" d="M 0,60 L 555,60 L 568,60 L 571,58 L 575,18 L 579,88 L 583,60 L 590,54 L 600,60 L 675,60 L 688,60 L 691,56 L 695,10 L 699,94 L 703,60 L 710,50 L 720,60 L 795,60 L 808,60 L 811,54 L 815,4 L 819,100 L 823,60 L 830,48 L 840,60 L 1000,60"/>
+            <path class="ecg-glow" d="M 0,75 L 340,75 L 365,75 L 370,72 L 375,25 L 380,120 L 385,75 L 395,67 L 410,75 L 560,75 L 585,75 L 590,70 L 595,15 L 600,130 L 605,75 L 615,62 L 630,75 L 775,75 L 800,75 L 805,66 L 810,5 L 815,142 L 820,75 L 830,56 L 845,75 L 1000,75"/>
             <!-- Main ECG line -->
-            <path class="ecg-path" id="ecg-path" d="M 0,60 L 555,60 L 568,60 L 571,58 L 575,18 L 579,88 L 583,60 L 590,54 L 600,60 L 675,60 L 688,60 L 691,56 L 695,10 L 699,94 L 703,60 L 710,50 L 720,60 L 795,60 L 808,60 L 811,54 L 815,4 L 819,100 L 823,60 L 830,48 L 840,60 L 1000,60"/>
+            <path class="ecg-path" id="ecg-path" d="M 0,75 L 340,75 L 365,75 L 370,72 L 375,25 L 380,120 L 385,75 L 395,67 L 410,75 L 560,75 L 585,75 L 590,70 L 595,15 L 600,130 L 605,75 L 615,62 L 630,75 L 775,75 L 800,75 L 805,66 L 810,5 L 815,142 L 820,75 L 830,56 L 845,75 L 1000,75"/>
           </svg>
 
           <!-- Milestones positioned below the beats -->
           <div class="ecg-milestones">
-            <div class="ecg-milestone" style="left: 57.5%;">
+            <div class="ecg-milestone" style="left: 38%;">
               <div class="ecg-milestone-tick"></div>
               <div class="ecg-milestone-time">0s</div>
               <div class="ecg-milestone-label" data-i18n="emergency.timeline.shake.label">Shake</div>
               <div class="ecg-milestone-desc" data-i18n="emergency.timeline.shake.desc">Guest shakes the button</div>
             </div>
-            <div class="ecg-milestone" style="left: 69.5%;">
+            <div class="ecg-milestone" style="left: 60%;">
               <div class="ecg-milestone-tick"></div>
               <div class="ecg-milestone-time">0.3s</div>
               <div class="ecg-milestone-label" data-i18n="emergency.timeline.broadcast.label">Broadcast</div>
               <div class="ecg-milestone-desc" data-i18n="emergency.timeline.broadcast.desc">Every device on board alerts</div>
             </div>
-            <div class="ecg-milestone" style="left: 81.5%;">
+            <div class="ecg-milestone" style="left: 81%;">
               <div class="ecg-milestone-tick"></div>
               <div class="ecg-milestone-time">&lt;60s</div>
               <div class="ecg-milestone-label" data-i18n="emergency.timeline.response.label">Response</div>
