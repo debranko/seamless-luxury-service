@@ -2266,77 +2266,90 @@
           .ecg-container.animated .ecg-glow {
             opacity: 0.35;
           }
-          /* Milestone markers below ECG */
-          .ecg-milestones {
+          /* Labels ABOVE the ECG line */
+          .ecg-labels-top {
             position: relative;
-            height: 160px;
-            margin-top: 12px;
+            height: 80px;
+            margin-bottom: 4px;
           }
-          .ecg-milestone {
+          .ecg-label-top {
             position: absolute;
             transform: translateX(-50%);
             text-align: center;
+            bottom: 0;
             opacity: 0;
             transition: opacity 0.6s ease, transform 0.6s ease;
-            transform: translateX(-50%) translateY(12px);
+            transform: translateX(-50%) translateY(-8px);
           }
-          .ecg-container.animated .ecg-milestone {
+          .ecg-container.animated .ecg-label-top {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
           }
-          .ecg-container.animated .ecg-milestone:nth-child(1) { transition-delay: 1.8s; }
-          .ecg-container.animated .ecg-milestone:nth-child(2) { transition-delay: 2.3s; }
-          .ecg-container.animated .ecg-milestone:nth-child(3) { transition-delay: 2.8s; }
-          .ecg-milestone-tick {
-            width: 1px;
-            height: 16px;
-            background: rgba(220,60,60,0.3);
-            margin: 0 auto 10px;
-          }
-          .ecg-milestone-time {
+          .ecg-container.animated .ecg-label-top:nth-child(1) { transition-delay: 1.2s; }
+          .ecg-container.animated .ecg-label-top:nth-child(2) { transition-delay: 2.0s; }
+          .ecg-container.animated .ecg-label-top:nth-child(3) { transition-delay: 2.6s; }
+          .ecg-label-top .ecg-time {
             font-family: 'Cinzel', serif;
             font-size: clamp(28px, 3.5vw, 42px);
             color: #dc3c3c;
             font-weight: 400;
             line-height: 1;
           }
-          .ecg-milestone-label {
+          .ecg-label-top .ecg-label {
             font-family: 'Cinzel', serif;
             font-size: 11px;
             letter-spacing: 3px;
             color: rgba(220,60,60,0.6);
             text-transform: uppercase;
-            margin-top: 8px;
+            margin-top: 6px;
           }
-          .ecg-milestone-desc {
-            font-size: 15px;
+          /* Descriptions BELOW the ECG line */
+          .ecg-labels-bottom {
+            position: relative;
+            height: 50px;
+            margin-top: 12px;
+          }
+          .ecg-label-bottom {
+            position: absolute;
+            transform: translateX(-50%);
+            text-align: center;
+            top: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+          }
+          .ecg-container.animated .ecg-label-bottom {
+            opacity: 1;
+          }
+          .ecg-container.animated .ecg-label-bottom:nth-child(1) { transition-delay: 1.4s; }
+          .ecg-container.animated .ecg-label-bottom:nth-child(2) { transition-delay: 2.2s; }
+          .ecg-container.animated .ecg-label-bottom:nth-child(3) { transition-delay: 2.8s; }
+          .ecg-label-bottom .ecg-desc {
+            font-size: clamp(14px, 1.5vw, 17px);
             color: rgba(220,60,60,0.75);
             font-weight: 300;
             line-height: 1.4;
-            margin-top: 8px;
             white-space: nowrap;
           }
-          /* Mobile: stack milestones vertically */
+          /* Mobile */
           @media (max-width: 600px) {
-            .ecg-milestones {
+            .ecg-labels-top, .ecg-labels-bottom {
               position: static;
               height: auto;
               display: flex;
-              flex-direction: column;
-              gap: 28px;
-              margin-top: 32px;
-              align-items: center;
+              flex-direction: row;
+              justify-content: space-around;
+              margin: 24px 0 0;
             }
-            .ecg-milestone {
+            .ecg-label-top, .ecg-label-bottom {
               position: static !important;
               transform: none !important;
-              opacity: 0;
             }
-            .ecg-container.animated .ecg-milestone {
+            .ecg-container.animated .ecg-label-top,
+            .ecg-container.animated .ecg-label-bottom {
               transform: none !important;
             }
-            .ecg-milestone-tick { display: none; }
-            .ecg-milestone-desc { white-space: normal; }
+            .ecg-labels-bottom { margin-top: 4px; }
+            .ecg-label-bottom .ecg-desc { white-space: normal; font-size: 13px; }
           }
           /* Tagline */
           .ecg-tagline {
@@ -2349,7 +2362,7 @@
             font-weight: 400;
             opacity: 0;
             transform: translateY(10px);
-            transition: opacity 0.8s ease 3.4s, transform 0.8s ease 3.4s;
+            transition: opacity 0.8s ease 3.6s, transform 0.8s ease 3.6s;
           }
           .ecg-container.animated .ecg-tagline {
             opacity: 1;
@@ -2358,6 +2371,22 @@
         </style>
 
         <div class="ecg-container" id="ecg-lifeline">
+          <!-- Labels ABOVE the ECG line -->
+          <div class="ecg-labels-top">
+            <div class="ecg-label-top" style="left: 27%;">
+              <div class="ecg-time">0s</div>
+              <div class="ecg-label" data-i18n="emergency.timeline.shake.label">Shake</div>
+            </div>
+            <div class="ecg-label-top" style="left: 44%;">
+              <div class="ecg-time">0.3s</div>
+              <div class="ecg-label" data-i18n="emergency.timeline.broadcast.label">Broadcast</div>
+            </div>
+            <div class="ecg-label-top" style="left: 60%;">
+              <div class="ecg-time">&lt;60s</div>
+              <div class="ecg-label" data-i18n="emergency.timeline.response.label">Response</div>
+            </div>
+          </div>
+
           <!-- ECG SVG -->
           <svg class="ecg-svg" viewBox="0 0 1000 150" preserveAspectRatio="xMidYMid meet">
             <defs>
@@ -2365,33 +2394,23 @@
                 <feGaussianBlur stdDeviation="6"/>
               </filter>
             </defs>
-            <!-- Subtle baseline -->
             <line x1="0" y1="75" x2="1000" y2="75" stroke="rgba(220,60,60,0.05)" stroke-width="1"/>
-            <!-- Glow layer (behind) -->
-            <path class="ecg-glow" d="M 0,75 L 340,75 L 365,75 L 370,72 L 375,25 L 380,120 L 385,75 L 395,67 L 410,75 L 560,75 L 585,75 L 590,70 L 595,15 L 600,130 L 605,75 L 615,62 L 630,75 L 775,75 L 800,75 L 805,66 L 810,5 L 815,142 L 820,75 L 830,56 L 845,75 L 1000,75"/>
+            <!-- Glow -->
+            <path class="ecg-glow" d="M 0,75 L 220,75 L 250,75 L 255,72 L 260,42 L 265,108 L 270,75 L 280,69 L 295,75 L 390,75 L 420,75 L 425,69 L 430,25 L 435,122 L 440,75 L 450,62 L 465,75 L 545,75 L 570,75 L 575,66 L 580,8 L 585,142 L 590,75 L 600,56 L 615,75 L 680,75 L 700,75 L 705,66 L 710,8 L 715,142 L 720,75 L 730,56 L 745,75 L 810,75 L 830,75 L 835,66 L 840,8 L 845,142 L 850,75 L 860,56 L 875,75 L 1000,75"/>
             <!-- Main ECG line -->
-            <path class="ecg-path" id="ecg-path" d="M 0,75 L 340,75 L 365,75 L 370,72 L 375,25 L 380,120 L 385,75 L 395,67 L 410,75 L 560,75 L 585,75 L 590,70 L 595,15 L 600,130 L 605,75 L 615,62 L 630,75 L 775,75 L 800,75 L 805,66 L 810,5 L 815,142 L 820,75 L 830,56 L 845,75 L 1000,75"/>
+            <path class="ecg-path" id="ecg-path" d="M 0,75 L 220,75 L 250,75 L 255,72 L 260,42 L 265,108 L 270,75 L 280,69 L 295,75 L 390,75 L 420,75 L 425,69 L 430,25 L 435,122 L 440,75 L 450,62 L 465,75 L 545,75 L 570,75 L 575,66 L 580,8 L 585,142 L 590,75 L 600,56 L 615,75 L 680,75 L 700,75 L 705,66 L 710,8 L 715,142 L 720,75 L 730,56 L 745,75 L 810,75 L 830,75 L 835,66 L 840,8 L 845,142 L 850,75 L 860,56 L 875,75 L 1000,75"/>
           </svg>
 
-          <!-- Milestones positioned below the beats -->
-          <div class="ecg-milestones">
-            <div class="ecg-milestone" style="left: 38%;">
-              <div class="ecg-milestone-tick"></div>
-              <div class="ecg-milestone-time">0s</div>
-              <div class="ecg-milestone-label" data-i18n="emergency.timeline.shake.label">Shake</div>
-              <div class="ecg-milestone-desc" data-i18n="emergency.timeline.shake.desc">Guest shakes the button</div>
+          <!-- Descriptions BELOW the ECG line -->
+          <div class="ecg-labels-bottom">
+            <div class="ecg-label-bottom" style="left: 27%;">
+              <div class="ecg-desc" data-i18n="emergency.timeline.shake.desc">Guest shakes the button</div>
             </div>
-            <div class="ecg-milestone" style="left: 60%;">
-              <div class="ecg-milestone-tick"></div>
-              <div class="ecg-milestone-time">0.3s</div>
-              <div class="ecg-milestone-label" data-i18n="emergency.timeline.broadcast.label">Broadcast</div>
-              <div class="ecg-milestone-desc" data-i18n="emergency.timeline.broadcast.desc">Every device on board alerts</div>
+            <div class="ecg-label-bottom" style="left: 44%;">
+              <div class="ecg-desc" data-i18n="emergency.timeline.broadcast.desc">Every device on board alerts</div>
             </div>
-            <div class="ecg-milestone" style="left: 81%;">
-              <div class="ecg-milestone-tick"></div>
-              <div class="ecg-milestone-time">&lt;60s</div>
-              <div class="ecg-milestone-label" data-i18n="emergency.timeline.response.label">Response</div>
-              <div class="ecg-milestone-desc" data-i18n="emergency.timeline.response.desc">Crew arrives with full profile</div>
+            <div class="ecg-label-bottom" style="left: 60%;">
+              <div class="ecg-desc" data-i18n="emergency.timeline.response.desc">Crew arrives with full profile</div>
             </div>
           </div>
 
