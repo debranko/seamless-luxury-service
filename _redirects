@@ -1,0 +1,15 @@
+# Redirect old site URLs to new single-page site
+/for-crew          /  301
+/for-crew/         /  301
+/for-owners        /  301
+/for-owners/       /  301
+/for-integrators   /  301
+/for-integrators/  /  301
+/product           /  301
+/product/          /  301
+/about             /  301
+/about/            /  301
+/contact           /  301
+/contact/          /  301
+/features          /  301
+/features/         /  301
