@@ -2285,9 +2285,9 @@
             opacity: 1;
             transform: translateX(-50%) translateY(0);
           }
-          .ecg-container.animated .ecg-label-top:nth-child(1) { transition-delay: 1.2s; }
+          .ecg-container.animated .ecg-label-top:nth-child(1) { transition-delay: 0.8s; }
           .ecg-container.animated .ecg-label-top:nth-child(2) { transition-delay: 2.0s; }
-          .ecg-container.animated .ecg-label-top:nth-child(3) { transition-delay: 2.6s; }
+          .ecg-container.animated .ecg-label-top:nth-child(3) { transition-delay: 3.0s; }
           .ecg-label-top .ecg-time {
             font-family: 'Cinzel', serif;
             font-size: clamp(28px, 3.5vw, 42px);
@@ -2320,9 +2320,9 @@
           .ecg-container.animated .ecg-label-bottom {
             opacity: 1;
           }
-          .ecg-container.animated .ecg-label-bottom:nth-child(1) { transition-delay: 1.4s; }
+          .ecg-container.animated .ecg-label-bottom:nth-child(1) { transition-delay: 1.0s; }
           .ecg-container.animated .ecg-label-bottom:nth-child(2) { transition-delay: 2.2s; }
-          .ecg-container.animated .ecg-label-bottom:nth-child(3) { transition-delay: 2.8s; }
+          .ecg-container.animated .ecg-label-bottom:nth-child(3) { transition-delay: 3.2s; }
           .ecg-label-bottom .ecg-desc {
             font-size: clamp(14px, 1.5vw, 17px);
             color: rgba(220,60,60,0.75);
@@ -2362,7 +2362,7 @@
             font-weight: 400;
             opacity: 0;
             transform: translateY(10px);
-            transition: opacity 0.8s ease 3.6s, transform 0.8s ease 3.6s;
+            transition: opacity 0.8s ease 5.8s, transform 0.8s ease 5.8s;
           }
           .ecg-container.animated .ecg-tagline {
             opacity: 1;
@@ -2418,35 +2418,47 @@
         </div>
 
         <script>
-          // ECG Lifeline animation
+          // ECG Lifeline animation - realistic heartbeat pacing
           (function() {
             const container = document.getElementById('ecg-lifeline');
             if (!container) return;
             const path = document.getElementById('ecg-path');
             if (!path) return;
 
-            // Set up dash animation
             const len = path.getTotalLength();
             path.style.strokeDasharray = len;
             path.style.strokeDashoffset = len;
 
-            // Also set up glow path
             const glow = container.querySelector('.ecg-glow');
             if (glow) {
               glow.style.strokeDasharray = len;
               glow.style.strokeDashoffset = len;
             }
 
+            // Heartbeat timing:
+            // Flatline draws fast (~1s), then beats come at increasing tempo
+            // Beat 1: ~1.0s (weak, barely alive)
+            // Beat 2: ~2.2s (1.2s gap - ~50 BPM bradycardia)
+            // Beat 3: ~3.2s (1.0s gap - ~60 BPM recovering)
+            // Beat 4: ~4.0s (0.83s gap - ~72 BPM normal)
+            // Beat 5: ~4.8s (0.83s gap - ~72 BPM stable)
+            const keyframes = [
+              { strokeDashoffset: len, offset: 0 },
+              { strokeDashoffset: len * 0.74, offset: 0.18 },
+              { strokeDashoffset: len * 0.57, offset: 0.40 },
+              { strokeDashoffset: len * 0.42, offset: 0.58 },
+              { strokeDashoffset: len * 0.29, offset: 0.73 },
+              { strokeDashoffset: len * 0.16, offset: 0.87 },
+              { strokeDashoffset: 0, offset: 1.0 }
+            ];
+
             const observer = new IntersectionObserver((entries) => {
               entries.forEach(entry => {
                 if (entry.isIntersecting && !container.classList.contains('animated')) {
                   container.classList.add('animated');
-                  // Animate the path drawing
-                  path.style.transition = 'stroke-dashoffset 3.2s linear';
-                  path.style.strokeDashoffset = '0';
+                  path.animate(keyframes, { duration: 5500, fill: 'forwards', easing: 'linear' });
                   if (glow) {
-                    glow.style.transition = 'stroke-dashoffset 3.2s linear, opacity 0.5s ease 1.6s';
-                    glow.style.strokeDashoffset = '0';
+                    glow.animate(keyframes, { duration: 5500, fill: 'forwards', easing: 'linear' });
                   }
                 }
               });
