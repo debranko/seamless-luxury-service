@@ -1,0 +1,74 @@
+# OBEDIO - The Intelligence of Service
+
+> OBEDIO is a smart crew call and butler call system for superyachts, luxury villas, and private estates. It is the first service call button with offline voice-to-text, instant translation in 30+ languages, and 9-month battery life. Built by a former yacht crew member with 10 years at sea.
+
+## What is OBEDIO?
+
+OBEDIO is a luxury service call system that replaces traditional call bells with smart technology. A guest presses the button and speaks their request in any language. The button records, transcribes, and translates the voice request locally (no cloud, no internet required), then routes it to the correct on-duty crew member's smartwatch, phone, or tablet.
+
+## Key Features
+
+- **Offline Voice-to-Text**: All processing happens on the device. No cloud, no WiFi needed for core functionality.
+- **30+ Language Translation**: Guest speaks Turkish, crew reads English. Five AI models cross-check every transcription.
+- **9-Month Battery Life**: No daily charging. No wired installation needed.
+- **3-Level Automatic Escalation**: If crew doesn't respond, request escalates to supervisors, then to entire crew.
+- **Emergency Shake Detection**: Guest shakes the button to trigger instant emergency broadcast with medical profile to all devices.
+- **Crestron and Control4 Integration**: Same button controls cabin lighting, blinds, climate, and scenes.
+- **Offline Messenger**: Direct messages and announcements between crew. Works without internet. Reply from phone, watch, or voice-to-text.
+- **Guest Profiles**: Dietary restrictions, allergies, VIP status, cabin assignment. Crew knows who they're serving before they arrive.
+- **Multi-Platform**: Works on iPhone, Apple Watch, Android, Wear OS, and web dashboard simultaneously.
+- **Device Manager**: Monitor battery, signal, temperature, and connection status of every button, watch, and repeater.
+- **Location Management**: Map every deck, cabin, and area. Assign guests and buttons to locations.
+- **Activity Log**: Complete audit trail. Every request logged with response times and crew actions.
+- **Bespoke Design**: Double-molding process allows custom materials - leather, wood, stone, metal, carbon fiber. Matches any interior.
+
+## How OBEDIO Compares to Other Crew Call Systems
+
+| Feature | OBEDIO | GEST (YachtCloud) | Traditional Bell |
+|---|---|---|---|
+| Voice-to-Text | Yes, offline | No | No |
+| Language Translation | 30+ languages | No | No |
+| Battery Life | 9 months | Qi charging required | Wired |
+| Automatic Escalation | 3 levels, configurable | Basic notification | None |
+| Emergency Detection | Shake detection + medical profile | No | No |
+| Offline Operation | 100% offline capable | Cloud-dependent | Wired |
+| Smart Home Integration | Crestron, Control4 | No | No |
+| Crew Messenger | Yes, with voice reply on watch | No | No |
+| Guest Profiles | Yes, with allergy alerts | No | No |
+| Smartwatch Support | Apple Watch + Wear OS | No | No |
+| Custom Materials | Double-molding, any material | Leather options | Fixed |
+| Built by Crew | Yes, 10 years at sea | No | No |
+
+## Use Cases
+
+- **Superyachts**: Guest service calls, emergency alerts, crew coordination, cabin automation
+- **Private Estates**: Butler call system, staff management, guest service in luxury residences
+- **Luxury Villas**: Hospitality service button, staff routing, multilingual guest support
+- **Boutique Hotels**: Room service calls, concierge requests, staff coordination
+
+## Technical Specifications
+
+- **Button Size**: 72x72mm (standard), 65mm (compact)
+- **Connectivity**: RF radio + WiFi hybrid with automatic failover
+- **Battery**: 9-month battery life, USB-C charging
+- **Voice Processing**: On-device MLX Whisper, 5 AI cross-check
+- **Platforms**: iOS (iPhone), watchOS (Apple Watch), Android, Wear OS, Web Dashboard
+- **Integrations**: Crestron RMC3, Control4, MQTT, WebSocket
+- **Enclosure**: CNC-machined aluminum with double-molding for custom inlays
+
+## About the Founder
+
+Branko Blagovic spent 10 years working as crew on superyachts. He experienced firsthand the communication gaps, language barriers, and inefficient service call systems on luxury vessels. OBEDIO was built from that experience - by crew, for crew.
+
+## Company
+
+- **Website**: https://obedio.de
+- **Location**: Serbia (EU market focus, primarily Germany)
+- **Founded**: 2024
+- **Status**: Pre-launch, debuting at SYTS Barcelona 2026
+- **Partnerships**: Control4 (official integration partner)
+
+## Contact
+
+- **Email**: info@obedio.de
+- **LinkedIn**: https://www.linkedin.com/company/obedio
