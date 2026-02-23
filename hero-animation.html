@@ -162,22 +162,6 @@
     .understood.glow { text-shadow: 0 0 60px #c9a96215, 0 0 120px #c9a96208; }
     .understood.solo { font-size: 72px; letter-spacing: 6px; }
 
-    #heartbeat {
-      position: absolute;
-      bottom: -16px;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      transition: opacity 1s ease;
-      filter: drop-shadow(0 0 8px rgba(201, 169, 98, 0.1));
-    }
-    #heartbeat.active {
-      opacity: 0.35;
-    }
-    #heartbeat.pulse {
-      opacity: 0.5;
-    }
-
     /* ── Meaning ── */
     .meaning-wrap {
       position: absolute;
@@ -283,7 +267,6 @@
 
       <div class="anchor">
         <span class="understood" id="understood">Understood.</span>
-        <canvas id="heartbeat" width="600" height="80"></canvas>
       </div>
 
       <div class="meaning-wrap">
@@ -309,150 +292,12 @@
     ];
 
     const understood = document.getElementById('understood');
-    const heartbeat  = document.getElementById('heartbeat');
     const subjectEl  = document.getElementById('subject');
     const meaningEl  = document.getElementById('meaning');
     const finaleEl   = document.getElementById('finale');
 
     let t = null, running = false;
     const wait = ms => new Promise(r => t = setTimeout(r, ms));
-
-    // ── ECG HEARTBEAT MONITOR ──
-    const ctx = heartbeat.getContext('2d');
-    const canvasWidth = 600;
-    const canvasHeight = 80;
-    const centerY = canvasHeight / 2;
-    
-    let phase = 'off';  // off | flatline | transition | pulse
-    let dataPoints = [];
-    let cycleIndex = 0;
-    let attemptCount = 0;
-    let attemptPhase = 0;  // 0-3 for transition attempts
-    let frameCount = 0;
-
-    // Realistic ECG waveform (один цео циклус)
-    // Scaled values: 0 = baseline, positive = up, negative = down
-    const ecgCycle = [
-      // Flat segment before P wave
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      // P wave (атријум contraction)
-      0, 1, 2, 3, 3, 2, 1, 0, 0,
-      // PR segment (flat)
-      0, 0, 0, 0, 0,
-      // QRS complex (вентрикл depolarization) - SHARP SPIKE
-      0, -1, -3,  // Q wave (small down)
-      15, 20, 15,  // R wave (sharp spike up)
-      -5, -2, 0,  // S wave (down)
-      // ST segment
-      0, 0, 0,
-      // T wave (вентрикл repolarization)
-      0, 1, 3, 5, 6, 5, 3, 1, 0,
-      // End flat segment
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    ];
-
-    function getNextValue() {
-      if (phase === 'off') {
-        return centerY;
-      } else if (phase === 'flatline') {
-        // Скоро равна линија са минималним шумом
-        return centerY + (Math.random() - 0.5) * 0.3;
-      } else if (phase === 'transition') {
-        // Покушаји да ожив - incomplete циклуси
-        const attemptProgress = frameCount % 80;
-        
-        if (attemptProgress < 60) {
-          // Attempt heartbeat (truncated)
-          const cycleLength = 60;
-          const idx = Math.floor((attemptProgress / cycleLength) * ecgCycle.length);
-          const maxAmplitude = Math.min(attemptCount * 0.4, 1.0);  // Gradually stronger
-          return centerY - ecgCycle[idx] * maxAmplitude * 1.2;
-        } else {
-          // Return to flatline
-          return centerY + (Math.random() - 0.5) * 0.3;
-        }
-      } else if (phase === 'pulse') {
-        // Нормалан пулс
-        const value = ecgCycle[cycleIndex];
-        cycleIndex = (cycleIndex + 1) % ecgCycle.length;
-        return centerY - value * 1.8;  // Scale for visibility
-      }
-      return centerY;
-    }
-
-    function drawECG() {
-      if (phase === 'off') return;
-
-      // Add new data point
-      const newValue = getNextValue();
-      dataPoints.push(newValue);
-      
-      // Keep buffer size
-      if (dataPoints.length > canvasWidth) {
-        dataPoints.shift();
-      }
-
-      // Clear canvas
-      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-
-      // Draw ECG line
-      ctx.strokeStyle = '#c9a962';
-      ctx.lineWidth = 1.5;
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
-
-      ctx.beginPath();
-      ctx.moveTo(0, dataPoints[0] || centerY);
-      
-      for (let i = 1; i < dataPoints.length; i++) {
-        ctx.lineTo(i, dataPoints[i]);
-      }
-      
-      ctx.stroke();
-
-      frameCount++;
-      
-      // Transition phase logic: 3 attempts
-      if (phase === 'transition' && frameCount % 80 === 0) {
-        attemptCount++;
-        if (attemptCount >= 4) {
-          // After 3 failed attempts, start real pulse
-          phase = 'pulse';
-          cycleIndex = 0;
-        }
-      }
-
-      requestAnimationFrame(drawECG);
-    }
-
-    // Heartbeat control functions
-    window.heartbeatControl = {
-      start() {
-        phase = 'flatline';
-        dataPoints = [];
-        frameCount = 0;
-        attemptCount = 0;
-        cycleIndex = 0;
-        heartbeat.classList.add('active');
-        drawECG();
-      },
-      transition() {
-        phase = 'transition';
-        frameCount = 0;
-        attemptCount = 0;
-      },
-      pulse() {
-        phase = 'pulse';
-        cycleIndex = 0;
-        heartbeat.classList.add('pulse');
-      },
-      stop() {
-        phase = 'off';
-        heartbeat.classList.remove('active', 'pulse');
-        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-        dataPoints = [];
-      }
-    };
 
     // Language support
     let currentLang = 'en';
@@ -493,7 +338,6 @@
       clearTimeout(t);
       running = false;
       understood.className = 'understood';
-      window.heartbeatControl.stop();
       subjectEl.className = 'subject';
       subjectEl.innerHTML = '';
       meaningEl.className = 'meaning';
@@ -509,9 +353,6 @@
 
       await wait(200);
       if (!running) return;
-
-      // Start heartbeat flatline
-      window.heartbeatControl.start();
 
       understood.classList.add('visible');
       heroProduct.classList.add('visible');
@@ -548,18 +389,13 @@
       }
 
       await wait(400);
-      
-      // Start transition - attempts to revive
-      window.heartbeatControl.transition();
+
       understood.classList.add('solo');
       heroProduct.classList.add('bright');
 
-      // Wait for 3 attempts (~2.4 seconds: 3 attempts × 80 frames ÷ 60fps)
       await wait(2400);
       if (!running) return;
 
-      // Start normal pulse
-      window.heartbeatControl.pulse();
       finaleEl.classList.add('visible');
       understood.classList.remove('glow');
 
