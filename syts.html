@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OBEDIO - SYTS Barcelona 2026</title>
+  <meta name="description" content="Thank you for your interest in OBEDIO at the Superyacht Technology Show 2026 in Barcelona.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#080705">
+  <link rel="icon" type="image/svg+xml" href="images/obedio-logo-gold.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A962;
+      --gold-bright: #d4b76e;
+      --black: #080705;
+      --cream: #F0EBE0;
+      --cream-dim: #f0ebe0cc;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .logo {
+      width: 80px;
+      height: auto;
+      margin-bottom: 12px;
+    }
+
+    .brand {
+      font-family: 'Cinzel', 'Georgia', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 6px;
+      margin-bottom: 8px;
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: var(--cream-dim);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 40px;
+      opacity: 0.4;
+    }
+
+    h1 {
+      font-family: 'Cinzel', 'Georgia', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--cream);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--cream-dim);
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 20px;
+      background: rgba(240, 235, 224, 0.06);
+      border: 1px solid rgba(201, 169, 98, 0.25);
+      border-radius: 4px;
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-size: 17px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input::placeholder {
+      color: rgba(240, 235, 224, 0.35);
+    }
+
+    .form-group input:focus {
+      border-color: var(--gold);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px 20px;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      border-radius: 4px;
+      font-family: 'Cinzel', 'Georgia', serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .submit-btn:hover {
+      background: var(--gold-bright);
+      transform: translateY(-1px);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .success-msg {
+      display: none;
+      padding: 20px;
+      margin-top: 20px;
+      color: var(--gold);
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .contact-info {
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(201, 169, 98, 0.15);
+    }
+
+    .contact-info p {
+      font-size: 15px;
+      color: var(--cream-dim);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .contact-info a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-info a:hover {
+      color: var(--gold-bright);
+    }
+
+    .website-link {
+      display: inline-block;
+      margin-top: 32px;
+      font-family: 'Cinzel', 'Georgia', serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .website-link:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="images/obedio-logo-gold.svg" alt="OBEDIO" class="logo">
+    <div class="brand">OBEDIO</div>
+    <div class="tagline">The Intelligence of Service</div>
+
+    <div class="divider"></div>
+
+    <h1>Thank you for your interest at<br>Superyacht Technology Show 2026</h1>
+    <p class="subtitle">We'd love to stay in touch.<br>Leave your email and we'll reach out personally.</p>
+
+    <form id="contact-form" onsubmit="return handleSubmit(event)">
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Your email" required>
+      </div>
+      <div class="form-group">
+        <input type="text" name="company" placeholder="Company (optional)">
+      </div>
+      <button type="submit" class="submit-btn">Stay Connected</button>
+    </form>
+
+    <div class="success-msg" id="success-msg">
+      Thank you. We'll be in touch soon.
+    </div>
+
+    <div class="contact-info">
+      <p>Germany: <a href="tel:+4917620236962">+49 176 2023 69 62</a></p>
+      <p>Serbia: <a href="tel:+381692696969">+381 69 2 69 69 69</a></p>
+      <p><a href="mailto:info@obedio.de">info@obedio.de</a></p>
+    </div>
+
+    <a href="https://obedio.de" class="website-link">obedio.de</a>
+  </div>
+
+  <script>
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const name = data.get('name');
+      const email = data.get('email');
+      const company = data.get('company') || 'N/A';
+
+      try {
+        // Send via Netlify Forms
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            'form-name': 'syts-contact',
+            name,
+            email,
+            company
+          }).toString()
+        });
+      } catch (err) {
+        // Fallback - mailto link
+        window.location.href = `mailto:info@obedio.de?subject=SYTS 2026 - ${encodeURIComponent(name)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nCompany: ${company}`)}`;
+        return false;
+      }
+
+      form.style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+      return false;
+    }
+  </script>
+
+  <!-- Netlify Forms hidden form for detection -->
+  <form name="syts-contact" netlify netlify-honeypot="bot-field" hidden>
+    <input name="bot-field">
+    <input name="name">
+    <input name="email">
+    <input name="company">
+  </form>
+
+</body>
+</html>

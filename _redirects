@@ -1,3 +1,7 @@
+# SYTS landing page
+/syts              /syts.html  200
+/syts/             /syts.html  200
+
 # Redirect old site URLs to new single-page site
 /for-crew          /  301
 /for-crew/         /  301
