@@ -187,7 +187,11 @@
     <h1>Thank you for your interest at<br>Superyacht Technology Show 2026</h1>
     <p class="subtitle">We'd love to stay in touch.<br>Leave your email and we'll reach out personally.</p>
 
-    <form id="contact-form" onsubmit="return handleSubmit(event)">
+    <form id="contact-form" action="https://formsubmit.co/info@obedio.de" method="POST">
+      <input type="hidden" name="_subject" value="SYTS 2026 - New Contact">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://obedio.de/syts-thanks.html">
+      <input type="text" name="_honey" style="display:none">
       <div class="form-group">
         <input type="text" name="name" placeholder="Your name" required>
       </div>
@@ -200,10 +204,6 @@
       <button type="submit" class="submit-btn">Stay Connected</button>
     </form>
 
-    <div class="success-msg" id="success-msg">
-      Thank you. We'll be in touch soon.
-    </div>
-
     <div class="contact-info">
       <p>Germany: <a href="tel:+4917620236962">+49 176 2023 69 62</a></p>
       <p>Serbia: <a href="tel:+381692696969">+381 69 2 69 69 69</a></p>
@@ -213,46 +213,7 @@
     <a href="https://obedio.de" class="website-link">obedio.de</a>
   </div>
 
-  <script>
-    async function handleSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const data = new FormData(form);
-      const name = data.get('name');
-      const email = data.get('email');
-      const company = data.get('company') || 'N/A';
-
-      try {
-        // Send via Netlify Forms
-        await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams({
-            'form-name': 'syts-contact',
-            name,
-            email,
-            company
-          }).toString()
-        });
-      } catch (err) {
-        // Fallback - mailto link
-        window.location.href = `mailto:info@obedio.de?subject=SYTS 2026 - ${encodeURIComponent(name)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nCompany: ${company}`)}`;
-        return false;
-      }
-
-      form.style.display = 'none';
-      document.getElementById('success-msg').style.display = 'block';
-      return false;
-    }
-  </script>
-
-  <!-- Netlify Forms hidden form for detection -->
-  <form name="syts-contact" netlify netlify-honeypot="bot-field" hidden>
-    <input name="bot-field">
-    <input name="name">
-    <input name="email">
-    <input name="company">
-  </form>
+  <!-- Form handled by formsubmit.co - sends directly to info@obedio.de -->
 
 </body>
 </html>
